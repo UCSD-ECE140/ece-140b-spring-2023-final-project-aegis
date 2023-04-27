@@ -1,4 +1,51 @@
-# ece-140b-spring-2023-final-project-aegis
-ece-140b-spring-2023-final-project-aegis created by GitHub Classroom
+# Aegis
+## An intelligent smart home solution to keep track, and reduce your homes energy consumption.
 
-[System Diagram]UCSD-ECE140/ece-140b-spring-2023-final-project-aegis/blob/main/System%20Diagram.png?raw=true)
+### Authors:
+- Emin Kirimlioglu
+- Dominic Orlando
+- Joshua Ball
+- Kevin Shin
+
+### About
+> Aegis is a smart home thermostat that adjusts your houses temperature based on the electricity providers rates,
+> outside temperature, solar panel production, and your personal preferences. Aegis also includes dongles that can be
+> plugged into your appliances to monitor their energy consumption. Aegis will then use this information to optimize
+> your energy consumption and save you money.
+
+### Diagram
+
+![Diagram1.png](Diagram1.png)
+
+```bash
+.
+├── README.md
+├── Diagram1.png
+├── Application
+|   ├── Application.md
+|   ├── Website
+|   |   ├── Website.md
+|   |   └── webServer.py
+|   └── Mobile
+|       └── Mobile.md
+├── Dongle
+|   ├── Dongle.md
+|   ├── Solar
+|   |    ├── Solar.md
+|   |    └── solar.cpp
+|   └── Outlet
+|        ├── Outlet.md
+|        └── outlet.cpp
+├── Market Research
+|   ├── Interviews
+|   └── Market Research.pdf
+├── Website
+|   ├── Website.md
+|   └── piServer.py
+├── Thermostat
+    ├── Thermostat.md
+    └── piServer.py
+```
+
+### Installation
+
