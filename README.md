@@ -4,7 +4,7 @@
 ### Get Started
 Run the setup.py script to install all the dependencies, and create an python environment for the project.
 ```bash
-
+python3 setup.py
 ```
 
 ### Authors:
@@ -37,17 +37,12 @@ Run the setup.py script to install all the dependencies, and create an python en
 ├── Dongle
 |   ├── Dongle.md
 |   ├── Solar
-|   |    ├── Solar.md
 |   |    └── solar.cpp
 |   └── Outlet
-|        ├── Outlet.md
 |        └── outlet.cpp
 ├── Market Research
 |   ├── Interviews
 |   └── Market Research.pdf
-├── Website
-|   ├── Website.md
-|   └── piServer.py
 ├── Thermostat
     ├── Thermostat.md
     └── piServer.py
