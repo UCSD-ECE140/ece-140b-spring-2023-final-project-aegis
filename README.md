@@ -21,14 +21,14 @@
 .
 ├── README.md
 ├── Diagram1.png
-└── Application
+├── Application
 |   ├── Application.md
 |   ├── Website
 |   |   ├── Website.md
 |   |   └── webServer.py
 |   └── Mobile
 |       └── Mobile.md
-└── Dongle
+├── Dongle
 |   ├── Dongle.md
 |   ├── Solar
 |   |    ├── Solar.md
@@ -36,10 +36,13 @@
 |   └── Outlet
 |        ├── Outlet.md
 |        └── outlet.cpp
-└── Website
+├── Market Research
+|   ├── Interviews
+|   └── Market Research.pdf
+├── Website
 |   ├── Website.md
 |   └── piServer.py
-└── Thermostat
+├── Thermostat
     ├── Thermostat.md
     └── piServer.py
 ```
