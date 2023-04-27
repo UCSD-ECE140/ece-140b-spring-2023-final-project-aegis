@@ -17,5 +17,32 @@
 
 ![Diagram1.png](Diagram1.png)
 
+```bash
+.
+├── README.md
+├── Diagram1.png
+└── Application
+|   ├── Application.md
+|   ├── Website
+|   |   ├── Website.md
+|   |   └── webServer.py
+|   └── Mobile
+|       └── Mobile.md
+└── Dongle
+|   ├── Dongle.md
+|   ├── Solar
+|   |    ├── Solar.md
+|   |    └── solar.cpp
+|   └── Outlet
+|        ├── Outlet.md
+|        └── outlet.cpp
+└── Website
+|   ├── Website.md
+|   └── piServer.py
+└── Thermostat
+    ├── Thermostat.md
+    └── piServer.py
+```
+
 ### Installation
 
