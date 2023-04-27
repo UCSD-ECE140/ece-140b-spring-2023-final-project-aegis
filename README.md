@@ -1,6 +1,12 @@
 # Aegis
 ## An intelligent smart home solution to keep track, and reduce your homes energy consumption.
 
+### Get Started
+Run the setup.py script to install all the dependencies, and create an python environment for the project.
+```bash
+python3 setup.py
+```
+
 ### Authors:
 - Emin Kirimlioglu
 - Dominic Orlando
@@ -31,17 +37,12 @@
 ├── Dongle
 |   ├── Dongle.md
 |   ├── Solar
-|   |    ├── Solar.md
 |   |    └── solar.cpp
 |   └── Outlet
-|        ├── Outlet.md
 |        └── outlet.cpp
 ├── Market Research
 |   ├── Interviews
 |   └── Market Research.pdf
-├── Website
-|   ├── Website.md
-|   └── piServer.py
 ├── Thermostat
     ├── Thermostat.md
     └── piServer.py
