@@ -12,5 +12,5 @@ set(CMAKE_CXX_STANDARD 17)
 
 
 # Add tasks subprojects
-include(cmake/utils.cmake)
-add_subprojects(${CMAKE_SOURCE_DIR})
+# include(cmake/utils.cmake)
+# add_subprojects(${CMAKE_SOURCE_DIR})
