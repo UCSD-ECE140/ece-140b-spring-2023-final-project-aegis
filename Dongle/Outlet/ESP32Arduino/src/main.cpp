@@ -16,7 +16,7 @@ bool pinState = false;
 void setup()
 {  
   //set up serial communication look at communications.hpp for details
-  com.setupCommunication(true, "AegisDongle");
+  com.setupCommunication(true, "AegisDongle-A73E");
   //set up temperature sensor look at tempSensor.hpp for details
   ts.initTemp();
   //set up current sensor look at currentSensor.hpp for details
@@ -30,8 +30,10 @@ void setup()
 void loop()
 {
   double Irms = cs.getIrms();  // Calculate Irms only
-  ts.printTemperature();
-  com.sendMessage("Current: " + String(Irms) + "A");
+  String dhtdata = ts.getTemperature();
+  com.sendMessage(dhtdata + "," + String(Irms));
   delay(1000);
-  // digitalWrite(27, pinState=!pinState);
+  digitalWrite(27, pinState=!pinState);
+  com.receiveMessage();
+  
 }

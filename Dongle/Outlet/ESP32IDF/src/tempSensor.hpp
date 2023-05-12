@@ -14,7 +14,7 @@ class tempSensor{
      * 
      * @param dhtPin 
      */
-    tempSensor(communication& aCom, int dhtPin = 12): com(aCom){
+    tempSensor(communication& aCom, int dhtPin = 14): com(aCom){
         this->dhtPin = dhtPin;
     }
     /**
