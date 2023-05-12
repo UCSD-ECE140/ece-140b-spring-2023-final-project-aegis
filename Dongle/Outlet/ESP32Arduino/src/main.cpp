@@ -2,12 +2,15 @@
 
 #include "currentSensor.hpp"
 #include "tempSensor.hpp"
+#include <freertos/FreeRTOS.h>
+#include <freertos/task.h>
 
 
 currentSensor cs;
 communication com;
 tempSensor ts(com);
 
+bool pinState = false;
 
 
 void setup()
@@ -21,7 +24,7 @@ void setup()
   //set up digital pin 27 which is used by the relay
   pinMode(27, OUTPUT);
   //set it to high turn on the relay
-  digitalWrite(27, HIGH);
+  digitalWrite(27, pinState=true);
 }
 
 void loop()
@@ -29,4 +32,6 @@ void loop()
   double Irms = cs.getIrms();  // Calculate Irms only
   ts.printTemperature();
   com.sendMessage("Current: " + String(Irms) + "A");
+  delay(1000);
+  // digitalWrite(27, pinState=!pinState);
 }

@@ -1,9 +1,6 @@
 # Necessary Imports
 import uvicorn                                    # Used for running the app directly through Python
-import dbmanager
-import numpy as np
-import Communication
-from fastapi import FastAPI, Request, Response
+from fastapi import FastAPI, Request
 from starlette.responses import JSONResponse
 from fastapi.responses import HTMLResponse        # Used for returning HTML responses (JSON is default)
 from fastapi.staticfiles import StaticFiles       # Used for making static resources available to server
