@@ -49,7 +49,7 @@ def get_home(request: Request) -> HTMLResponse:
     """
     Get the homepage
     :param request: the request object
-    :return: the homepage
+    :return: the homepageg
     """
     with open('homepage.html') as html:
         return HTMLResponse(content=html.read(), status_code=200)
