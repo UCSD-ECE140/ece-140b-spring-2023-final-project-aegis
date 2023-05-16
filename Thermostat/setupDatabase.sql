@@ -1,8 +1,6 @@
 create database if not exists aegis;
 
 use aegis;
-drop table if exists dongleData;
-drop table if exists commands;
 
 create table if not exists dongleData (
                                      id         integer auto_increment primary key,

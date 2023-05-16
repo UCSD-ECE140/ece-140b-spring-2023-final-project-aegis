@@ -23,7 +23,7 @@ def receive_message(ser, num_bytes=50):
 
 def main():
     # wired is /dev/cu.usbserial-02761644
-    ser = setup("/dev/cu.raspberrypi", 115200)
+    ser = setup("/dev/cu.AegisDongle", 115200)
     while(True):
         time.sleep(3)
         message = receive_message(ser)
