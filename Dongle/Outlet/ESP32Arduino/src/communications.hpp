@@ -47,14 +47,12 @@ class communication{
     String receiveMessage() {
         String message = "";
         if(isBT){
-            if (BTSerial.available() > 0) {
-                while (true) {
-                    char c = BTSerial.read();
-                    if (c != char(-1)) {
-                        if (c == '\n')
-                            break;
-                        message += c;
-                    }
+            while (BTSerial.available()) {
+                char c = BTSerial.read();
+                if (c != char(-1)) {
+                    if (c == '\n')
+                        break;
+                    message += c;
                 }
             }
         }
