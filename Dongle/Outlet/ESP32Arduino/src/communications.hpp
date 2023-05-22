@@ -121,8 +121,7 @@ class communication{
         client.setServer(mqttServer.c_str(), mqttPort);
         while (!client.connected()) {
         if (client.connect("ESP32Client", mqttUser.c_str(), mqttPassword.c_str())) {
-            client.subscribe("dongleOn");
-            client.subscribe("dongleOff");
+            client.subscribe("dongleCommand");
             client.setCallback([this](char* topic, byte* message, unsigned int length) {
         
         for (int i = 0; i < length; i++) {

@@ -36,7 +36,7 @@ void loop()
   long newtime = currentMillis - startMillis;
   double Irms = cs.getIrms();  // Calculate Irms only
   String dhtdata = ts.getTemperature(); //Returns Temperature, Humidity
-  com.sendMessage(String(newtime) + "," + dhtdata + "," + String(Irms) + ';'); //Sends Temperature,Humidity,Irms over bluetooth 
+  com.sendMessage("dongleData", String(newtime) + "," + dhtdata + "," + String(Irms) + ';'); //Sends Temperature,Humidity,Irms over bluetooth 
   String message = com.receiveMessage();
   if(message == String("on")) {
     digitalWrite(27, pinState=true);
