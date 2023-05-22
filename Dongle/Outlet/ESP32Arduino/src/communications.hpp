@@ -117,7 +117,7 @@ class communication{
         while (WiFi.status() != WL_CONNECTED) {
             delay(500);
         }
-
+        
         client.setServer(mqttServer.c_str(), mqttPort);
         while (!client.connected()) {
         if (client.connect("ESP32Client", mqttUser.c_str(), mqttPassword.c_str())) {

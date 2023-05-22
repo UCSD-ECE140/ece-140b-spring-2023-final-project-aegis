@@ -18,7 +18,7 @@ bool pinState = false;
 void setup()
 {  
   //set up serial communication look at communications.hpp for details
-  com.setupCommunication(true, "AegisDongle-A73E");
+  com.setupCommunication();
   //set up temperature sensor look at tempSensor.hpp for details
   ts.initTemp();
   //set up current sensor look at currentSensor.hpp for details
