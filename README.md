@@ -1,5 +1,5 @@
 # Aegis
-## An intelligent smart home solution to keep track, and reduce your homes energy consumption.
+## An intelligent smart home solution to monitor and reduce your homes energy consumption.
 
 ### Get Started
 Run the setup.py script to install all the dependencies, and create an python environment for the project.

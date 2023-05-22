@@ -1,14 +1,14 @@
 document.addEventListener("DOMContentLoaded", () => {
 
     let currentTempDisplay = document.getElementsByClassName('tempDisplay')[0];
-
+    let message = document.getElementById('message');
     let messageForm = document.getElementsByClassName('messageForm')[0];
 
     let temperature=0.0;
     let humidity=0.0;
     let current=0.0;
-    let time=0.0;
-    let history;
+    let time=0;
+    let history={};
 
     function server_request(url, data={}, verb, callback) {
         return fetch(url, {
@@ -44,32 +44,35 @@ document.addEventListener("DOMContentLoaded", () => {
         const method = 'get';
         server_request_get(action,{}, method, function (response) {
             let points = response["data"].split(';')
-            for (let point in points){
+            for (let point of points){
                 let nums = point.split(',')
-                time = nums[0]
+                time++
                 temperature = nums[1]
                 humidity = nums[2]
                 current = nums[3]
 
+                if(time==undefined||temperature==undefined||humidity==undefined||current==undefined) continue
+
                 history[time] = {"time":time,"temp":temperature, 'hum':humidity, 'current':current}
                 updateCurrentDisplay()
-                updateHistoryGraph1()
-                updateHistoryGraph2()
+                // updateHistoryGraph1()
+                // updateHistoryGraph2()
                 updateHistoryGraph3()
             }
         });
     }
 
     function updateCurrentDisplay() {
-        currentTempDisplay.innerHTML = "Temperature: " + temperature + " Humidity: " + humidity + " Brightness: " + brightness + " Time: " + time;
+        currentTempDisplay.innerHTML = "Temperature: " + temperature + " Humidity: " + humidity + " Current: " + current + " Time: " + time;
     }
 
     messageForm.addEventListener('submit', (event) => {
         event.preventDefault();
-        const action = '/send';
-        const method = 'post';
-        const data = Object.fromEntries(new FormData(messageForm).entries());
-        server_request(action, data, method, function (response) {
+        
+        const action = '/'+message.value;
+        const method = 'get';
+        server_request_get(action,{}, method, function (response) {
+            
         });
     });
 
@@ -89,6 +92,8 @@ document.addEventListener("DOMContentLoaded", () => {
         let xarray = [];
         let yarray = [];
         for (let key in history) {
+            if(xarray.length>100){xarray.pop()}
+            if(yarray.length>100){yarray.pop()}
             xarray.push(history[key]['time']);
             yarray.push(history[key]['hum']);
         }
@@ -111,11 +116,8 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-    // //call the updaters every 3 seconds
-    // setInterval(function () {
-    //     getTemperature();
-    //     updateCurrentDisplay();
-    //     updateHistoryGraph();
-    // }, 1000);
-
+    //call the updaters every 3 seconds
+    setInterval(function () {
+        getTemperature();
+    }, 1000);
 });

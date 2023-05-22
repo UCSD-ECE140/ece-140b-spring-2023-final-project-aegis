@@ -7,7 +7,7 @@ def find_device(target_name):
             return addr
     return None
 
-target_device_name = "AegisDongle"
+target_device_name = "AegisDongle-A73E"
 target_device_address = find_device(target_device_name)
 
 if target_device_address is not None:
