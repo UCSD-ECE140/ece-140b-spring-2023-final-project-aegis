@@ -18,7 +18,7 @@ bool pinState = false;
 void setup()
 {  
   //set up serial communication look at communications.hpp for details
-  com.setupCommunication(true, "AegisDongle-A73E");
+  com.setupCommunication();
   //set up temperature sensor look at tempSensor.hpp for details
   ts.initTemp();
   //set up current sensor look at currentSensor.hpp for details
@@ -36,7 +36,7 @@ void loop()
   long newtime = currentMillis - startMillis;
   double Irms = cs.getIrms();  // Calculate Irms only
   String dhtdata = ts.getTemperature(); //Returns Temperature, Humidity
-  com.sendMessage(String(newtime) + "," + dhtdata + "," + String(Irms) + ';'); //Sends Temperature,Humidity,Irms over bluetooth 
+  com.sendMessage("dongleData", String(newtime) + "," + dhtdata + "," + String(Irms) + ';'); //Sends Temperature,Humidity,Irms over bluetooth 
   String message = com.receiveMessage();
   if(message == String("on")) {
     digitalWrite(27, pinState=true);

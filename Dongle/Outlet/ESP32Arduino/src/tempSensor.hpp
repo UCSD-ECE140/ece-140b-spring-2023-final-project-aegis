@@ -27,7 +27,6 @@ class tempSensor{
      */
     bool initTemp() {
         dht.setup(dhtPin, DHTesp::DHT11);
-        com.sendMessage("DHT11 setup done");
         return true;
     }
 
