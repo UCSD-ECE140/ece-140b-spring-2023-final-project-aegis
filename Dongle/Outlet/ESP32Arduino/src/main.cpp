@@ -5,6 +5,15 @@
 #include <freertos/FreeRTOS.h>
 #include <freertos/task.h>
 
+#include <WiFi.h>
+#include "time.h"
+
+const char* ntpServer = "pool.ntp.org";
+const long  gmtOffset_sec = 0;
+const int   daylightOffset_sec = 0;
+
+
+
 
 currentSensor cs;
 communication com;
@@ -14,6 +23,13 @@ tempSensor ts(com);
 long startMillis;
 long currentMillis;
 bool pinState = false;
+
+// A function that will be executed by the task
+void TaskFunction( void *pvParameters ) {
+    for(;;) {
+        // task code here
+    }
+}
 
 void setup()
 {  
@@ -28,6 +44,7 @@ void setup()
   //set it to high turn on the relay
   digitalWrite(27, pinState=false);
   startMillis = millis(); 
+  Serial.begin(115200);
 }
 
 void loop()
@@ -37,11 +54,13 @@ void loop()
   double Irms = cs.getIrms();  // Calculate Irms only
   String dhtdata = ts.getTemperature(); //Returns Temperature, Humidity
   com.sendMessage("dongleData", String(newtime) + "," + dhtdata + "," + String(Irms) + ';'); //Sends Temperature,Humidity,Irms over bluetooth 
-  String message = com.receiveMessage();
-  if(message == String("on")) {
-    digitalWrite(27, pinState=true);
-  } else if (message==String("off")) {
-    digitalWrite(27, pinState=false);
-  }
+  //String message = com.receiveMessage();
+  // Serial.println("recieved " + message);
+  // if(message == String("on")) {
+  //   digitalWrite(27, pinState=true);
+  // } else if (message==String("off")) {
+  //   digitalWrite(27, pinState=false);
+  // }
   delay(1000);
+  com.refresh();
 }
