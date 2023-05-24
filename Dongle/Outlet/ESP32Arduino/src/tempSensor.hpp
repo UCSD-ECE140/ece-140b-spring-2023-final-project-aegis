@@ -1,12 +1,11 @@
 #include "DHTesp.h" // Click here to get the library: http://librarymanager/All#DHTesp
-#include "communications.hpp" // Click here to get the library:
 
 
 class tempSensor{
     DHTesp dht;
     /** Pin number for DHT11 data pin */
     int dhtPin;
-    communication& com;
+
 
     public:
     /**
@@ -14,7 +13,7 @@ class tempSensor{
      * 
      * @param dhtPin 
      */
-    tempSensor(communication& aCom, int dhtPin = 14): com(aCom){
+    tempSensor(int dhtPin = 14){
         this->dhtPin = dhtPin;
     }
     /**
