@@ -1,5 +1,6 @@
 #include "currentSensor.hpp"
 #include "tempSensor.hpp"
+#include "circle.hpp"
 #include <freertos/FreeRTOS.h>
 #include <freertos/task.h>
 #include <Arduino.h>
@@ -9,6 +10,16 @@
 WiFiClient espClient;
 PubSubClient client(espClient);
 String messageBuffer = "";
+circular_buffer<String, 30> cbuf;
+
+String messageSend = "";
+currentSensor cs;
+tempSensor ts;
+
+long startMillis;
+long currentMillis;
+bool pinState = false;
+
 
 void callback(char* topic, uint8_t* data, unsigned int code){
   if(topic == "aegisDongleData"){
@@ -56,12 +67,7 @@ String receiveMessage() {
     }
     return "";
 }
-currentSensor cs;
-tempSensor ts;
 
-long startMillis;
-long currentMillis;
-bool pinState = false;
 
 void setup()
 {  
@@ -81,17 +87,28 @@ void setup()
 
 void loop()
 {
+  cbuf;
   currentMillis = millis();
   long newtime = currentMillis - startMillis;
   double Irms = cs.getIrms();  // Calculate Irms only
   String dhtdata = ts.getTemperature(); //Returns Temperature, Humidity
-  sendMessage("aegisDongleData", String(newtime) + "," + dhtdata + "," + String(Irms) + ';'); //Sends Temperature,Humidity,Irms over bluetooth 
-  String message = receiveMessage();
-  Serial.println("recieved " + message);
-  if(message == String("on")) {
-    digitalWrite(27, pinState=true);
-  } else if (message==String("off")) {
-    digitalWrite(27, pinState=false);
+  messageSend = String(newtime) + "," + dhtdata + "," + String(Irms) + ';';
+  if (WiFi.status() == WL_CONNECTED) {
+    while(!cbuf.empty()) {
+      sendMessage("aegisDongleData", cbuf.get());
+    }
+    cbuf.reset();
+    sendMessage("aegisDongleData", messageSend); //Sends Temperature,Humidity,Irms over bluetooth 
+    String message = receiveMessage();
+    Serial.println("recieved " + message);
+    if(message == String("on")) {
+      digitalWrite(27, pinState=true);
+    } else if (message==String("off")) {
+      digitalWrite(27, pinState=false);
+    }
+  } else {
+    cbuf.put(messageSend);
+    digitalWrite(27, pinState=true); //Or whatever value makes it so relay stays permanently on if the wifi is disconnected
+    delay(10000);
   }
-  delay(10000);
 }
