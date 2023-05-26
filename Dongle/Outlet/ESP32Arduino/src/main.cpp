@@ -6,6 +6,8 @@
 #include <Arduino.h>
 #include <WiFi.h>
 #include <PubSubClient.h>
+#include <pthread.h>
+
 
 WiFiClient espClient;
 PubSubClient client(espClient);
@@ -16,16 +18,19 @@ String messageSend = "";
 currentSensor cs;
 tempSensor ts;
 
+String msg= "";
 long startMillis;
 long currentMillis;
 bool pinState = false;
 
 
 void callback(char* topic, uint8_t* data, unsigned int code){
-  if(topic == "aegisDongleData"){
-    for(int i = 0; i < code; i++){
-      messageBuffer += (char)data[i];
-    }
+  Serial.print("Message arrived in topic: ");
+  Serial.println(topic);
+  Serial.print("Message:");
+  for(int i = 0; i < code; i++){
+    Serial.print((char)data[i]);
+    messageBuffer += (char)data[i];
   }
 }
 
@@ -51,7 +56,7 @@ void setUpWifi(){
       }
   }
   client.publish("aegisDongleInit","Hello from ESP32");
-  client.subscribe("aegisDongleData");
+  client.subscribe("aegisDongleReceive");
 }
 
 void sendMessage(String topic, String message) {
@@ -66,6 +71,19 @@ String receiveMessage() {
         return temp;
     }
     return "";
+}
+
+void *receive(void *i) {
+  while (1) {
+    String message = receiveMessage();
+    Serial.println("recieved " + message);
+    if(message == String("on")) {
+      digitalWrite(27, pinState=true);
+    } else if (message==String("off")) {
+      digitalWrite(27, pinState=false);
+    }
+    delay(100);
+  }
 }
 
 
@@ -83,32 +101,34 @@ void setup()
   //set it to high turn on the relay
   digitalWrite(27, pinState=false);
   startMillis = millis(); 
+  pthread_t mainThreadRef;
+  int mainValue;
+  mainValue = pthread_create(&mainThreadRef, NULL, receive, (void*)NULL);
+  if (mainValue) {
+    Serial.println("Problem setting up the communication thread!");
+  }
 }
 
 void loop()
 {
-  cbuf;
   currentMillis = millis();
   long newtime = currentMillis - startMillis;
   double Irms = cs.getIrms();  // Calculate Irms only
   String dhtdata = ts.getTemperature(); //Returns Temperature, Humidity
-  messageSend = String(newtime) + "," + dhtdata + "," + String(Irms) + ';';
+  messageSend = dhtdata + "," + String(Irms) + ';';
   if (WiFi.status() == WL_CONNECTED) {
     while(!cbuf.empty()) {
-      sendMessage("aegisDongleData", cbuf.get());
+      sendMessage("aegisDongleSend", cbuf.get().value());
     }
     cbuf.reset();
-    sendMessage("aegisDongleData", messageSend); //Sends Temperature,Humidity,Irms over bluetooth 
+    sendMessage("aegisDongleSend", messageSend); //Sends Temperature,Humidity,Irms over bluetooth 
     String message = receiveMessage();
-    Serial.println("recieved " + message);
-    if(message == String("on")) {
-      digitalWrite(27, pinState=true);
-    } else if (message==String("off")) {
-      digitalWrite(27, pinState=false);
-    }
+    delay(1000);
   } else {
+    setUpWifi();
     cbuf.put(messageSend);
     digitalWrite(27, pinState=true); //Or whatever value makes it so relay stays permanently on if the wifi is disconnected
-    delay(10000);
+    delay(1000);
   }
+  client.loop();
 }
