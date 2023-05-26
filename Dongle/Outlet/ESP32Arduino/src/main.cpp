@@ -32,6 +32,11 @@ void callback(char* topic, uint8_t* data, unsigned int code){
     Serial.print((char)data[i]);
     messageBuffer += (char)data[i];
   }
+  if(messageBuffer == String("on")) {
+      digitalWrite(27, pinState=true);
+  } else if (messageBuffer == String("off")) {
+      digitalWrite(27, pinState=false);
+  }
 }
 
 void setUpWifi(){
@@ -73,18 +78,18 @@ String receiveMessage() {
     return "";
 }
 
-void *receive(void *i) {
-  while (1) {
-    String message = receiveMessage();
-    Serial.println("recieved " + message);
-    if(message == String("on")) {
-      digitalWrite(27, pinState=true);
-    } else if (message==String("off")) {
-      digitalWrite(27, pinState=false);
-    }
-    delay(100);
-  }
-}
+// void *receive(void *i) {
+//   while (1) {
+//     String message = receiveMessage();
+//     Serial.println("recieved " + message);
+//     if(message == String("on")) {
+//       digitalWrite(27, pinState=true);
+//     } else if (message==String("off")) {
+//       digitalWrite(27, pinState=false);
+//     }
+//     delay(100);
+//   }
+// }
 
 
 void setup()
@@ -101,12 +106,12 @@ void setup()
   //set it to high turn on the relay
   digitalWrite(27, pinState=false);
   startMillis = millis(); 
-  pthread_t mainThreadRef;
-  int mainValue;
-  mainValue = pthread_create(&mainThreadRef, NULL, receive, (void*)NULL);
-  if (mainValue) {
-    Serial.println("Problem setting up the communication thread!");
-  }
+  // pthread_t mainThreadRef;
+  // int mainValue;
+  // mainValue = pthread_create(&mainThreadRef, NULL, receive, (void*)NULL);
+  // if (mainValue) {
+  //   Serial.println("Problem setting up the communication thread!");
+  // }
 }
 
 void loop()
