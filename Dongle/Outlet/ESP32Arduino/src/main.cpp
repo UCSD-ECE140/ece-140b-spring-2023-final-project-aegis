@@ -6,9 +6,11 @@
 #include <Arduino.h>
 #include <WiFi.h>
 #include <PubSubClient.h>
-#include <pthread.h>
+#include <thread>
+#include <mutex>
+#include <condition_variable>
 
-
+using namespace std;
 WiFiClient espClient;
 PubSubClient client(espClient);
 String messageBuffer = "";
@@ -23,6 +25,12 @@ long startMillis;
 long currentMillis;
 bool pinState = false;
 
+std::mutex m;
+std::condition_variable cv;
+std::string data;
+std::thread* worker;
+bool disconnected = false;
+bool processed = false;
 
 void callback(char* topic, uint8_t* data, unsigned int code){
   Serial.print("Message arrived in topic: ");
@@ -32,6 +40,7 @@ void callback(char* topic, uint8_t* data, unsigned int code){
     Serial.print((char)data[i]);
     messageBuffer += (char)data[i];
   }
+  Serial.print("\n");
   if(messageBuffer == String("on")) {
       digitalWrite(27, pinState=true);
   } else if (messageBuffer == String("off")) {
@@ -64,6 +73,18 @@ void setUpWifi(){
   client.subscribe("aegisDongleReceive");
 }
 
+void wifi_thread() {
+  while (true) {
+    Serial.println("Just in");
+    std::unique_lock lk(m);
+    Serial.println("Just in it");
+    cv.wait(lk, []{return WiFi.status() != WL_CONNECTED;});
+    Serial.println("Just in about");
+    setUpWifi();
+    Serial.println("Just in dubs");
+  }
+}
+
 void sendMessage(String topic, String message) {
     Serial.println("Sending message: " + message + " to topic: " + topic);
     client.publish(topic.c_str(), message.c_str());
@@ -92,11 +113,11 @@ String receiveMessage() {
 // }
 
 
+
 void setup()
 {  
   Serial.begin(115200);
   //set up serial communication look at communications.hpp for details
-  setUpWifi();
   //set up temperature sensor look at tempSensor.hpp for details
   ts.initTemp();
   //set up current sensor look at currentSensor.hpp for details
@@ -106,12 +127,9 @@ void setup()
   //set it to high turn on the relay
   digitalWrite(27, pinState=false);
   startMillis = millis(); 
-  // pthread_t mainThreadRef;
-  // int mainValue;
-  // mainValue = pthread_create(&mainThreadRef, NULL, receive, (void*)NULL);
-  // if (mainValue) {
-  //   Serial.println("Problem setting up the communication thread!");
-  // }
+  setUpWifi();
+  // worker = new thread(wifi_thread);
+  // cv.notify_all();
 }
 
 void loop()
@@ -130,10 +148,11 @@ void loop()
     String message = receiveMessage();
     delay(1000);
   } else {
-    setUpWifi();
+    // cv.notify_all();
     cbuf.put(messageSend);
+    Serial.println("Adding to circle");
     digitalWrite(27, pinState=true); //Or whatever value makes it so relay stays permanently on if the wifi is disconnected
-    delay(1000);
+    delay(1000);  
   }
   client.loop();
 }
