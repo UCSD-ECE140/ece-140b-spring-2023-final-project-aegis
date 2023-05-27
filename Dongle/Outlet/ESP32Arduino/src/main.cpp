@@ -6,7 +6,11 @@
 #include <Arduino.h>
 #include <WiFi.h>
 #include <PubSubClient.h>
+#include <thread>
+#include <mutex>
+#include <condition_variable>
 
+using namespace std;
 WiFiClient espClient;
 PubSubClient client(espClient);
 String messageBuffer = "";
@@ -16,16 +20,31 @@ String messageSend = "";
 currentSensor cs;
 tempSensor ts;
 
+String msg= "";
 long startMillis;
 long currentMillis;
 bool pinState = false;
 
+std::mutex m;
+std::condition_variable cv;
+std::string data;
+std::thread* worker;
+bool disconnected = false;
+bool processed = false;
 
 void callback(char* topic, uint8_t* data, unsigned int code){
-  if(topic == "aegisDongleData"){
-    for(int i = 0; i < code; i++){
-      messageBuffer += (char)data[i];
-    }
+  Serial.print("Message arrived in topic: ");
+  Serial.println(topic);
+  Serial.print("Message:");
+  for(int i = 0; i < code; i++){
+    Serial.print((char)data[i]);
+    messageBuffer += (char)data[i];
+  }
+  Serial.print("\n");
+  if(messageBuffer == String("on")) {
+      digitalWrite(27, pinState=true);
+  } else if (messageBuffer == String("off")) {
+      digitalWrite(27, pinState=false);
   }
 }
 
@@ -51,7 +70,19 @@ void setUpWifi(){
       }
   }
   client.publish("aegisDongleInit","Hello from ESP32");
-  client.subscribe("aegisDongleData");
+  client.subscribe("aegisDongleReceive");
+}
+
+void wifi_thread() {
+  while (true) {
+    Serial.println("Just in");
+    std::unique_lock lk(m);
+    Serial.println("Just in it");
+    cv.wait(lk, []{return WiFi.status() != WL_CONNECTED;});
+    Serial.println("Just in about");
+    setUpWifi();
+    Serial.println("Just in dubs");
+  }
 }
 
 void sendMessage(String topic, String message) {
@@ -68,12 +99,25 @@ String receiveMessage() {
     return "";
 }
 
+// void *receive(void *i) {
+//   while (1) {
+//     String message = receiveMessage();
+//     Serial.println("recieved " + message);
+//     if(message == String("on")) {
+//       digitalWrite(27, pinState=true);
+//     } else if (message==String("off")) {
+//       digitalWrite(27, pinState=false);
+//     }
+//     delay(100);
+//   }
+// }
+
+
 
 void setup()
 {  
   Serial.begin(115200);
   //set up serial communication look at communications.hpp for details
-  setUpWifi();
   //set up temperature sensor look at tempSensor.hpp for details
   ts.initTemp();
   //set up current sensor look at currentSensor.hpp for details
@@ -83,32 +127,32 @@ void setup()
   //set it to high turn on the relay
   digitalWrite(27, pinState=false);
   startMillis = millis(); 
+  setUpWifi();
+  // worker = new thread(wifi_thread);
+  // cv.notify_all();
 }
 
 void loop()
 {
-  cbuf;
   currentMillis = millis();
   long newtime = currentMillis - startMillis;
   double Irms = cs.getIrms();  // Calculate Irms only
   String dhtdata = ts.getTemperature(); //Returns Temperature, Humidity
-  messageSend = String(newtime) + "," + dhtdata + "," + String(Irms) + ';';
+  messageSend = dhtdata + "," + String(Irms) + ';';
   if (WiFi.status() == WL_CONNECTED) {
     while(!cbuf.empty()) {
-      sendMessage("aegisDongleData", cbuf.get());
+      sendMessage("aegisDongleSend", cbuf.get().value());
     }
     cbuf.reset();
-    sendMessage("aegisDongleData", messageSend); //Sends Temperature,Humidity,Irms over bluetooth 
+    sendMessage("aegisDongleSend", messageSend); //Sends Temperature,Humidity,Irms over bluetooth 
     String message = receiveMessage();
-    Serial.println("recieved " + message);
-    if(message == String("on")) {
-      digitalWrite(27, pinState=true);
-    } else if (message==String("off")) {
-      digitalWrite(27, pinState=false);
-    }
+    delay(1000);
   } else {
+    // cv.notify_all();
     cbuf.put(messageSend);
+    Serial.println("Adding to circle");
     digitalWrite(27, pinState=true); //Or whatever value makes it so relay stays permanently on if the wifi is disconnected
-    delay(10000);
+    delay(1000);  
   }
+  client.loop();
 }
