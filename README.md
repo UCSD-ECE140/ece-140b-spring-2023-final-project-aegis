@@ -52,3 +52,14 @@ python3 setup.py
 
 ### Installation
 
+Max | CE | 1st
+
+Niklas | CE | 1st
+
+Jake l Econ l 25’
+
+Dennis | CS | '25
+
+EM-J | CogSci | Grad
+
+Luke | Math/CS | 2nd
