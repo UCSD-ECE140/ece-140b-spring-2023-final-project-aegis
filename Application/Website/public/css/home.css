@@ -1,0 +1,106 @@
+/* Global styles */
+* {
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #f8f8f8;
+  font-size: 16px;
+}
+
+/* Header styles */
+header {
+    background-color: #333;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+  }
+  
+  nav {
+    font-size: 1.2rem;
+    margin-left: auto;
+  }
+  
+  nav a {
+    color: #fff;
+    text-decoration: none;
+    padding: 10px;
+  }
+
+/* Main styles */
+main {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+h1 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+}
+
+h3.header {
+  font-size: 1.5rem;
+  margin-top: 30px;
+}
+
+section {
+  margin-bottom: 30px;
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  margin-bottom: 10px;
+}
+
+
+
+button {
+  background-color: #333;
+  color: #fff;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  cursor: pointer;
+  font-size: 1.2rem;
+}
+
+button:hover {
+  background-color: #555;
+}
+
+#project-contents,
+#course-contents {
+  display: none;
+}
+
+
+/* Media queries */
+@media only screen and (max-width: 600px) {
+  h1 {
+    font-size: 2rem;
+  }
+
+  h3.header {
+    font-size: 1.2rem;
+  }``
+
+  main {
+    padding: 10px;
+  }
+
+  button {
+    font-size: 1rem;
+  }
+}
