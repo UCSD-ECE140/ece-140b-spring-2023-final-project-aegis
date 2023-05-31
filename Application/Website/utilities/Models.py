@@ -18,14 +18,6 @@ class VisitorRegister(BaseModel):
   username: str
   password: str
 
-class RetrieveUser(BaseModel):
-  dongleID: str
-  email: str
-
-## Model for forgetting password
-## Can use any of these
-class RetrievePass(BaseModel):
-  dongleID: str
-  email: str
-  username: str
+class RetrieveInfo(BaseModel):
+  identifier: str
 
