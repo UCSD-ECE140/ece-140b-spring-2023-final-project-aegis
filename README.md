@@ -21,9 +21,10 @@ python3 setup.py
 
 [Aegis](https://prezi.com/view/s4CaD95mIxlZDG96sGap)
 
-### Diagram
+### Diagrams 
 
 ![Diagram1.png](Diagram1.png)
+![Diagram2.png](Diagram2.png)
 
 ```bash
 .
