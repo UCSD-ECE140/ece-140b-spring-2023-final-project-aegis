@@ -144,12 +144,12 @@ void setup()
   ts.initTemp();
   //set up digital pin 27 which is used by the relay
   pinMode(27, OUTPUT); //Heating
-  pinMode(28, OUTPUT); //Cooling
-  pinMode(29, OUTPUT); //Fan
+  pinMode(26, OUTPUT); //Cooling
+  pinMode(25, OUTPUT); //Fan
   //set it to low
   digitalWrite(27, pinState=false);
-  digitalWrite(28, pinState=false);
-  digitalWrite(29, pinState=false);
+  digitalWrite(26, pinState=false);
+  digitalWrite(25, pinState=false);
 
   setUpWifi();
 }
@@ -163,27 +163,27 @@ void loop()
   if(tempControl) {
     if((currentTemp - currentSet) > 1) {
       digitalWrite(27, pinState=false);
-      digitalWrite(28, pinState=true);
-      digitalWrite(29, pinState=true);
+      digitalWrite(26, pinState=true);
+      digitalWrite(25, pinState=true);
       sendMessage("aegisThermostatInfo", "Turning the AC ON!");
       Serial.println("Turning the AC ON!");
     } else if ((currentTemp - currentSet) <= -1) {
       digitalWrite(27, pinState=true);
-      digitalWrite(28, pinState=false);
-      digitalWrite(29, pinState=true);
+      digitalWrite(26, pinState=false);
+      digitalWrite(25, pinState=true);
       sendMessage("aegisThermostatInfo", "Turning the HEAT ON!");
       Serial.println("Turning the HEAT ON!");
     } else {
       digitalWrite(27, pinState=false);
-      digitalWrite(28, pinState=false);
-      digitalWrite(29, pinState=false);
+      digitalWrite(26, pinState=false);
+      digitalWrite(25, pinState=false);
       sendMessage("aegisThermostatInfo", "Turning everything OFF");
       Serial.println("Turning everything OFF");
     }
   } else {
     digitalWrite(27, pinState=false);
-    digitalWrite(28, pinState=false);
-    digitalWrite(29, pinState=false);
+    digitalWrite(26, pinState=false);
+    digitalWrite(25, pinState=false);
     sendMessage("aegisThermostatInfo", "Turning everything OFF");
     Serial.println("Turning everything OFF");
   }
