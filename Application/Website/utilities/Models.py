@@ -13,11 +13,6 @@ class VisitorLogin(BaseModel):
   username: str
   password: str
 
-class VisitorRegister(BaseModel):
-  dongleID: str
-  username: str
-  password: str
-
 class RetrieveInfo(BaseModel):
   identifier: str
 

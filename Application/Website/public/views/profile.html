@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <title>Aegis</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+
+    <link rel='stylesheet' type='text/css' href='public/css/profile.css'>
+    <script src="public/js/profile.js" defer></script>
+  </head>
+  <body>
+    <header>
+      <nav id="navigation">
+        <button class="logout_button">Logout</button>
+      </nav>
+    </header>
+    <h1>Profile</h1>
+
+    <main class='container' data-mode='viewing'>
+      <div class='edit_view'>
+        <form name='edit_user' action='' method='PUT' data-id=''>
+          <div class='form_row'>
+            <input type='text' name='email' placeholder='Email' pattern="\S+@(\S+)\.\S+" title="example@domain.com">
+            <input type='text' name='first_name' placeholder='First Name' autofocus>
+            <input type='text' name='last_name' placeholder='Last Name'>
+            <input type='text' name='username' placeholder='Username'>
+            <input type='password' name='password' placeholder='Password'>
+            <button><span class='cancel_button'>Cancel</span></button>
+            <button><span class='save_button'>Save</span></button>
+          </div>
+        </form>
+      </div>
+
+      <div class='table_view'>
+        <div class='grid_table'>
+          <div class='header'>
+            <span>Product ID</span>
+            <span>Email</span>
+            <span>First Name</span>
+            <span>Last Name</span>
+            <span>Username</span>
+            <span>Password</span>
+            <span></span>
+            <span></span>
+          </div>
+
+          <div class='column' data-id="{{session['dongleID']}}">
+            <span>{{ session['dongleID'] }}</span>
+            <span>{{ session['email'] }}</span>
+            <span>{{ session['first_name'] }}</span>
+            <span>{{ session['last_name'] }}</span>
+            <span>{{ session['username'] }}</span>
+            <span>********</span>
+          </div>
+          <button class='edit_button' title='Edit User'>Edit</button>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>

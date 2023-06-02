@@ -34,10 +34,10 @@ document.addEventListener("DOMContentLoaded", () => {
         // Submit the POST request
         server_request(action, data, method, (response) => {
           if (response.session_id != 0) {
-            location.replace('/analytics');
+            location.replace('/profile');
           }
           else{
-            text = count < 3 ? "Incorrect username or password.<br>Please check your login credentials and try again." : "If you have forgotten your password, you can reset it using the \"Forgot Password\" link below.<br>If you continue to have trouble logging in, please contact support for assistance.";
+            text = count < 3 ? "Incorrect username or password.<br>Please check your login credentials and try again." : "If you have forgotten your password, you can reset it using the \"Forgot Password\" link below.<br><br>If you continue to have trouble logging in, please contact support for assistance.";
             result.innerHTML = text;
           }
           count++;

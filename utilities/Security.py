@@ -11,11 +11,11 @@ cipher_suite = Fernet(converted_key)
 
 class Security:
     @staticmethod
-    def encrypt_dongleID(dongleID: str) -> str:
+    def encrypt(dongleID: str) -> str:
         encrypted_text = cipher_suite.encrypt(dongleID.encode()).decode()
         return encrypted_text
 
     @staticmethod
-    def decrypt_dongleID(encrypted_dongleID: str) -> str:
+    def decrypt(encrypted_dongleID: str) -> str:
         decrypted_text = cipher_suite.decrypt(encrypted_dongleID.encode()).decode()
         return decrypted_text

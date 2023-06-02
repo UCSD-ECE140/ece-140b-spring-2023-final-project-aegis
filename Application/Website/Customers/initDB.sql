@@ -8,6 +8,8 @@ drop table if exists sessions;
 CREATE TABLE Customers (
     ID INT PRIMARY KEY AUTO_INCREMENT,
     dongleID VARCHAR(255) NOT NULL UNIQUE,
+    first_name VARCHAR(255) NOT NULL,
+    last_name VARCHAR (255) NOT NULL,
     username VARCHAR(255) NOT NULL,
     email VARCHAR(255) NOT NULL,
     password VARCHAR(255) NOT NULL

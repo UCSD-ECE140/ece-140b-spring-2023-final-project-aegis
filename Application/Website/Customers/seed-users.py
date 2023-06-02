@@ -9,7 +9,7 @@ from dotenv import load_dotenv                    # Used to read the credentials
 ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 # Collection of users with plain-text passwords – BIG NONO! NEVER EVER DO THIS!!!
 users = [
-  {'dongleID':'adminID', 'username':'admin', 'email':'admin@admin.ucsd', 'password':'aegis'}
+  {'dongleID':'adminID', 'email':'admin@admin.ucsd', 'first_name':'Admin', 'last_name':'Admin', 'username':'admin', 'password':'aegis'}
 ]
 
 ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
@@ -28,9 +28,9 @@ cursor = db.cursor()
 
 # Insert every user with a salted and hashed password
 for user in users:
-  pwd = Security.encrypt_dongleID(user['password'])
-  query = "insert into customers (dongleID, username, email, password) values (%s, %s, %s, %s)"
-  values = (user['dongleID'], user['username'], user['email'], pwd)
+  pwd = Security.encrypt(user['password'])
+  query = "insert into customers (dongleID, email, first_name, last_name, username, password) values (%s, %s, %s, %s, %s, %s)"
+  values = (user['dongleID'], user['email'], user['first_name'], user['last_name'], user['username'], pwd)
   cursor.execute(query, values)
 
 # Commit the changes and close the connection
