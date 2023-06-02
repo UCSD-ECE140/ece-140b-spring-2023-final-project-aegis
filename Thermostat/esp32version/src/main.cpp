@@ -13,7 +13,8 @@
 using namespace std;
 WiFiClient espClient;
 PubSubClient client(espClient);
-std::string messageBuffer = "";
+std::string messageBuffer;
+std::string roomForTemp;
 
 String messageSend = "";
 currentSensor cs;
@@ -30,7 +31,27 @@ std::string data;
 std::thread* worker;
 bool disconnected = false;
 bool processed = false;
-int currentset = 0;
+int currentSet = 0;
+int currentTemp = 0;
+bool tempControl = false;
+
+std::vector<std::string> splitString(std::string str, char splitter){
+    std::vector<std::string> result;
+    std::string current = ""; 
+    for(int i = 0; i < str.size(); i++){
+        if(str[i] == splitter){
+            if(current != ""){
+                result.push_back(current);
+                current = "";
+            } 
+            continue;
+        }
+        current += str[i];
+    }
+    if(current.size() != 0)
+        result.push_back(current);
+    return result;
+}
 
 void callback(char* topic, uint8_t* data, unsigned int code){
   Serial.print("Message arrived in topic: ");
@@ -40,15 +61,30 @@ void callback(char* topic, uint8_t* data, unsigned int code){
     Serial.print((char)data[i]);
     messageBuffer += (char)data[i];
   }
-  Serial.print("\n");
-  if(messageBuffer == String("on")) {
+  std::vector<std::string> split = splitString(messageBuffer, ',');
+  std::string topicString = topic;
+  std::vector<std::string> topicSplit = splitString(topicString, '/');
+  if(topicSplit[0] == std::string("aegisDongleReceive")){
+    if(messageBuffer == "on") {
       digitalWrite(27, pinState=true);
-  } else if (messageBuffer == String("off")) {
+    } else if (messageBuffer == "off") {
       digitalWrite(27, pinState=false);
+    }
+  } else if(topicSplit[0] == "aegisTempSet") {
+    roomForTemp = split[0];
+    currentSet = std::stoi(split[1]);
+  } else if(topicSplit[0] == "aegisDongleSend") {
+    if(topicSplit[1] == roomForTemp) {
+      currentTemp = std::stoi(split[1]);
+    }
+  } else if(topicSplit[0] == "aegisThermostatControl") {
+    if(messageBuffer == "on") {
+      tempControl = true;
+    } else if(messageBuffer == "off") {
+      tempControl = false;
+    }
   }
-  if(topic == std::string("aegisTempSet")) {
-    int currentset = std::stoi(messageBuffer);
-  }
+  Serial.print("\n");
 }
 
 void setUpWifi(){
@@ -74,20 +110,13 @@ void setUpWifi(){
   }
   client.publish("aegisDongleInit","Hello from ESP32");
   client.subscribe("aegisDongleReceive");
+  client.subscribe("aegisDongleSend/#");
+  client.subscribe("aegisThermostatControl");
 }
 
 void sendMessage(String topic, String message) {
     Serial.println("Sending message: " + message + " to topic: " + topic);
     client.publish(topic.c_str(), message.c_str());
-}
-
-String receiveMessage() {
-    if(messageBuffer.length()>0){
-        String temp = messageBuffer;
-        messageBuffer = "";
-        return temp;
-    }
-    return "";
 }
 
 void setup()
@@ -111,20 +140,30 @@ void setup()
 void loop()
 {
   String dhtdata = ts.getTemperature(); //Returns Temperature, Humidity
-  if (WiFi.status() == WL_CONNECTED) {
-    while(!cbuf.empty()) {
-      sendMessage("aegisDongleSend", cbuf.get().value());
-    }
-    cbuf.reset();
-    sendMessage("aegisDongleSend", messageSend); //Sends Temperature,Humidity,Irms over bluetooth 
-    String message = receiveMessage();
-    delay(1000);
-  } else {
-    // cv.notify_all();
-    cbuf.put(messageSend);
-    Serial.println("Adding to circle");
-    digitalWrite(27, pinState=true); //Or whatever value makes it so relay stays permanently on if the wifi is disconnected
-    delay(1000);  
+  if (WiFi.status() != WL_CONNECTED) {
+    currentTemp = dhtdata.toInt();
   }
+  if(tempControl) {
+    if((currentTemp - currentSet) > 1) {
+      digitalWrite(27, pinState=false);
+      digitalWrite(28, pinState=true);
+      digitalWrite(29, pinState=true);
+      sendMessage("aegisThermostatInfo", "Turning the AC ON!");
+      Serial.println("Turning the AC ON!");
+    } else if ((currentTemp - currentSet) <= -1) {
+      digitalWrite(27, pinState=true);
+      digitalWrite(28, pinState=false);
+      digitalWrite(29, pinState=true);
+      sendMessage("aegisThermostatInfo", "Turning the HEAT ON!");
+      Serial.println("Turning the HEAT ON!");
+    } else {
+      digitalWrite(27, pinState=false);
+      digitalWrite(28, pinState=false);
+      digitalWrite(29, pinState=false);
+      sendMessage("aegisThermostatInfo", "Turning everything OFF");
+      Serial.println("Turning everything OFF");
+    }
+  }
+  delay(1000);
   client.loop();
 }

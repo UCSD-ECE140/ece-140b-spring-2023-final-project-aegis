@@ -19,6 +19,7 @@ circular_buffer<String, 30> cbuf;
 String messageSend = "";
 currentSensor cs;
 tempSensor ts;
+String clientId = "ESP32Client-Unique-77632231234431";
 
 String msg= "";
 long startMillis;
@@ -59,7 +60,6 @@ void setUpWifi(){
   client.setServer("broker.hivemq.com",1883);
   client.setCallback(callback);
   while (!client.connected()) {
-      String clientId = "ESP32Client-Unique-77632231234431";
       Serial.println("Connecting to MQTT...");
       if (client.connect(clientId.c_str())) {
       Serial.println("connected");  
@@ -138,7 +138,7 @@ void loop()
   long newtime = currentMillis - startMillis;
   double Irms = cs.getIrms();  // Calculate Irms only
   String dhtdata = ts.getTemperature(); //Returns Temperature, Humidity
-  messageSend = dhtdata + "," + String(Irms) + ';';
+  messageSend = clientId + "," + dhtdata + "," + String(Irms) + ';';
   if (WiFi.status() == WL_CONNECTED) {
     while(!cbuf.empty()) {
       sendMessage("aegisDongleSend", cbuf.get().value());

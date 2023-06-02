@@ -58,7 +58,7 @@ class tempSensor{
         if (dht.getStatus() != 0) {
             return "DHT11 error status: " + String(dht.getStatusString());
         }
-        return String(newValues.temperature) + "," + String(newValues.humidity);
+        return String(newValues.temperature);
     }
 
 };
