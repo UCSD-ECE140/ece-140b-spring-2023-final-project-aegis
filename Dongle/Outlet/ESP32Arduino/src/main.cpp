@@ -19,7 +19,8 @@ circular_buffer<String, 30> cbuf;
 String messageSend = "";
 currentSensor cs;
 tempSensor ts;
-String clientId = "ESP32Client-Unique-77632231234431";
+String clientId = "ESP32Client-Unique-bed-77632231234431";
+String topic = "aegisDongleSend/" + clientId;
 
 String msg= "";
 long startMillis;
@@ -141,10 +142,10 @@ void loop()
   messageSend = clientId + "," + dhtdata + "," + String(Irms) + ';';
   if (WiFi.status() == WL_CONNECTED) {
     while(!cbuf.empty()) {
-      sendMessage("aegisDongleSend", cbuf.get().value());
+      sendMessage(topic, cbuf.get().value());
     }
     cbuf.reset();
-    sendMessage("aegisDongleSend", messageSend); //Sends Temperature,Humidity,Irms over bluetooth 
+    sendMessage(topic, messageSend); //Sends Temperature,Humidity,Irms over bluetooth 
     String message = receiveMessage();
     delay(1000);
   } else {

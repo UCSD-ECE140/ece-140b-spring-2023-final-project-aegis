@@ -24,6 +24,7 @@ String msg= "";
 long startMillis;
 long currentMillis;
 bool pinState = false;
+std::string sender;
 
 std::mutex m;
 std::condition_variable cv;
@@ -34,6 +35,10 @@ bool processed = false;
 int currentSet = 0;
 int currentTemp = 0;
 bool tempControl = false;
+std::vector<std::string> senderSplit;
+std::vector<std::string> topicSplit;
+std::string topicString;
+std::vector<std::string> split;
 
 std::vector<std::string> splitString(std::string str, char splitter){
     std::vector<std::string> result;
@@ -61,29 +66,40 @@ void callback(char* topic, uint8_t* data, unsigned int code){
     Serial.print((char)data[i]);
     messageBuffer += (char)data[i];
   }
-  std::vector<std::string> split = splitString(messageBuffer, ',');
-  std::string topicString = topic;
-  std::vector<std::string> topicSplit = splitString(topicString, '/');
-  if(topicSplit[0] == std::string("aegisDongleReceive")){
-    if(messageBuffer == "on") {
-      digitalWrite(27, pinState=true);
-    } else if (messageBuffer == "off") {
-      digitalWrite(27, pinState=false);
-    }
-  } else if(topicSplit[0] == "aegisTempSet") {
+
+  split = splitString(messageBuffer, ',');
+
+  topicString = topic;
+
+  topicSplit = splitString(topicString, '/');
+
+  senderSplit = splitString(topicSplit[topicSplit.size()-1], '-');
+
+  if(topicSplit[0] == "aegisTempSet") {
     roomForTemp = split[0];
     currentSet = std::stoi(split[1]);
+    Serial.println("aegisTempSet received");
   } else if(topicSplit[0] == "aegisDongleSend") {
-    if(topicSplit[1] == roomForTemp) {
+    Serial.println("aegisDongleSend received");
+    sender = senderSplit[2];
+    Serial.println(sender.c_str());
+    Serial.println(roomForTemp.c_str());
+    if(sender == roomForTemp) {
       currentTemp = std::stoi(split[1]);
+      Serial.println("aegisDongleSend received, correct room");
     }
   } else if(topicSplit[0] == "aegisThermostatControl") {
+    Serial.println("aegisThermostatControl received");
+    Serial.println(messageBuffer.c_str());
     if(messageBuffer == "on") {
+      Serial.println("aegisThermostatControl on");
       tempControl = true;
     } else if(messageBuffer == "off") {
+      Serial.println("aegisThermostatControl off");
       tempControl = false;
     }
   }
+  messageBuffer = "";
   Serial.print("\n");
 }
 
@@ -95,7 +111,7 @@ void setUpWifi(){
       Serial.println("Connecting to WiFi..");
   }
   Serial.println("Connected to the WiFi network");
-  client.setServer("broker.hivemq.com",1883);
+  client.setServer("broker.hivemq.com", 1883);
   client.setCallback(callback);
   while (!client.connected()) {
       String clientId = "ESP32Client-Unique-77632231234431";
@@ -112,6 +128,7 @@ void setUpWifi(){
   client.subscribe("aegisDongleReceive");
   client.subscribe("aegisDongleSend/#");
   client.subscribe("aegisThermostatControl");
+  client.subscribe("aegisTempSet");
 }
 
 void sendMessage(String topic, String message) {
@@ -163,6 +180,12 @@ void loop()
       sendMessage("aegisThermostatInfo", "Turning everything OFF");
       Serial.println("Turning everything OFF");
     }
+  } else {
+    digitalWrite(27, pinState=false);
+    digitalWrite(28, pinState=false);
+    digitalWrite(29, pinState=false);
+    sendMessage("aegisThermostatInfo", "Turning everything OFF");
+    Serial.println("Turning everything OFF");
   }
   delay(1000);
   client.loop();
