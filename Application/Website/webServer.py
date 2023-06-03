@@ -130,7 +130,7 @@ def get_user(user_id:int) -> dict:
 # Used to create a new user
 @app.post("/create_customer")
 def post_user(user:User) -> dict:
-  new_id = Auth.create_user(user.dongleID, user.email, user.username, user.password)
+  new_id = Auth.create_user(user.dongleID, user.first_name, user.last_name, user.email, user.username, user.password)
   return get_user(new_id)
 
 # PUT /users/{product_id}
