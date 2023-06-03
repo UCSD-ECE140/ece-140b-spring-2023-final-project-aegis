@@ -11,10 +11,12 @@ PubSubClient client(espClient);
 String messageBuffer = "";
 
 void callback(char* topic, uint8_t* data, unsigned int code){
-  if(topic == "aegisDongleData"){
-    for(int i = 0; i < code; i++){
-      messageBuffer += (char)data[i];
-    }
+  Serial.print("Message arrived in topic: ");
+  Serial.println(topic);
+  Serial.print("Message:");
+  for(int i = 0; i < code; i++){
+    Serial.print((char)data[i]);
+    messageBuffer += (char)data[i];
   }
 }
 
@@ -40,7 +42,7 @@ void setUpWifi(){
       }
   }
   client.publish("aegisDongleInit","Hello from ESP32");
-  client.subscribe("aegisDongleData");
+  client.subscribe("aegisDongleReceive");
 }
 
 void sendMessage(String topic, String message) {
@@ -85,7 +87,7 @@ void loop()
   long newtime = currentMillis - startMillis;
   double Irms = cs.getIrms();  // Calculate Irms only
   String dhtdata = ts.getTemperature(); //Returns Temperature, Humidity
-  sendMessage("aegisDongleData", String(newtime) + "," + dhtdata + "," + String(Irms) + ';'); //Sends Temperature,Humidity,Irms over bluetooth 
+  sendMessage("aegisDongleSend", dhtdata + "," + String(Irms) + ';'); //Sends Temperature,Humidity,Irms over bluetooth 
   String message = receiveMessage();
   Serial.println("recieved " + message);
   if(message == String("on")) {
@@ -93,5 +95,6 @@ void loop()
   } else if (message==String("off")) {
     digitalWrite(27, pinState=false);
   }
-  delay(10000);
+  client.loop();
+  delay(1000);
 }
