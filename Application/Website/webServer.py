@@ -49,13 +49,13 @@ def get_profile(request:Request) -> HTMLResponse:
       email = session.get('username')
       account_id = Auth.get_id(email)
       data = Auth.select_users(account_id[0])
-      new_session = {'dongleID': data[0], 'email': data[1], 'first_name': data[2], 'last_name': data[3], 'username': data[4], 'logged_in': session['logged_in']}
+      new_session = {'dongleID': data[0], 'email': data[1], 'first_name': data[2], 'last_name': data[3], 'username': data[4], 'password': Security.decrypt(data[5]), 'logged_in': session['logged_in']}
       template_data = {'request':request, 'session':new_session, 'session_id':session_id}
     else:
       username = session.get('username')
       account_id = Auth.get_id(username)
       data = Auth.select_users(account_id[0])
-      new_session = {'dongleID': data[0], 'email': data[1], 'first_name': data[2], 'last_name': data[3], 'username': data[4], 'logged_in': session['logged_in']}
+      new_session = {'dongleID': data[0], 'email': data[1], 'first_name': data[2], 'last_name': data[3], 'username': data[4], 'password': Security.decrypt(data[5]), 'logged_in': session['logged_in']}
       template_data = {'request':request, 'session':new_session, 'session_id':session_id}
     return views.TemplateResponse('profile.html', template_data)
  else:
@@ -86,7 +86,7 @@ def post_login(visitor:VisitorLogin, request:Request, response:Response) -> dict
   else:
     return {'message': 'Invalid username or password', 'session_id': 0}
   
-
+  
 ## Registration
 @app.post("/check_customer")
 def check_email_exists(user: User) -> str:
@@ -135,9 +135,8 @@ def post_user(user:User) -> dict:
 
 # PUT /users/{product_id}
 @app.put('/customer/{product_id}')
-def put_user(user_dongleID:int, user:User) -> dict:
-  print('a')
-  return {'success': Auth.update_user(user_dongleID, user.email, user.first_name, user.last_name, user.username, user.password)}
+def put_user(user:User) -> dict:
+  return {'success': Auth.update_user(user.dongleID, user.email, user.first_name, user.last_name, user.username, Security.encrypt(user.password))}
 
 # DELETE /product/{product_id}
 @app.delete('/users/{user_id}')
@@ -163,6 +162,11 @@ def get_display(dongleID: int) -> JSONResponse:
 def get_display(dongleID: int) -> JSONResponse:
     print("Turning on dongle: "+str(dongleID))
     return JSONResponse(status_code=200, content = {"status":"success"})
+
+@app.post('/logout')
+def post_logout(request:Request, response:Response) -> dict:
+  sessions.end_session(request, response)
+  return {'message': 'Logout successful', 'session_id': 0}
 
 ## Helper Functions
 ## Need to check if user database has username or email

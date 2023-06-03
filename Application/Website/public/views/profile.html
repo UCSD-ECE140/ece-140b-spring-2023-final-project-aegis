@@ -20,6 +20,7 @@
       <div class='edit_view'>
         <form name='edit_user' action='' method='PUT' data-id=''>
           <div class='form_row'>
+            <input type = 'text' name = 'dongleID' placeholder= "Product ID" value = {{ session['dongleID'] }} readonly >
             <input type='text' name='email' placeholder='Email' pattern="\S+@(\S+)\.\S+" title="example@domain.com">
             <input type='text' name='first_name' placeholder='First Name' autofocus>
             <input type='text' name='last_name' placeholder='Last Name'>
@@ -50,7 +51,7 @@
             <span>{{ session['first_name'] }}</span>
             <span>{{ session['last_name'] }}</span>
             <span>{{ session['username'] }}</span>
-            <span>********</span>
+            <span>{{ session['password'] }}</span>
           </div>
           <button class='edit_button' title='Edit User'>Edit</button>
         </div>

@@ -20,7 +20,7 @@ html, body {
 /* Body styles */
 body {
   font-family: Arial, sans-serif; /* Change font family */
-  font-size: 16px;
+  font-size: 1rem;
   line-height: 1.4;
   height: 100%;
   background-color: #f7f7f7;

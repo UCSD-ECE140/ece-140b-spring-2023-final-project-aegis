@@ -29,7 +29,7 @@ document.addEventListener("DOMContentLoaded", () => {
       edit_form.querySelector('input[name=first_name]').value = column.children[2].innerText.trim();
       edit_form.querySelector('input[name=last_name]').value = column.children[3].innerText.trim();
       edit_form.querySelector('input[name=username]').value = column.children[4].innerText.trim();
-      edit_form.querySelector('input[name=password]').value = '';
+      edit_form.querySelector('input[name=password]').value = column.children[5].innerText.trim();
       edit_form.dataset.id = column.dataset.id;
     }
 
@@ -47,6 +47,7 @@ document.addEventListener("DOMContentLoaded", () => {
       server_request(`/customer/${id}`, data, 'PUT', function(response) {
         if (response['success']) {
           let column = table.querySelector(`.column[data-id='${id}']`);
+          column.children[0].innerText = data.dongleID;
           column.children[1].innerText = data.email;
           column.children[2].innerText = data.first_name;
           column.children[3].innerText = data.last_name;
@@ -63,7 +64,7 @@ document.addEventListener("DOMContentLoaded", () => {
   document.querySelector('.logout_button').addEventListener('click', (event) => {
     server_request('/logout', {}, 'POST', (response) => {
       if (response.session_id == 0) {
-        location.replace('/login');
+        location.replace('/');
       }
     });
   });

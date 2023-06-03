@@ -41,23 +41,24 @@ def select_users(user_id:int=None) -> list:
   db = mysql.connect(**db_config)
   cursor = db.cursor()
   if user_id == None:
-    query = f"select ID, dongleID, email, username from customers;"
+    query = f"select ID, dongleID, email, username, password from customers;"
     cursor.execute(query)
     result = cursor.fetchall()
   else:
-    query = f"select dongleID, email, first_name, last_name, username from customers where ID={user_id};"
+    query = f"select dongleID, email, first_name, last_name, username, password from customers where ID={user_id};"
     cursor.execute(query)
     result = cursor.fetchone()
   db.close()
   return result
 
 # UPDATE SQL query
-def update_user(user_id:int, dongleID: str, email:str, username:str, password:str) -> bool:
-  password = bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt())
+def update_user(dongleID:str, email:str, first_name: str, last_name: str, username:str, password:str) -> bool:
+  password_encrypted = Security.encrypt(password)
   db = mysql.connect(**db_config)
   cursor = db.cursor()
-  query = "update customers set dongleID = %s, email = %s, username=%s, password=%s where id=%s;"
-  values = (dongleID, email, username, password, user_id)
+  print(dongleID)
+  query = "update customers set email = %s, first_name=%s, last_name=%s, username=%s, password=%s where dongleID=%s;"
+  values = (email, first_name, last_name, username, password, dongleID)
   cursor.execute(query, values)
   db.commit()
   db.close()
