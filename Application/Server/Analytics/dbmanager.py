@@ -58,3 +58,4 @@ def db_get_weather_updates() -> list:
         returnList = np.append(returnList, dictionary)
 
     return dictionary
+
