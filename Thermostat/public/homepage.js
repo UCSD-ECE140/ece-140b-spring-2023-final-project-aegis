@@ -47,9 +47,9 @@ document.addEventListener("DOMContentLoaded", () => {
             for (let point of points){
                 let nums = point.split(',')
                 time++
-                temperature = nums[1]
-                humidity = nums[2]
-                current = nums[3]
+                temperature = nums[0]
+                humidity = nums[1]
+                current = nums[2]
 
                 if(time==undefined||temperature==undefined||humidity==undefined||current==undefined) continue
 
