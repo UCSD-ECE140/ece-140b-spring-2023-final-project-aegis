@@ -48,13 +48,14 @@ def get_profile(request:Request) -> HTMLResponse:
     if('@' in session['username']):
       email = session.get('username')
       account_id = Auth.get_id(email)
-      data = Auth.select_users(account_id[0])
+      print(account_id)
+      data = Auth.select_users(account_id)
       new_session = {'dongleID': data[0], 'email': data[1], 'first_name': data[2], 'last_name': data[3], 'username': data[4], 'password': Security.decrypt(data[5]), 'logged_in': session['logged_in']}
       template_data = {'request':request, 'session':new_session, 'session_id':session_id}
     else:
       username = session.get('username')
       account_id = Auth.get_id(username)
-      data = Auth.select_users(account_id[0])
+      data = Auth.select_users(account_id)
       new_session = {'dongleID': data[0], 'email': data[1], 'first_name': data[2], 'last_name': data[3], 'username': data[4], 'password': Security.decrypt(data[5]), 'logged_in': session['logged_in']}
       template_data = {'request':request, 'session':new_session, 'session_id':session_id}
     return views.TemplateResponse('profile.html', template_data)
@@ -90,7 +91,6 @@ def post_login(visitor:VisitorLogin, request:Request, response:Response) -> dict
 ## Registration
 @app.post("/check_customer")
 def check_email_exists(user: User) -> str:
-  print("here")
   return(Auth.verify_availability(user.dongleID, user.username, user.email))
 
 ## Check to see if the product dongle exists in our database of users, if so, we return (QR CODE)
@@ -130,13 +130,15 @@ def get_user(user_id:int) -> dict:
 # Used to create a new user
 @app.post("/create_customer")
 def post_user(user:User) -> dict:
-  new_id = Auth.create_user(user.dongleID, user.first_name, user.last_name, user.email, user.username, user.password)
-  return get_user(new_id)
+  return(Auth.create_user(user.dongleID, user.first_name, user.last_name, user.email, user.username, user.password))
 
 # PUT /users/{product_id}
 @app.put('/customer/{product_id}')
-def put_user(user:User) -> dict:
+def put_user(user:User, request: Request) -> dict:
+  session = sessions.get_session(request)
+  session['username'] = user.username
   return {'success': Auth.update_user(user.dongleID, user.email, user.first_name, user.last_name, user.username, Security.encrypt(user.password))}
+
 
 # DELETE /product/{product_id}
 @app.delete('/users/{user_id}')

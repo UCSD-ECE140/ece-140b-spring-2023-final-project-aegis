@@ -5,7 +5,7 @@ use aegis;
 drop table if exists customers;
 drop table if exists sessions;
 
-CREATE TABLE Customers (
+CREATE TABLE customers (
     ID INT PRIMARY KEY AUTO_INCREMENT,
     dongleID VARCHAR(255) NOT NULL UNIQUE,
     first_name VARCHAR(255) NOT NULL,

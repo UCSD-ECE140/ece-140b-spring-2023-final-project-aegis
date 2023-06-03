@@ -34,7 +34,7 @@ document.addEventListener("DOMContentLoaded", () => {
       server_request(newAction, data, method, (response) => {
         if(response === "verified"){
           server_request(action, data, method, (response) => {
-            location.replace('/home');
+            location.replace('/');
           })
         }
         else if(response === "username"){

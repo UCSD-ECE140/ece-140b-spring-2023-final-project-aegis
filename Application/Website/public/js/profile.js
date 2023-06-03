@@ -20,7 +20,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   main.addEventListener('click', (event) => {
     event.preventDefault();
-
     // Open edit form
     if (event.target.classList.contains('edit_button')) {
       main.dataset.mode = 'editing';

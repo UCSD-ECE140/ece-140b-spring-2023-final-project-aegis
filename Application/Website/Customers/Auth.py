@@ -53,10 +53,8 @@ def select_users(user_id:int=None) -> list:
 
 # UPDATE SQL query
 def update_user(dongleID:str, email:str, first_name: str, last_name: str, username:str, password:str) -> bool:
-  password_encrypted = Security.encrypt(password)
   db = mysql.connect(**db_config)
   cursor = db.cursor()
-  print(dongleID)
   query = "update customers set email = %s, first_name=%s, last_name=%s, username=%s, password=%s where dongleID=%s;"
   values = (email, first_name, last_name, username, password, dongleID)
   cursor.execute(query, values)
@@ -96,14 +94,14 @@ def check_user_password(identifier:str, password:str) -> bool:
        return False
   elif result1 is not None:
     query = 'select username from customers where password = %s'
-    password_decrypted = Security.decrypt(result[1])
+    password_decrypted = Security.decrypt(result1[0])
     if(password_decrypted == password):
       return True
     else:
        return False
   elif result2 is not None:
     query = 'select username from customers where password = %s'
-    password_decrypted = Security.decrypt(result[2])
+    password_decrypted = Security.decrypt(result2[0])
     if(password_decrypted == password):
       return True
     else:
@@ -214,8 +212,8 @@ def get_id(identifier:str) -> str:
       cursor.close()
       db.close()
       if username_result is not None:
-         return username_result
+         return username_result[0]
       elif dongleID_result is not None:
-         return dongleID_result
+         return dongleID_result[0]
   return "There is no ID associated with this login!"
 
