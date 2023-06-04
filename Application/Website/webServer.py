@@ -72,6 +72,30 @@ def get_profile(request:Request) -> HTMLResponse:
  else:
     return RedirectResponse(url="/", status_code=302)
 
+## Route for QR code
+@app.get('/register/{encrypted_dongleID}')
+def get_login(request: Request, encrypted_dongleID: str) -> HTMLResponse:
+    dongleID = Security.decrypt(encrypted_dongleID)
+    ## Look in the database for table dongleID
+    return HTMLResponse(content=views.get_template("register.html").render(), status_code=200)
+
+# RESTful User Routes
+# GET /users
+@app.get('/customers')
+def get_users() -> dict:
+  users = Auth.select_users()
+  keys = ['id', 'dongleID', 'email', 'username']
+  users = [dict(zip(keys, user)) for user in users]
+  return {"users": users}
+
+# GET /users/{user_id}
+@app.get('/customers/{dongle_id}')
+def get_user(user_id:int) -> dict:
+  user = Auth.select_users(user_id)
+  if user:
+    return {'id':user[0], 'dongleID':user[1], 'email':user[2], 'username':user[3]}
+  return {}
+
 @app.post('/')
 def post_login(visitor:VisitorLogin, request:Request, response:Response) -> dict:
   username = visitor.username
@@ -101,36 +125,12 @@ def post_login(encrypted_dongleID: str, request:Request, response:Response) -> d
     ## Customer database could have product ID but null username, password, and email
     ## If exists, then we return the decrypted dongl
     return None
-  
-## Route for QR code
-@app.get('/register/{encrypted_dongleID}')
-def get_login(request: Request, encrypted_dongleID: str) -> HTMLResponse:
-    dongleID = Security.decrypt(encrypted_dongleID)
-    ## Look in the database for table dongleID
-    return HTMLResponse(content=views.get_template("register.html").render(), status_code=200)
-
-# RESTful User Routes
-# GET /users
-@app.get('/customers')
-def get_users() -> dict:
-  users = Auth.select_users()
-  keys = ['id', 'dongleID', 'email', 'username']
-  users = [dict(zip(keys, user)) for user in users]
-  return {"users": users}
-
-# GET /users/{user_id}
-@app.get('/customers/{dongle_id}')
-def get_user(user_id:int) -> dict:
-  user = Auth.select_users(user_id)
-  if user:
-    return {'id':user[0], 'dongleID':user[1], 'email':user[2], 'username':user[3]}
-  return {}
 
 # POST /users
 # Used to create a new user
 @app.post("/create_customer")
 def post_user(user:User) -> dict:
-  return(Auth.create_user(user.dongleID, user.first_name, user.last_name, user.email, user.username, user.password))
+  return {'success': Auth.create_user(user.dongleID, user.first_name, user.last_name, user.email, user.username, user.password)}
 
 # PUT /users/{product_id}
 @app.put('/customer/{product_id}')
