@@ -19,8 +19,8 @@ circular_buffer<String, 30> cbuf;
 String messageSend = "";
 currentSensor cs;
 tempSensor ts;
-String clientId = "ESP32Client-Unique-bed-77632231234431";
-String topic = "aegisDongleSend/" + clientId;
+String clientId = "ESP32Client-Unique-bed-77632";
+String topic = "aegisDongleSend";
 
 String msg= "";
 long startMillis;
@@ -145,6 +145,7 @@ void loop()
       sendMessage(topic, cbuf.get().value());
     }
     cbuf.reset();
+    Serial.println("Sending  for real message: " + messageSend + " to topic: " + topic);
     sendMessage(topic, messageSend); //Sends Temperature,Humidity,Irms over bluetooth 
     String message = receiveMessage();
     delay(1000);
