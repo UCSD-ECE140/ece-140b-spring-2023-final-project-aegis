@@ -34,7 +34,7 @@ document.addEventListener("DOMContentLoaded", () => {
             if(response == "There is no password associated with this email"){
                 result.innerHTML = response + ".";
               }
-              else if (response == "There is no password associated with this product ID or username"){
+              else if (response == "There is no password associated with this username"){
                 result.innerHTML = response + ".";
               }
               else{
