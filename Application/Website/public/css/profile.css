@@ -94,7 +94,7 @@ main {
 nav {
   display: flex;
   justify-content: space-between;
-  margin-top: 0.5rem;
+  margin-top: 0.9rem;
 }
 
 nav a {
@@ -201,8 +201,8 @@ button {
   cursor: pointer;
   font-size: 1.2rem;
 }
+
 .censored {
   -webkit-text-security: disc;
   -moz-text-security: disc;
-  text-security: disc;
 }
