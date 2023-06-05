@@ -7,6 +7,7 @@ from starlette.responses import JSONResponse
 from utilities.sessions import Sessions
 from utilities.Models import User, UserUpdate, VisitorLogin, RetrieveInfo
 from utilities.Security import Security
+from utilities.MQTTServer import MQTTServer
 import Customers.Auth as Auth
 import uvicorn      # Used for running the app directly through Python
 import utilities
@@ -17,6 +18,15 @@ static_files = StaticFiles(directory='public')    # Specify where the static fil
 views = Jinja2Templates(directory="public/views")
 app.mount('/public', static_files, name='public') # Mount the static files directory to /public
 sessions = Sessions(secret_key=Auth.session_config['session_key'], expiry=0)
+mqtt_server = MQTTServer()
+
+@app.on_event('startup')
+async def startup():
+    mqtt_server.start()
+
+@app.on_event('shutdown')
+async def shutdown():
+    mqtt_server.stop()
   
 ## Route for Website Register
 ## Can manually put in product ID through website
