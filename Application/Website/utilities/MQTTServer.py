@@ -40,4 +40,5 @@ class MQTTServer:
 
 # If running the server directly from Python as a module
 if __name__ == "__main__":
-    mqtt_server = MQTTServer()    
+    mqtt_server = MQTTServer()  
+    mqtt_server.start()  
