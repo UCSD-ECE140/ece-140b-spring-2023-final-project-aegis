@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <title>Aegis</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+
+    <link rel='stylesheet' type='text/css' href='public/css/home.css'>
+    <script src="public/js/home.js" defer></script>
+  </head>
+  <body>
+    <header>
+      <nav><a></a></nav>
+    </header>
+
+    <div class="container">
+      <article>
+        <h1>Welcome to Aegis</h1>
+        <p>Aegis is a smart home thermostat that adjusts your house's temperature based on several factors:</p>
+        <ul>
+          <li>Electricity provider rates</li>
+          <li>Outside temperature</li>
+          <li>Solar panel production</li>
+          <li>Your personal preferences</li>
+        </ul>
+        <p>In addition, Aegis includes dongles that can be plugged into your appliances to monitor their energy consumption. <br>By gathering this information, Aegis optimizes your energy consumption and helps you save money.</p>
+      </article>
+      <main>
+        <form class="login-form" name='login_form' action='/' method='POST'>
+          <div class='form_row'>
+            <input type='text' name='username' placeholder='Username'>
+            <input type='password' name='password' placeholder='Password'>
+            <input type='submit' value='Login'>
+            <div id="result"></div>
+          </div>
+        </form>
+        <div class="links">
+          <div class="register-link">
+            <a href="/register">Create Account</a>
+          </div>
+          <div class="forgot-link">
+            <a href="/forgot-user">Forgot Username</a>
+            <a href="/forgot-pass">Forgot Password</a>
+          </div>
+        </div>
+      </main>
+    </div>
+
+  </body>
+</html>
