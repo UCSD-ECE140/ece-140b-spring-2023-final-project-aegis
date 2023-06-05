@@ -149,7 +149,7 @@ def post_user(user:User, request: Request, response: Response, UUID: str) -> dic
      Auth.add_device(device_id, Auth.get_id(user.username))
   return {'success': ID}
 
-# PUT /users/{product_id}
+# PUT /customer/{user_id}
 @app.put('/customer/{user_id}')
 def put_user(user:User, user_id: str, request: Request) -> dict:
   session = sessions.get_session(request)
@@ -157,8 +157,8 @@ def put_user(user:User, user_id: str, request: Request) -> dict:
   return {'success': Auth.update_user(user_id, user.first_name, user.last_name, user.email, user.username, Security.encrypt(user.password))}
 
 
-# DELETE /product/{product_id}
-@app.delete('/users/{user_id}')
+# DELETE /product/{user_id}
+@app.delete('/customer/{user_id}')
 def delete_user(user_id:int) -> dict:
   return {'success': Auth.delete_user(user_id)}
 
@@ -186,10 +186,6 @@ def get_display(dongleID: int) -> JSONResponse:
 def post_logout(request:Request, response:Response) -> dict:
   sessions.end_session(request, response)
   return {'message': 'Logout successful', 'session_id': 0}
-
-@app.post('/app')
-def verify_user(user: VisitorLogin) -> JSONResponse:
-   return None
    
 
 ## Helper Functions
