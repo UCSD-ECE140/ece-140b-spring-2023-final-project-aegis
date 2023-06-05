@@ -9,6 +9,7 @@
 WiFiClient espClient;
 PubSubClient client(espClient);
 String messageBuffer = "";
+String clientId = "ESP32Client-Unique-bed-77632231234431";
 
 void callback(char* topic, uint8_t* data, unsigned int code){
   Serial.print("Message arrived in topic: ");
@@ -28,10 +29,9 @@ void setUpWifi(){
       Serial.println("Connecting to WiFi..");
   }
   Serial.println("Connected to the WiFi network");
-  client.setServer("broker.hivemq.com",1883);
+  client.setServer("aegishome.ninja",8003);
   client.setCallback(callback);
   while (!client.connected()) {
-      String clientId = "ESP32Client-Unique-77632231234431";
       Serial.println("Connecting to MQTT...");
       if (client.connect(clientId.c_str())) {
       Serial.println("connected");  
@@ -41,8 +41,8 @@ void setUpWifi(){
       delay(2000);
       }
   }
-  client.publish("aegisDongleInit","Hello from ESP32");
-  client.subscribe("aegisDongleReceive");
+  client.publish("Aegis/aegisDongleInit","Hello from ESP32");
+  client.subscribe("Aegis/aegisDongleReceive");
 }
 
 void sendMessage(String topic, String message) {
@@ -87,7 +87,7 @@ void loop()
   long newtime = currentMillis - startMillis;
   double Irms = cs.getIrms();  // Calculate Irms only
   String dhtdata = ts.getTemperature(); //Returns Temperature, Humidity
-  sendMessage("aegisDongleSend", dhtdata + "," + String(Irms) + ';'); //Sends Temperature,Humidity,Irms over bluetooth 
+  sendMessage("Aegis/aegisDongleSend", dhtdata + "," + String(Irms) + ';'); //Sends Temperature,Humidity,Irms over bluetooth 
   String message = receiveMessage();
   Serial.println("recieved " + message);
   if(message == String("on")) {
