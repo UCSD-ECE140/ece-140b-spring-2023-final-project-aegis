@@ -111,10 +111,10 @@ void setUpWifi(){
       Serial.println("Connecting to WiFi..");
   }
   Serial.println("Connected to the WiFi network");
-  client.setServer("broker.hivemq.com", 1883);
+  client.setServer("aegishome.ninja", 8003);
   client.setCallback(callback);
   while (!client.connected()) {
-      String clientId = "ESP32Client-Unique-77632231234431";
+      String clientId = "Aegis-Thermostat-213831928343";
       Serial.println("Connecting to MQTT...");
       if (client.connect(clientId.c_str())) {
       Serial.println("connected");  
@@ -124,11 +124,8 @@ void setUpWifi(){
       delay(2000);
       }
   }
-  client.publish("aegisDongleInit","Hello from ESP32");
-  client.subscribe("aegisDongleReceive");
-  client.subscribe("aegisDongleSend/#");
-  client.subscribe("aegisThermostatControl");
-  client.subscribe("aegisTempSet");
+  client.publish("Aegis/aegisDongleInit","Hello from your Aegis Thermostat!");
+  client.subscribe("Aegis/#");
 }
 
 void sendMessage(String topic, String message) {
@@ -165,26 +162,26 @@ void loop()
       digitalWrite(27, pinState=false);
       digitalWrite(28, pinState=true);
       digitalWrite(29, pinState=true);
-      sendMessage("aegisThermostatInfo", "Turning the AC ON!");
+      sendMessage("Aegis/aegisThermostatInfo", "Turning the AC ON!");
       Serial.println("Turning the AC ON!");
     } else if ((currentTemp - currentSet) <= -1) {
       digitalWrite(27, pinState=true);
       digitalWrite(28, pinState=false);
       digitalWrite(29, pinState=true);
-      sendMessage("aegisThermostatInfo", "Turning the HEAT ON!");
+      sendMessage("Aegis/aegisThermostatInfo", "Turning the HEAT ON!");
       Serial.println("Turning the HEAT ON!");
     } else {
       digitalWrite(27, pinState=false);
       digitalWrite(28, pinState=false);
       digitalWrite(29, pinState=false);
-      sendMessage("aegisThermostatInfo", "Turning everything OFF");
+      sendMessage("Aegis/aegisThermostatInfo", "Turning everything OFF");
       Serial.println("Turning everything OFF");
     }
   } else {
     digitalWrite(27, pinState=false);
     digitalWrite(28, pinState=false);
     digitalWrite(29, pinState=false);
-    sendMessage("aegisThermostatInfo", "Turning everything OFF");
+    sendMessage("Aegis/aegisThermostatInfo", "Turning everything OFF");
     Serial.println("Turning everything OFF");
   }
   delay(1000);
