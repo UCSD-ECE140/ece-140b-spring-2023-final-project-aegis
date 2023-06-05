@@ -1,0 +1,122 @@
+/* Reset default margin and padding */
+* {
+  margin: 0;
+  padding: 0;
+}
+
+/* Apply box-sizing border-box to all elements */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Body styles */
+body {
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.4;
+  background-color: #f7f7f7;
+  color: #333;
+}
+
+/* Header styles */
+header {
+  background-color: #1c2447; /* Dark blue */
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+}
+
+#navigation {
+  font-size: 1.2rem;
+  margin-left: auto;
+}
+
+#navigation a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 1.2rem;
+  padding: 10px;
+}
+
+h1 {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-top: 2rem;
+}
+
+/* Main styles */
+main {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 2rem;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Form styles */
+.login-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form_row {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+}
+
+.form_row input[type="text"],
+.form_row input[type="password"],
+.form_row input[type="submit"] {
+  border: none;
+  border-radius: 0.25rem;
+  padding: 0.5rem;
+  font-size: 1rem;
+}
+
+.form_row input[type="text"],
+.form_row input[type="password"] {
+  background-color: #f7f7f7;
+  margin-bottom: 0.5rem;
+}
+
+.form_row input[type="submit"] {
+  background-color: #1c2447; /* Dark blue */
+  color: #fff;
+  cursor: pointer;
+}
+
+/* Navigation styles */
+nav {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 0.5rem;
+}
+
+nav a {
+  color: #1c2447; /* Dark blue */
+  font-size: 0.8rem;
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+}
+
+nav a:hover {
+  border-bottom-color: #1c2447; /* Dark blue */
+}
+
+/* Result styles */
+#result {
+  margin-top: 1rem;
+  font-size: 0.8rem;
+}
+
+/* Additional styles for specific elements */
+.form_row input[type="text"][name="username"] {
+  background-color: #f7f7f7;
+  margin-bottom: 0.5rem;
+}
+
