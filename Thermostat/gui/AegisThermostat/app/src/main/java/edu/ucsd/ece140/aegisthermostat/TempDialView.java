@@ -60,14 +60,14 @@ public class TempDialView extends View {
         initialize(canvas);
     }
 
-    public void setValue(double inside, double outside, double set) {
+    public void setValue(double inside, double outside, double set, double humidity) {
         this.setTo = set;
         this.indoor = inside;
         this.outdoor = outside;
+        this.humidity = humidity;
         textBounds.clear();
         invalidate();
     }
-
 
     private void initialize(Canvas canvas){
         // Define the start and end colors
@@ -124,7 +124,6 @@ public class TempDialView extends View {
         canvas.drawText(tempText, centerXF, centerYF, textPaint);
         canvas.drawText(humText, centerXH, centerYH, subTextPaint);
     }
-
 
     double findDegree(double displayValue){
         if(displayValue<60) displayValue=60;

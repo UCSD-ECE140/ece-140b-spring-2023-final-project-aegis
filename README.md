@@ -53,14 +53,6 @@ python3 setup.py
 
 ### Installation
 
-Max | CE | 1st
 
-Niklas | CE | 1st
-
-Jake l Econ l 25’
-
-Dennis | CS | '25
-
-EM-J | CogSci | Grad
-
-Luke | Math/CS | 2nd
+### Attribution
+- Arrow by NAPISAH from <a href="https://thenounproject.com/browse/icons/term/arrow/" target="_blank" title="Arrow Icons">Noun Project</a>
