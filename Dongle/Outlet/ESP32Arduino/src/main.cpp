@@ -1,14 +1,38 @@
 #include "currentSensor.hpp"
 #include "tempSensor.hpp"
+#include "circle.hpp"
 #include <freertos/FreeRTOS.h>
 #include <freertos/task.h>
 #include <Arduino.h>
 #include <WiFi.h>
 #include <PubSubClient.h>
+#include <thread>
+#include <mutex>
+#include <condition_variable>
 
+using namespace std;
 WiFiClient espClient;
 PubSubClient client(espClient);
 String messageBuffer = "";
+circular_buffer<String, 30> cbuf;
+
+String messageSend = "";
+currentSensor cs;
+tempSensor ts;
+String clientId = "ESP32Client-Unique-bed-77632";
+String topic = "aegisDongleSend";
+
+String msg= "";
+long startMillis;
+long currentMillis;
+bool pinState = false;
+
+std::mutex m;
+std::condition_variable cv;
+std::string data;
+std::thread* worker;
+bool disconnected = false;
+bool processed = false;
 
 void callback(char* topic, uint8_t* data, unsigned int code){
   Serial.print("Message arrived in topic: ");
@@ -17,6 +41,12 @@ void callback(char* topic, uint8_t* data, unsigned int code){
   for(int i = 0; i < code; i++){
     Serial.print((char)data[i]);
     messageBuffer += (char)data[i];
+  }
+  Serial.print("\n");
+  if(messageBuffer == String("on")) {
+      digitalWrite(27, pinState=true);
+  } else if (messageBuffer == String("off")) {
+      digitalWrite(27, pinState=false);
   }
 }
 
@@ -31,7 +61,6 @@ void setUpWifi(){
   client.setServer("broker.hivemq.com",1883);
   client.setCallback(callback);
   while (!client.connected()) {
-      String clientId = "ESP32Client-Unique-77632231234431";
       Serial.println("Connecting to MQTT...");
       if (client.connect(clientId.c_str())) {
       Serial.println("connected");  
@@ -43,6 +72,18 @@ void setUpWifi(){
   }
   client.publish("aegisDongleInit","Hello from ESP32");
   client.subscribe("aegisDongleReceive");
+}
+
+void wifi_thread() {
+  while (true) {
+    Serial.println("Just in");
+    std::unique_lock lk(m);
+    Serial.println("Just in it");
+    cv.wait(lk, []{return WiFi.status() != WL_CONNECTED;});
+    Serial.println("Just in about");
+    setUpWifi();
+    Serial.println("Just in dubs");
+  }
 }
 
 void sendMessage(String topic, String message) {
@@ -58,18 +99,26 @@ String receiveMessage() {
     }
     return "";
 }
-currentSensor cs;
-tempSensor ts;
 
-long startMillis;
-long currentMillis;
-bool pinState = false;
+// void *receive(void *i) {
+//   while (1) {
+//     String message = receiveMessage();
+//     Serial.println("recieved " + message);
+//     if(message == String("on")) {
+//       digitalWrite(27, pinState=true);
+//     } else if (message==String("off")) {
+//       digitalWrite(27, pinState=false);
+//     }
+//     delay(100);
+//   }
+// }
+
+
 
 void setup()
 {  
   Serial.begin(115200);
   //set up serial communication look at communications.hpp for details
-  setUpWifi();
   //set up temperature sensor look at tempSensor.hpp for details
   ts.initTemp();
   //set up current sensor look at currentSensor.hpp for details
@@ -79,6 +128,9 @@ void setup()
   //set it to high turn on the relay
   digitalWrite(27, pinState=false);
   startMillis = millis(); 
+  setUpWifi();
+  // worker = new thread(wifi_thread);
+  // cv.notify_all();
 }
 
 void loop()
@@ -87,14 +139,22 @@ void loop()
   long newtime = currentMillis - startMillis;
   double Irms = cs.getIrms();  // Calculate Irms only
   String dhtdata = ts.getTemperature(); //Returns Temperature, Humidity
-  sendMessage("aegisDongleSend", dhtdata + "," + String(Irms) + ';'); //Sends Temperature,Humidity,Irms over bluetooth 
-  String message = receiveMessage();
-  Serial.println("recieved " + message);
-  if(message == String("on")) {
-    digitalWrite(27, pinState=true);
-  } else if (message==String("off")) {
-    digitalWrite(27, pinState=false);
+  messageSend = clientId + "," + dhtdata + "," + String(Irms) + ';';
+  if (WiFi.status() == WL_CONNECTED) {
+    while(!cbuf.empty()) {
+      sendMessage(topic, cbuf.get().value());
+    }
+    cbuf.reset();
+    Serial.println("Sending  for real message: " + messageSend + " to topic: " + topic);
+    sendMessage(topic, messageSend); //Sends Temperature,Humidity,Irms over bluetooth 
+    String message = receiveMessage();
+    delay(1000);
+  } else {
+    // cv.notify_all();
+    cbuf.put(messageSend);
+    Serial.println("Adding to circle");
+    digitalWrite(27, pinState=true); //Or whatever value makes it so relay stays permanently on if the wifi is disconnected
+    delay(1000);  
   }
   client.loop();
-  delay(1000);
 }
