@@ -21,8 +21,8 @@ class MQTTServer:
         self.client.on_message = self.on_message
 
     def start(self):
-        self.client.connect_async(MQTT_config['domain'], int(MQTT_config['port']))
-        self.client.loop_start()
+        self.client.connect(MQTT_config['domain'], int(MQTT_config['port']))
+        self.client.loop_forever()
 
     def stop(self):
         self.client.loop_stop()
@@ -40,5 +40,7 @@ class MQTTServer:
 
 # If running the server directly from Python as a module
 if __name__ == "__main__":
+    print(MQTT_config)
     mqtt_server = MQTTServer()  
-    mqtt_server.start()  
+    mqtt_server.client.connect(MQTT_config['domain'], int(MQTT_config['port']))
+    mqtt_server.client.loop_forever()
