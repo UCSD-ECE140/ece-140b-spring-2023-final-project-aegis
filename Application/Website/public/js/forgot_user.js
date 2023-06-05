@@ -35,7 +35,7 @@ document.addEventListener("DOMContentLoaded", () => {
             if(response == "There is no username associated with this email"){
               result.innerHTML = response + ".";
             }
-            else if (response == "There is no username associated with this product ID"){
+            else if (response == "Not a valid email"){
               result.innerHTML = response + ".";
             }
             else{

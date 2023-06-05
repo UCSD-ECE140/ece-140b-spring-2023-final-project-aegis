@@ -1,11 +1,10 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset='utf-8'>
+    <meta charset="utf-8">
     <title>Aegis</title>
-    <meta name='viewport' content='width=device-width, initial-scale=1'>
-
-    <link rel='stylesheet' type='text/css' href='public/css/profile.css'>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="public/css/profile.css">
     <script src="public/js/profile.js" defer></script>
   </head>
   <body>
@@ -16,26 +15,39 @@
     </header>
     <h1>Profile</h1>
 
-    <main class='container' data-mode='viewing'>
-      <div class='edit_view'>
-        <form name='edit_user' action='' method='PUT' data-id=''>
-          <div class='form_row'>
-            <input type = 'text' name = 'dongleID' placeholder= "Product ID" value = {{ session['dongleID'] }} readonly >
-            <input type='text' name='email' placeholder='Email' pattern="\S+@(\S+)\.\S+" title="example@domain.com">
-            <input type='text' name='first_name' placeholder='First Name' autofocus>
-            <input type='text' name='last_name' placeholder='Last Name'>
-            <input type='text' name='username' placeholder='Username'>
-            <input type='password' name='password' placeholder='Password'>
-            <button><span class='cancel_button'>Cancel</span></button>
-            <button><span class='save_button'>Save</span></button>
+    <main class="container" data-mode="viewing">
+      <div class="edit_view">
+        <form name="edit_user" action="" method="PUT" data-id="">
+          <h2>Edit User</h2>
+          <div class="form_row">
+            <label for="email">Email:</label>
+            <input type="text" name="email" id="email" placeholder="Email" pattern="\S+@(\S+)\.\S+" title="example@domain.com">
+          </div>
+          <div class="form_row">
+            <label for="first_name">First Name:</label>
+            <input type="text" name="first_name" id="first_name" placeholder="First Name" autofocus>
+          </div>
+          <div class="form_row">
+            <label for="last_name">Last Name:</label>
+            <input type="text" name="last_name" id="last_name" placeholder="Last Name">
+          </div>
+          <div class="form_row">
+            <label for="username">Username:</label>
+            <input type="text" name="username" id="username" placeholder="Username">
+          </div>
+          <div class="form_row">
+            <label for="password">Password:</label>
+            <input type="password" name="password" id="password" placeholder="Password">
+          </div>
+          <div class="button_group">
+            <button class="cancel_button">Cancel</button>
+            <button class="save_button">Save</button>
           </div>
         </form>
       </div>
-
-      <div class='table_view'>
-        <div class='grid_table'>
-          <div class='header'>
-            <span>Product ID</span>
+      <div class="table_view">
+        <div class="grid_table">
+          <div class="header">
             <span>Email</span>
             <span>First Name</span>
             <span>Last Name</span>
@@ -45,15 +57,16 @@
             <span></span>
           </div>
 
-          <div class='column' data-id="{{session['dongleID']}}">
-            <span>{{ session['dongleID'] }}</span>
+          <div class="column" data-id="{{session['ID']}}">
+            <span style="display: none;">{{ session['ID'] }}</span>
             <span>{{ session['email'] }}</span>
             <span>{{ session['first_name'] }}</span>
             <span>{{ session['last_name'] }}</span>
             <span>{{ session['username'] }}</span>
-            <span>{{ session['password'] }}</span>
+            <span class="censored">{{ session['password'] }}</span>
+
           </div>
-          <button class='edit_button' title='Edit User'>Edit</button>
+          <button class="edit_button" title="Edit User">Edit</button>
         </div>
       </div>
     </main>

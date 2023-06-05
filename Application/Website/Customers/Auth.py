@@ -12,7 +12,13 @@ import bcrypt
 ## COPY PASTED FROM 140A AND MODIFIED
 # Configuration
 load_dotenv('credentials.env')                 # Read in the environment variables for MySQL
-db_config = {
+customer_config = {
+  "host": os.environ['MYSQL_HOST'],
+  "user": os.environ['MYSQL_USER'],
+  "password": os.environ['MYSQL_PASSWORD'],
+  "database": os.environ['MYSQL_DATABASE']
+}
+devices_config = {
   "host": os.environ['MYSQL_HOST'],
   "user": os.environ['MYSQL_USER'],
   "password": os.environ['MYSQL_PASSWORD'],
@@ -25,12 +31,12 @@ session_config = {
 ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 # Define helper functions for CRUD operations
 # Create unique user.
-def create_user(dongleID: str, email:str, first_name:str, last_name: str, username:str, password:str) -> int:
+def create_user(first_name:str, last_name: str, email: str, username:str, password:str) -> int:
   password_encrypted = Security.encrypt(password)
-  db = mysql.connect(**db_config)
+  db = mysql.connect(**customer_config)
   cursor = db.cursor()
-  query = "insert into customers (dongleID, email, first_name, last_name, username, password) values (%s, %s, %s, %s, %s, %s)"
-  values = (dongleID, email, first_name, last_name, username, password_encrypted)
+  query = "insert into customers (email, first_name, last_name, username, password) values (%s, %s, %s, %s, %s)"
+  values = (email, first_name, last_name, username, password_encrypted)
   cursor.execute(query, values)
   db.commit()
   db.close()
@@ -38,27 +44,25 @@ def create_user(dongleID: str, email:str, first_name:str, last_name: str, userna
 
 # SELECT SQL query
 def select_users(user_id:int=None) -> list:
-  db = mysql.connect(**db_config)
+  db = mysql.connect(**customer_config)
   cursor = db.cursor()
   if user_id == None:
-    query = f"select ID, dongleID, email, username, password from customers;"
+    query = f"select ID, email, first_name, last_name, username, password from customers;"
     cursor.execute(query)
     result = cursor.fetchall()
   else:
-    query = f"select dongleID, email, first_name, last_name, username, password from customers where ID={user_id};"
+    query = f"select ID, email, first_name, last_name, username, password from customers where ID={user_id};"
     cursor.execute(query)
     result = cursor.fetchone()
   db.close()
   return result
 
 # UPDATE SQL query
-def update_user(dongleID:str, email:str, first_name: str, last_name: str, username:str, password:str) -> bool:
-  password_encrypted = Security.encrypt(password)
-  db = mysql.connect(**db_config)
+def update_user(ID:str, first_name: str, last_name: str, email: str, username:str, password:str) -> bool:
+  db = mysql.connect(**customer_config)
   cursor = db.cursor()
-  print(dongleID)
-  query = "update customers set email = %s, first_name=%s, last_name=%s, username=%s, password=%s where dongleID=%s;"
-  values = (email, first_name, last_name, username, password, dongleID)
+  query = "update customers set email = %s, first_name=%s, last_name=%s, username=%s, password=%s where ID=%s;"
+  values = (email, first_name, last_name, username, password, ID)
   cursor.execute(query, values)
   db.commit()
   db.close()
@@ -66,7 +70,7 @@ def update_user(dongleID:str, email:str, first_name: str, last_name: str, userna
 
 # DELETE SQL query
 def delete_user(user_id:int) -> bool:
-  db = mysql.connect(**db_config)
+  db = mysql.connect(**customer_config)
   cursor = db.cursor()
   cursor.execute(f"delete from customers where ID={user_id};")
   db.commit()
@@ -75,7 +79,7 @@ def delete_user(user_id:int) -> bool:
 
 # SELECT query to verify hashed password of users
 def check_user_password(identifier:str, password:str) -> bool:
-  db = mysql.connect(**db_config)
+  db = mysql.connect(**customer_config)
   cursor = db.cursor()
   query = 'select password from customers where username=%s'
   cursor.execute(query, (identifier,))
@@ -83,9 +87,6 @@ def check_user_password(identifier:str, password:str) -> bool:
   query = 'select password from customers where email=%s'
   cursor.execute(query, (identifier,))
   result1 = cursor.fetchone()
-  query = 'select password from customers where dongleID=%s'
-  cursor.execute(query, (identifier,))
-  result2 = cursor.fetchone()
 
   if result is not None:
     query = 'select username from customers where password = %s'
@@ -96,14 +97,7 @@ def check_user_password(identifier:str, password:str) -> bool:
        return False
   elif result1 is not None:
     query = 'select username from customers where password = %s'
-    password_decrypted = Security.decrypt(result[1])
-    if(password_decrypted == password):
-      return True
-    else:
-       return False
-  elif result2 is not None:
-    query = 'select username from customers where password = %s'
-    password_decrypted = Security.decrypt(result[2])
+    password_decrypted = Security.decrypt(result1[0])
     if(password_decrypted == password):
       return True
     else:
@@ -111,8 +105,8 @@ def check_user_password(identifier:str, password:str) -> bool:
   return False
 
 ## CHANGE TO CHECK DONGLE ID
-def verify_availability(dongle_id: str, username: str, email: str) -> str:
-    db = mysql.connect(**db_config)
+def verify_availability(username: str, email: str) -> str:
+    db = mysql.connect(**customer_config)
     cursor = db.cursor()
 
     query = "select id from customers where email = %s"
@@ -123,24 +117,19 @@ def verify_availability(dongle_id: str, username: str, email: str) -> str:
     cursor.execute(query, (username,))
     result2 = cursor.fetchone()
 
-    query = "select id from customers where dongleID = %s"
-    cursor.execute(query, (dongle_id,))
-    result3 = cursor.fetchone()
     cursor.close()
     db.close()
-    if result1 and result2 and result3:
+    if result1 and result2:
         return "all"
     elif result1:
         return "email"
     elif result2:
         return "username"
-    elif result3:
-        return "dongleID"
     else:
         return "verified"
 
 def find_username(identifier:str) -> str:
-  db = mysql.connect(**db_config)
+  db = mysql.connect(**customer_config)
   cursor = db.cursor()
   if('@' in identifier):
       query = 'select username from customers where email = %s;'
@@ -153,18 +142,10 @@ def find_username(identifier:str) -> str:
       else:
          return "There is no username associated with this email"
   else:
-      query = 'select username from customers where dongleID = %s;'
-      cursor.execute(query, (identifier,))
-      result1 = cursor.fetchone()
-      cursor.close()
-      db.close()
-      if result1 is not None:
-         return result1[0]
-      else:
-         return "There is no username associated with this product ID"
+     return "Not a valid email"
 
 def find_password(identifier: str) -> str:
-    db = mysql.connect(**db_config)
+    db = mysql.connect(**customer_config)
     cursor = db.cursor()
     if '@' in identifier:
         query = 'select password from customers where email = %s;'
@@ -177,11 +158,6 @@ def find_password(identifier: str) -> str:
         else:
             return "There is no password associated with this email"
     else:
-        query = 'select password from customers where dongleID = %s;'
-        cursor.execute(query, (identifier,))
-        dongleID_result = cursor.fetchone()
-        if dongleID_result is not None:
-            return Security.decrypt(dongleID_result[0])
         query = 'select password from customers where username = %s;'
         cursor.execute(query, (identifier,))
         username_result = cursor.fetchone()
@@ -189,11 +165,11 @@ def find_password(identifier: str) -> str:
         db.close()
         if username_result is not None:
           return Security.decrypt(username_result[0])
-        elif dongleID_result is None and username_result is None:
-          return "There is no password associated with this product ID or username"
+        elif username_result is None:
+          return "There is no password associated with this username"
 
 def get_id(identifier:str) -> str:
-  db = mysql.connect(**db_config)
+  db = mysql.connect(**customer_config)
   cursor = db.cursor()
   if('@' in identifier):
       query = 'select id from customers where email = %s;'
@@ -207,15 +183,29 @@ def get_id(identifier:str) -> str:
       query = 'select id from customers where username = %s;'
       cursor.execute(query, (identifier,))
       username_result = cursor.fetchone()
-
-      query1 = 'select id from customers where dongleID = %s;'
-      cursor.execute(query1, (identifier,))
-      dongleID_result = cursor.fetchone()
       cursor.close()
       db.close()
       if username_result is not None:
-         return username_result
-      elif dongleID_result is not None:
-         return dongleID_result
+         return username_result[0]
   return "There is no ID associated with this login!"
 
+def add_device(device_id: str, ID: str) -> str:
+   db = mysql.connect(**devices_config)
+   cursor = db.cursor()
+   query = 'INSERT INTO devices (device_id, customerID) values (%s, %s)' 
+   values = (device_id, ID)
+   cursor.execute(query, values)
+   results = cursor.fetchone()
+   db.commit()
+   db.close()
+   return cursor.lastrowid
+
+def get_device(device_ID: str) -> bool:
+   db = mysql.connect(**devices_config)
+   cursor = db.cursor()
+   query = 'SELECT customerID FROM devices WHERE device_id = %s'
+   cursor.execute(query, (device_ID,))
+   results = cursor.fetchone()
+   db.commit()
+   db.close()
+   return True if cursor.rowcount == 0 else False

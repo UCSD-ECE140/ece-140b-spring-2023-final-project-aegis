@@ -4,7 +4,14 @@ from pydantic import BaseModel
 class User(BaseModel):
   first_name: str
   last_name: str
-  dongleID: str
+  email: str
+  username: str
+  password: str
+
+class UserUpdate(BaseModel):
+  first_name: str
+  last_name: str
+  id: str
   email: str
   username: str
   password: str

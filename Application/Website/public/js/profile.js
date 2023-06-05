@@ -20,7 +20,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   main.addEventListener('click', (event) => {
     event.preventDefault();
-
     // Open edit form
     if (event.target.classList.contains('edit_button')) {
       main.dataset.mode = 'editing';
@@ -47,7 +46,6 @@ document.addEventListener("DOMContentLoaded", () => {
       server_request(`/customer/${id}`, data, 'PUT', function(response) {
         if (response['success']) {
           let column = table.querySelector(`.column[data-id='${id}']`);
-          column.children[0].innerText = data.dongleID;
           column.children[1].innerText = data.email;
           column.children[2].innerText = data.first_name;
           column.children[3].innerText = data.last_name;
