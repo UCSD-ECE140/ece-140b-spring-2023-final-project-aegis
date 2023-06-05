@@ -1,4 +1,3 @@
-#include "currentSensor.hpp"
 #include "tempSensor.hpp"
 #include <freertos/FreeRTOS.h>
 #include <freertos/task.h>
@@ -17,7 +16,6 @@ std::string messageBuffer;
 std::string roomForTemp;
 
 String messageSend = "";
-currentSensor cs;
 tempSensor ts;
 
 String msg= "";
@@ -25,11 +23,12 @@ long startMillis;
 long currentMillis;
 bool pinState = false;
 std::string sender;
+bool wasOff = false;
+bool ac = false;
+bool heat = false;
+bool fan = false;
 
-std::mutex m;
-std::condition_variable cv;
 std::string data;
-std::thread* worker;
 bool disconnected = false;
 bool processed = false;
 int currentSet = 0;
@@ -117,7 +116,7 @@ void setUpWifi(){
   while (!client.connected()) {
       String clientId = "AegisThermostat-Unique-21383192834307";
       Serial.println("Connecting to MQTT...");
-      if (client.connect(clientId.c_str())) {
+      if (client.connect(clientId.c_str()), "aegisAdmin", "iLoveAegis!") {
       Serial.println("connected");  
       } else {
       Serial.print("failed with state ");
@@ -146,9 +145,8 @@ void setup()
   pinMode(29, OUTPUT); //Fan
   //set it to low
   digitalWrite(27, pinState=false);
-  digitalWrite(28, pinState=false);
-  digitalWrite(29, pinState=false);
-
+  digitalWrite(26, pinState=false);
+  digitalWrite(25, pinState=false);
   setUpWifi();
 }
 
@@ -160,30 +158,46 @@ void loop()
   }
   if(tempControl) {
     if((currentTemp - currentSet) > 1) {
-      digitalWrite(27, pinState=false);
-      digitalWrite(28, pinState=true);
-      digitalWrite(29, pinState=true);
-      sendMessage("Aegis/aegisThermostatInfo", "Turning the AC ON!");
-      Serial.println("Turning the AC ON!");
+      if(!ac) {
+        digitalWrite(27, pinState=false);
+        digitalWrite(26, pinState=true);
+        digitalWrite(25, pinState=true);
+        sendMessage("Aegis/aegisThermostatInfo", "Turning the AC ON!");
+        Serial.println("Turning the AC ON!");
+        ac = true;
+        heat = false;
+      }
+      wasOff = false;
     } else if ((currentTemp - currentSet) <= -1) {
-      digitalWrite(27, pinState=true);
-      digitalWrite(28, pinState=false);
-      digitalWrite(29, pinState=true);
-      sendMessage("Aegis/aegisThermostatInfo", "Turning the HEAT ON!");
-      Serial.println("Turning the HEAT ON!");
+      if(!heat) {
+        digitalWrite(27, pinState=true);
+        digitalWrite(26, pinState=false);
+        digitalWrite(25, pinState=true);
+        sendMessage("Aegis/aegisThermostatInfo", "Turning the HEAT ON!");
+        Serial.println("Turning the HEAT ON!");
+        ac = false;
+        heat = true;
+      }
+      wasOff = false;
     } else {
-      digitalWrite(27, pinState=false);
-      digitalWrite(28, pinState=false);
-      digitalWrite(29, pinState=false);
-      sendMessage("Aegis/aegisThermostatInfo", "Turning everything OFF");
-      Serial.println("Turning everything OFF");
+      if(!wasOff) {
+        digitalWrite(27, pinState=false);
+        digitalWrite(26, pinState=false);
+        digitalWrite(25, pinState=false);
+        sendMessage("Aegis/aegisThermostatInfo", "Turning everything OFF");
+        Serial.println("Turning everything OFF");
+        wasOff = true;
+      }
     }
   } else {
-    digitalWrite(27, pinState=false);
-    digitalWrite(28, pinState=false);
-    digitalWrite(29, pinState=false);
-    sendMessage("Aegis/aegisThermostatInfo", "Turning everything OFF");
-    Serial.println("Turning everything OFF");
+    if(!wasOff) {
+      digitalWrite(27, pinState=false);
+      digitalWrite(26, pinState=false);
+      digitalWrite(25, pinState=false);
+      sendMessage("Aegis/aegisThermostatInfo", "Turning everything OFF");
+      Serial.println("Turning everything OFF");
+      wasOff = true;
+    }
   }
   delay(1000);
   client.loop();

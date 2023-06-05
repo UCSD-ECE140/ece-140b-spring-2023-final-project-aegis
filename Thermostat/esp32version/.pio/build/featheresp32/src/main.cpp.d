@@ -1,5 +1,5 @@
-.pio/build/featheresp32/src/main.cpp.o: src/main.cpp \
- src/currentSensor.hpp .pio/libdeps/featheresp32/EmonLib/EmonLib.h \
+.pio/build/featheresp32/src/main.cpp.o: src/main.cpp src/tempSensor.hpp \
+ .pio/libdeps/featheresp32/DHT\ sensor\ library\ for\ ESPx/DHTesp.h \
  C:/Users/rorla/.platformio/packages/framework-arduinoespressif32/cores/esp32/Arduino.h \
  C:/Users/rorla/.platformio/packages/framework-arduinoespressif32/cores/esp32/esp_arduino_version.h \
  C:/Users/rorla/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32/include/freertos/include/freertos/FreeRTOS.h \
@@ -130,8 +130,6 @@
  C:/Users/rorla/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32/include/spi_flash/include/esp_spi_flash.h \
  C:/Users/rorla/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32/include/spi_flash/include/esp_spi_flash_counters.h \
  C:/Users/rorla/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32/include/esp_hw_support/include/soc/esp32/spiram.h \
- src/tempSensor.hpp \
- .pio/libdeps/featheresp32/DHT\ sensor\ library\ for\ ESPx/DHTesp.h \
  C:/Users/rorla/.platformio/packages/framework-arduinoespressif32/libraries/WiFi/src/WiFi.h \
  C:/Users/rorla/.platformio/packages/framework-arduinoespressif32/cores/esp32/Print.h \
  C:/Users/rorla/.platformio/packages/framework-arduinoespressif32/cores/esp32/IPv6Address.h \
