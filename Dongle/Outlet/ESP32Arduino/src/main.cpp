@@ -41,7 +41,7 @@ void setUpWifi(){
       delay(2000);
       }
   }
-  client.publish("Aegis/aegisDongleInit","Hello from ESP32");
+  client.publish("Aegis/aegisDongleInit","Hello from outlet!");
   client.subscribe("Aegis/aegisDongleReceive");
 }
 
@@ -87,7 +87,7 @@ void loop()
   long newtime = currentMillis - startMillis;
   double Irms = cs.getIrms();  // Calculate Irms only
   String dhtdata = ts.getTemperature(); //Returns Temperature, Humidity
-  sendMessage("Aegis/aegisDongleSend", dhtdata + "," + String(Irms) + ';'); //Sends Temperature,Humidity,Irms over bluetooth 
+  sendMessage("Aegis/aegisDongleSend/" + clientId, dhtdata + "," + String(Irms) + ';'); //Sends Temperature,Humidity,Irms over bluetooth 
   String message = receiveMessage();
   Serial.println("recieved " + message);
   if(message == String("on")) {

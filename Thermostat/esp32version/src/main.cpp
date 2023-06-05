@@ -74,29 +74,30 @@ void callback(char* topic, uint8_t* data, unsigned int code){
   topicSplit = splitString(topicString, '/');
 
   senderSplit = splitString(topicSplit[topicSplit.size()-1], '-');
-
-  if(topicSplit[0] == "aegisTempSet") {
-    roomForTemp = split[0];
-    currentSet = std::stoi(split[1]);
-    Serial.println("aegisTempSet received");
-  } else if(topicSplit[0] == "aegisDongleSend") {
-    Serial.println("aegisDongleSend received");
-    sender = senderSplit[2];
-    Serial.println(sender.c_str());
-    Serial.println(roomForTemp.c_str());
-    if(sender == roomForTemp) {
-      currentTemp = std::stoi(split[1]);
-      Serial.println("aegisDongleSend received, correct room");
-    }
-  } else if(topicSplit[0] == "aegisThermostatControl") {
-    Serial.println("aegisThermostatControl received");
-    Serial.println(messageBuffer.c_str());
-    if(messageBuffer == "on") {
-      Serial.println("aegisThermostatControl on");
-      tempControl = true;
-    } else if(messageBuffer == "off") {
-      Serial.println("aegisThermostatControl off");
-      tempControl = false;
+  if(topicSplit[0] == "Aegis") {
+    if(topicSplit[1] == "aegisTempSet") {
+      roomForTemp = split[0];
+      currentSet = std::stoi(split[1]);
+      Serial.println("aegisTempSet received");
+    } else if(topicSplit[1] == "aegisDongleSend") {
+      Serial.println("aegisDongleSend received");
+      sender = senderSplit[2];
+      Serial.println(sender.c_str());
+      Serial.println(roomForTemp.c_str());
+      if(sender == roomForTemp) {
+        currentTemp = std::stoi(split[1]);
+        Serial.println("aegisDongleSend received, correct room");
+      }
+    } else if(topicSplit[1] == "aegisThermostatControl") {
+      Serial.println("aegisThermostatControl received");
+      Serial.println(messageBuffer.c_str());
+      if(messageBuffer == "on") {
+        Serial.println("aegisThermostatControl on");
+        tempControl = true;
+      } else if(messageBuffer == "off") {
+        Serial.println("aegisThermostatControl off");
+        tempControl = false;
+      }
     }
   }
   messageBuffer = "";
@@ -114,7 +115,7 @@ void setUpWifi(){
   client.setServer("aegishome.ninja", 8003);
   client.setCallback(callback);
   while (!client.connected()) {
-      String clientId = "Aegis-Thermostat-213831928343";
+      String clientId = "AegisThermostat-Unique-21383192834307";
       Serial.println("Connecting to MQTT...");
       if (client.connect(clientId.c_str())) {
       Serial.println("connected");  
