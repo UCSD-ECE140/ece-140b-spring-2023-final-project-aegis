@@ -53,3 +53,6 @@ python3 setup.py
 
 ### Installation
 
+
+### Attribution
+- Arrow by NAPISAH from <a href="https://thenounproject.com/browse/icons/term/arrow/" target="_blank" title="Arrow Icons">Noun Project</a>

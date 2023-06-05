@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <edu.ucsd.ece140.aegisthermostat.TempDialView
+        android:id="@+id/tempDialView"
+        android:layout_width="408dp"
+        android:layout_height="354dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <ImageView
+        android:id="@+id/plus"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="47dp"
+        android:layout_marginBottom="107dp"
+        android:src="@drawable/plusimg"
+        app:layout_constraintBottom_toTopOf="@+id/minus"
+        app:layout_constraintEnd_toEndOf="@+id/minus"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/minus"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/minus"
+        android:layout_width="100dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="327dp"
+        android:layout_marginBottom="57dp"
+        android:src="@drawable/minus"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/tempDialView"
+        app:layout_constraintTop_toBottomOf="@+id/plus" />
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+
+
+
+</android.support.constraint.ConstraintLayout>
