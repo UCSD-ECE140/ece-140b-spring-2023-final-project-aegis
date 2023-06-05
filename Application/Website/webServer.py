@@ -7,14 +7,31 @@ from starlette.responses import JSONResponse
 from utilities.sessions import Sessions
 from utilities.Models import User, VisitorLogin, RetrieveInfo
 from utilities.Security import Security
-import Customers.Auth as Auth
+# import Customers.Auth as Auth
 import uvicorn      # Used for running the app directly through Python
 import utilities
+import paho.mqtt.client as mqtt
+
+client = mqtt.Client(client_id='AegisServer', clean_session=True)
+
+def on_connect(client, userdata, flags, rc):
+    print("Connected with result code "+str(rc))
+
+    # Subscribing in on_connect() means that if we lose the connection and
+    # reconnect then subscriptions will be renewed.
+    client.subscribe("Aegis/#")
+
+def on_message(client, userdata, msg):
+    split = msg.topic.split("/")
+    if split[0] == "Aegis":
+       print(split[1] + " " + msg.payload.decode())
+
+
 app = FastAPI()                                   # Specify the "app" that will run the routing
 static_files = StaticFiles(directory='public')    # Specify where the static files are located
 views = Jinja2Templates(directory="public/views")
 app.mount('/public', static_files, name='public') # Mount the static files directory to /public
-sessions = Sessions(secret_key=Auth.session_config['session_key'], expiry=0)
+# sessions = Sessions(secret_key=Auth.session_config['session_key'], expiry=0)
   
 ## Route for Website Register
 ## Can manually put in product ID through website
@@ -175,6 +192,19 @@ def post_logout(request:Request, response:Response) -> dict:
 ## identifier can be username or email
 def authenticate_user(identifier:str, password:str) -> bool:
   return Auth.check_user_password(identifier, password)
+
+@app.on_event('startup')
+def startup():
+  client.on_connect = on_connect
+  client.on_message = on_message
+  client.username_pw_set(username="aegisAdmin", password='iLoveAegis!')
+  client.connect_async("aegishome.ninja", 8003)
+  client.loop_start()
+
+@app.on_event('shutdown')
+def shutdown():
+  client.loop_stop()
+
 
 # If running the server directly from Python as a module
 if __name__ == "__main__":
