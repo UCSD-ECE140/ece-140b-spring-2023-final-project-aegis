@@ -15,7 +15,7 @@ struct ContentView: View {
     var mqtt: CocoaMQTT
 
     init() {
-        self.mqtt = CocoaMQTT(clientID: "aegisAppb895eb67", host: "broker.hivemq.com", port: 1883)
+        self.mqtt = CocoaMQTT(clientID: "aegisAppb895eb67", host: "aegishome.ninja", port: 8003, username: "aegisAdmin", password: "iLoveAegis!")
         mqtt.delegate = mqttDelegate
     }
     
