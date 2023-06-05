@@ -1,0 +1,16 @@
+import paho.mqtt.client as paho
+
+def on_connect(client, userdata, flags, rc):
+    print('CONNACK received with code %d.' % (rc))
+
+def on_message(client, userdata, message):
+    if message.topic == "On":
+        print("in on on")  # Call your on() method
+
+
+client = paho.Client()
+client.on_connect = on_connect
+client.username_pw_set('aegisApp', 'aegisRoot1')
+client.connect('b895eb671f8c4fffab7674f93701e3e5.s2.eu.hivemq.cloud', 8883)
+client.on_message = on_message
+client.loop_start()
