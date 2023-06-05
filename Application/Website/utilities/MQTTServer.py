@@ -1,6 +1,7 @@
 import os                                         # Used for interacting with the system environment
 from dotenv import load_dotenv                    # Used to read the credentials
 import paho.mqtt.client as mqtt
+os.chdir("..")
 load_dotenv('credentials.env')                 # Read in the environment variables for MySQL
 
 MQTT_config = {
@@ -32,8 +33,11 @@ class MQTTServer:
 
     def on_message(self, client, userdata, msg):
         split = msg.topic.split("/")
-        if split[0] == "MQTT_config['topic']":
-            print(split[1] + " " + msg.payload.decode())
+        if split[0] == "Aegis":
+            if split[1] == "aegisDongleSend":
+                print(split[1] + " " + msg.payload.decode())
+           
 
-
-mqtt_server = MQTTServer()
+# If running the server directly from Python as a module
+if __name__ == "__main__":
+    mqtt_server = MQTTServer()    
