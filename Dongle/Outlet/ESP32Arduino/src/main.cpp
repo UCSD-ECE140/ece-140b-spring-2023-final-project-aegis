@@ -5,11 +5,37 @@
 #include <Arduino.h>
 #include <WiFi.h>
 #include <PubSubClient.h>
+#include <stdlib.h>
+
+using namespace std;
 
 WiFiClient espClient;
 PubSubClient client(espClient);
-String messageBuffer = "";
-String clientId = "ESP32Client-Unique-bed-77632231234431";
+std::string messageBuffer = "";
+std::string clientId = WiFi.macAddress().c_str();
+std::string room = "";
+std::vector<std::string> topicSplit;
+std::vector<std::string> messageSplit;
+String topic = "Aegis/aegisDongleSend/" + WiFi.macAddress();
+
+std::vector<std::string> splitString(std::string str, char splitter){
+    std::vector<std::string> result;
+    std::string current = ""; 
+    for(int i = 0; i < str.size(); i++){
+        if(str[i] == splitter){
+            if(current != ""){
+                result.push_back(current);
+                current = "";
+            } 
+            continue;
+        }
+        current += str[i];
+    }
+    if(current.size() != 0)
+        result.push_back(current);
+    return result;
+}
+
 
 void callback(char* topic, uint8_t* data, unsigned int code){
   Serial.print("Message arrived in topic: ");
@@ -18,6 +44,13 @@ void callback(char* topic, uint8_t* data, unsigned int code){
   for(int i = 0; i < code; i++){
     Serial.print((char)data[i]);
     messageBuffer += (char)data[i];
+  }
+  topicSplit = splitString(topic, '/');
+  messageSplit = splitString(messageBuffer, ',');
+  if(topicSplit[0] == "Aegis" && topicSplit[1] == "dongleRoomChange") {
+    if(messageSplit[0] == clientId) {
+      room = messageSplit[1];
+    }
   }
 }
 
@@ -33,7 +66,7 @@ void setUpWifi(){
   client.setCallback(callback);
   while (!client.connected()) {
       Serial.println("Connecting to MQTT...");
-      if (client.connect(clientId.c_str())) {
+      if (client.connect(clientId.c_str()), "aegisAdmin", "iLoveAegis!") {
       Serial.println("connected");  
       } else {
       Serial.print("failed with state ");
@@ -41,8 +74,9 @@ void setUpWifi(){
       delay(2000);
       }
   }
-  client.publish("Aegis/aegisDongleInit","Hello from outlet!");
+  client.publish(topic.c_str(), "Hello from dongle!");
   client.subscribe("Aegis/aegisDongleReceive");
+  client.subscribe("Aegis/dongleRoomChange");
 }
 
 void sendMessage(String topic, String message) {
@@ -50,9 +84,9 @@ void sendMessage(String topic, String message) {
     client.publish(topic.c_str(), message.c_str());
 }
 
-String receiveMessage() {
+std::string receiveMessage() {
     if(messageBuffer.length()>0){
-        String temp = messageBuffer;
+        std::string temp = messageBuffer;
         messageBuffer = "";
         return temp;
     }
@@ -79,6 +113,7 @@ void setup()
   //set it to high turn on the relay
   digitalWrite(27, pinState=false);
   startMillis = millis(); 
+  Serial.println(WiFi.macAddress());
 }
 
 void loop()
@@ -87,12 +122,12 @@ void loop()
   long newtime = currentMillis - startMillis;
   double Irms = cs.getIrms();  // Calculate Irms only
   String dhtdata = ts.getTemperature(); //Returns Temperature, Humidity
-  sendMessage("Aegis/aegisDongleSend/" + clientId, dhtdata + "," + String(Irms) + ';'); //Sends Temperature,Humidity,Irms over bluetooth 
-  String message = receiveMessage();
-  Serial.println("recieved " + message);
-  if(message == String("on")) {
+  sendMessage(topic, String(room.c_str()) + "," + dhtdata + "," + String(Irms) + ';'); //Sends Temperature,Humidity,Irms over bluetooth 
+  std::string message = receiveMessage();
+  Serial.println("recieved " + String(message.c_str()));
+  if(message == "on") {
     digitalWrite(27, pinState=true);
-  } else if (message==String("off")) {
+  } else if (message == "off") {
     digitalWrite(27, pinState=false);
   }
   client.loop();

@@ -4,12 +4,10 @@
 #include <Arduino.h>
 #include <WiFi.h>
 #include <PubSubClient.h>
-#include <thread>
-#include <mutex>
-#include <condition_variable>
 #include <stdlib.h>
 
 using namespace std;
+
 WiFiClient espClient;
 PubSubClient client(espClient);
 std::string messageBuffer;
@@ -28,6 +26,7 @@ bool ac = false;
 bool heat = false;
 bool fan = false;
 
+String clientId = WiFi.macAddress();
 std::string data;
 bool disconnected = false;
 bool processed = false;
@@ -80,7 +79,7 @@ void callback(char* topic, uint8_t* data, unsigned int code){
       Serial.println("aegisTempSet received");
     } else if(topicSplit[1] == "aegisDongleSend") {
       Serial.println("aegisDongleSend received");
-      sender = senderSplit[2];
+      sender = split[0];
       Serial.println(sender.c_str());
       Serial.println(roomForTemp.c_str());
       if(sender == roomForTemp) {
@@ -114,7 +113,7 @@ void setUpWifi(){
   client.setServer("aegishome.ninja", 8003);
   client.setCallback(callback);
   while (!client.connected()) {
-      String clientId = "AegisThermostat-Unique-21383192834307";
+      
       Serial.println("Connecting to MQTT...");
       if (client.connect(clientId.c_str()), "aegisAdmin", "iLoveAegis!") {
       Serial.println("connected");  
@@ -124,7 +123,7 @@ void setUpWifi(){
       delay(2000);
       }
   }
-  client.publish("Aegis/aegisDongleInit","Hello from your Aegis Thermostat!");
+  client.publish("Aegis/aegisDongleInit", "Hello from your Aegis Thermostat!");
   client.subscribe("Aegis/#");
 }
 
