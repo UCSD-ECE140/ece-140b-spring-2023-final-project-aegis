@@ -7,7 +7,7 @@ from starlette.responses import JSONResponse
 from utilities.sessions import Sessions
 from utilities.Models import User, VisitorLogin, RetrieveInfo
 from utilities.Security import Security
-# import Customers.Auth as Auth
+import Customers.Auth as Auth
 import uvicorn      # Used for running the app directly through Python
 import utilities
 import paho.mqtt.client as mqtt

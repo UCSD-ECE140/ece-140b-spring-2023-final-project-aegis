@@ -20,7 +20,7 @@ String messageSend = "";
 currentSensor cs;
 tempSensor ts;
 String clientId = "ESP32Client-Unique-bed-77632";
-String topic = "aegisDongleSend";
+String topic = "Aegis/aegisDongleSend";
 
 String msg= "";
 long startMillis;
@@ -58,11 +58,11 @@ void setUpWifi(){
       Serial.println("Connecting to WiFi..");
   }
   Serial.println("Connected to the WiFi network");
-  client.setServer("broker.hivemq.com",1883);
+  client.setServer("aegishome.ninja",8003);
   client.setCallback(callback);
   while (!client.connected()) {
       Serial.println("Connecting to MQTT...");
-      if (client.connect(clientId.c_str())) {
+      if (client.connect(clientId.c_str()), "aegisAdmin", "iLoveAegis!") {
       Serial.println("connected");  
       } else {
       Serial.print("failed with state ");
@@ -70,8 +70,8 @@ void setUpWifi(){
       delay(2000);
       }
   }
-  client.publish("aegisDongleInit","Hello from ESP32");
-  client.subscribe("aegisDongleReceive");
+  client.publish("Aegis/aegisDongleInit","Hello from ESP32");
+  client.subscribe("Aegis/aegisDongleReceive");
 }
 
 void wifi_thread() {
