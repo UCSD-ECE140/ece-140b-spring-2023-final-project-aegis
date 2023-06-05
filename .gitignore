@@ -1,7 +1,5 @@
 
 *.code-workspace
-Dongle/Outlet/ESP32Arduino/src/main.cpp
-Dongle/Outlet/ESP32Arduino/platformio.ini
-Dongle/Outlet/ESP32Arduino/.vscode/extensions.json
+
 *.pyc
 Aegis/
