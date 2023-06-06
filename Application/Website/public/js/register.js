@@ -50,7 +50,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Grab the needed form fields
     const action = add_form.getAttribute('action');
-    const newAction = "/check_customer";
+    const newAction = "/website/check_customer";
     const method = add_form.getAttribute('method');
     const data = Object.fromEntries(new FormData(add_form).entries());
     

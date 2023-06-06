@@ -12,13 +12,7 @@ import bcrypt
 ## COPY PASTED FROM 140A AND MODIFIED
 # Configuration
 load_dotenv('credentials.env')                 # Read in the environment variables for MySQL
-customer_config = {
-  "host": os.environ['MYSQL_HOST'],
-  "user": os.environ['MYSQL_USER'],
-  "password": os.environ['MYSQL_PASSWORD'],
-  "database": os.environ['MYSQL_DATABASE']
-}
-devices_config = {
+config = {
   "host": os.environ['MYSQL_HOST'],
   "user": os.environ['MYSQL_USER'],
   "password": os.environ['MYSQL_PASSWORD'],
@@ -33,7 +27,7 @@ session_config = {
 # Create unique user.
 def create_user(first_name:str, last_name: str, email: str, username:str, password:str) -> int:
   password_encrypted = Security.encrypt(password)
-  db = mysql.connect(**customer_config)
+  db = mysql.connect(**cconfig)
   cursor = db.cursor()
   query = "insert into customers (email, first_name, last_name, username, password) values (%s, %s, %s, %s, %s)"
   values = (email, first_name, last_name, username, password_encrypted)
@@ -44,7 +38,7 @@ def create_user(first_name:str, last_name: str, email: str, username:str, passwo
 
 # SELECT SQL query
 def select_users(user_id:int=None) -> list:
-  db = mysql.connect(**customer_config)
+  db = mysql.connect(**config)
   cursor = db.cursor()
   if user_id == None:
     query = f"select ID, email, first_name, last_name, username, password from customers;"
@@ -59,7 +53,7 @@ def select_users(user_id:int=None) -> list:
 
 # UPDATE SQL query
 def update_user(ID:str, first_name: str, last_name: str, email: str, username:str, password:str) -> bool:
-  db = mysql.connect(**customer_config)
+  db = mysql.connect(**config)
   cursor = db.cursor()
   query = "update customers set email = %s, first_name=%s, last_name=%s, username=%s, password=%s where ID=%s;"
   values = (email, first_name, last_name, username, password, ID)
@@ -70,7 +64,7 @@ def update_user(ID:str, first_name: str, last_name: str, email: str, username:st
 
 # DELETE SQL query
 def delete_user(user_id:int) -> bool:
-  db = mysql.connect(**customer_config)
+  db = mysql.connect(**config)
   cursor = db.cursor()
   cursor.execute(f"delete from customers where ID={user_id};")
   db.commit()
@@ -79,7 +73,7 @@ def delete_user(user_id:int) -> bool:
 
 # SELECT query to verify hashed password of users
 def check_user_password(identifier:str, password:str) -> bool:
-  db = mysql.connect(**customer_config)
+  db = mysql.connect(**config)
   cursor = db.cursor()
   query = 'select password from customers where username=%s'
   cursor.execute(query, (identifier,))
@@ -87,7 +81,6 @@ def check_user_password(identifier:str, password:str) -> bool:
   query = 'select password from customers where email=%s'
   cursor.execute(query, (identifier,))
   result1 = cursor.fetchone()
-
   if result is not None:
     query = 'select username from customers where password = %s'
     password_decrypted = Security.decrypt(result[0])
@@ -106,7 +99,7 @@ def check_user_password(identifier:str, password:str) -> bool:
 
 ## CHANGE TO CHECK DONGLE ID
 def verify_availability(username: str, email: str) -> str:
-    db = mysql.connect(**customer_config)
+    db = mysql.connect(**config)
     cursor = db.cursor()
 
     query = "select id from customers where email = %s"
@@ -129,7 +122,7 @@ def verify_availability(username: str, email: str) -> str:
         return "verified"
 
 def find_username(identifier:str) -> str:
-  db = mysql.connect(**customer_config)
+  db = mysql.connect(**config)
   cursor = db.cursor()
   if('@' in identifier):
       query = 'select username from customers where email = %s;'
@@ -145,7 +138,7 @@ def find_username(identifier:str) -> str:
      return "Not a valid email"
 
 def find_password(identifier: str) -> str:
-    db = mysql.connect(**customer_config)
+    db = mysql.connect(**config)
     cursor = db.cursor()
     if '@' in identifier:
         query = 'select password from customers where email = %s;'
@@ -169,7 +162,7 @@ def find_password(identifier: str) -> str:
           return "There is no password associated with this username"
 
 def get_id(identifier:str) -> str:
-  db = mysql.connect(**customer_config)
+  db = mysql.connect(**config)
   cursor = db.cursor()
   if('@' in identifier):
       query = 'select id from customers where email = %s;'
@@ -190,9 +183,9 @@ def get_id(identifier:str) -> str:
   return "There is no ID associated with this login!"
 
 def add_device(device_id: str, ID: str) -> str:
-   db = mysql.connect(**devices_config)
+   db = mysql.connect(**config)
    cursor = db.cursor()
-   query = 'INSERT INTO devices (device_id, customerID) values (%s, %s)' 
+   query = 'INSERT INTO customers_devices (device_id, customerID) values (%s, %s)' 
    values = (device_id, ID)
    cursor.execute(query, values)
    results = cursor.fetchone()
@@ -200,12 +193,65 @@ def add_device(device_id: str, ID: str) -> str:
    db.close()
    return cursor.lastrowid
 
-def get_device(device_ID: str) -> bool:
-   db = mysql.connect(**devices_config)
+def delete_device(device_id: str) -> bool:
+   db = mysql.connect(**config)
    cursor = db.cursor()
-   query = 'SELECT customerID FROM devices WHERE device_id = %s'
-   cursor.execute(query, (device_ID,))
+   query = 'delete from customers_devices where devices_id = %s' 
+   values = (device_id, device_id)
+   cursor.execute(query, values)
    results = cursor.fetchone()
    db.commit()
    db.close()
+   return True if cursor.rowcount == 1 else False
+
+def get_device(device_ID: str) -> bool:
+   db = mysql.connect(**config)
+   cursor = db.cursor()
+   query = 'SELECT customerID FROM customers_devices WHERE device_id = %s'
+   cursor.execute(query, (device_ID,))
+   results = cursor.fetchall()
+   db.commit()
+   db.close()
    return True if cursor.rowcount == 0 else False
+
+def create_user(first_name:str, last_name: str, email: str, username:str, password:str) -> int:
+  password_encrypted = Security.encrypt(password)
+  db = mysql.connect(**cconfig)
+  cursor = db.cursor()
+  query = "insert into customers (email, first_name, last_name, username, password) values (%s, %s, %s, %s, %s)"
+  values = (email, first_name, last_name, username, password_encrypted)
+  cursor.execute(query, values)
+  db.commit()
+  db.close()
+  return cursor.lastrowid
+
+# SELECT SQL query
+def get_configurations(device_id: str) -> list:
+  db = mysql.connect(**config)
+  cursor = db.cursor()
+  query = f"select dongleID, name, temperature_threshold from device_permissions where device_id={device_id};"
+  cursor.execute(query)
+  result = cursor.fetchall()
+  db.close()
+  return result
+
+# UPDATE SQL query
+def update_configurations(name: str, temperature_threshold: str, dongleID: str) -> bool:
+  db = mysql.connect(**config)
+  cursor = db.cursor()
+  query = "update device_permissions set name = %s, temperature_threshold=%s where dongleID = %s;"
+  values = (name, temperature_threshold, dongleID)
+  cursor.execute(query, values)
+  result = cursor.fetchone()
+  db.close()
+  return True if cursor.rowcount == 1 else False
+
+def verify_permissions(device_id: str, dongleID: str) -> bool:
+  db = mysql.connect(**config)
+  cursor = db.cursor()
+  query = "SELECT * FROM device_permissions WHERE device_id = %s AND dongle_id = %s;"
+  values = (device_id, dongleID)
+  cursor.execute(query, values)
+  result = cursor.fetchall()
+  db.close()
+  return True if cursor.rowcount == 1 else False
