@@ -1,7 +1,6 @@
 import os                                         # Used for interacting with the system environment
 from dotenv import load_dotenv                    # Used to read the credentials
 import paho.mqtt.client as mqtt
-os.chdir("..")
 load_dotenv('credentials.env')                 # Read in the environment variables for MySQL
 
 datas_config = {

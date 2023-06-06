@@ -8,6 +8,7 @@ from utilities.sessions import Sessions
 from utilities.Models import User, VisitorLogin, RetrieveInfo, Configurations
 from utilities.Security import Security
 from utilities.MQTTServer import MQTTServer
+import threading
 import Customers.Auth as Auth
 import uvicorn      # Used for running the app directly through Python
 
@@ -16,15 +17,17 @@ static_files = StaticFiles(directory='public')    # Specify where the static fil
 views = Jinja2Templates(directory="public/views")
 app.mount('/public', static_files, name='public') # Mount the static files directory to /public
 sessions = Sessions(secret_key=Auth.session_config['session_key'], expiry=0)
-mqtt_server = MQTTServer() ## Default to one server, can run up multiple MQTTServers if necessary
+mqtt_server = MQTTServer()
+mqtt_thread = threading.Thread(target=mqtt_server.start) ## loop forever blocks execution of web server code
 
 @app.on_event('startup')
-async def startup():
-    mqtt_server.start()
+async def startup_event():
+    mqtt_thread.start()
 
 @app.on_event('shutdown')
-async def shutdown():
+async def shutdown_event():
     mqtt_server.stop()
+    mqtt_thread.join()
   
 ## Route for Website Register
 ## Can manually put in product ID through website
