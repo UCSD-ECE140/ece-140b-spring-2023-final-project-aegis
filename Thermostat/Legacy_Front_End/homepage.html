@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Aegis</title>
+    <link rel="stylesheet" href="public/homepage.css">
+    <script src="public/homepage.js"></script>
+    <script src="https://cdn.plot.ly/plotly-2.20.0.min.js" charset="utf-8"></script>
+</head>
+<body>
+<ul>
+    <li>
+        <h1>Aegis</h1>
+    </li>
+    <li>
+        <h2> <a href="/homepage"> Main Menu</a> </h2>
+    </li>
+</ul>
+<div>
+    <h3> Aegis</h3>
+    <p> Current Measurements: <p class="tempDisplay"> </p> </p>
+</div>
+<br>
+<div>
+    <h3> Historical Measurements</h3>
+    <p> <p id="historicalDisplay1"> </p> </p>
+    <p> <p id="historicalDisplay2"> </p> </p>
+    <p> <p id="historicalDisplay3"> </p> </p>
+</div>
+<br>
+<div>
+    <h3> Send a message to the Station!</h3>
+    <p> The message you enter will be displayed for 1 second</p>
+    <form class="messageForm">
+        <label for="message">Enter message to display on station:</label>
+        <input type="text" id="message" name="messageText"><br><br>
+        <input type='submit' value='Submit'>
+    </form>
+</div>
+</body>
+</html>
