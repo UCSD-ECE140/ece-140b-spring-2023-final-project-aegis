@@ -13,10 +13,12 @@ WiFiClient espClient;
 PubSubClient client(espClient);
 std::string messageBuffer = "";
 std::string clientId = WiFi.macAddress().c_str();
-std::string room = "";
+std::string room = "room";
 std::vector<std::string> topicSplit;
 std::vector<std::string> messageSplit;
 String topic = "Aegis/aegisDongleSend/" + WiFi.macAddress();
+String topic1 = "Aegis/aegisDongleReceive/" + WiFi.macAddress();
+std::string message = "on";
 
 std::vector<std::string> splitString(std::string str, char splitter){
     std::vector<std::string> result;
@@ -41,15 +43,25 @@ void callback(char* topic, uint8_t* data, unsigned int code){
   Serial.print("Message arrived in topic: ");
   Serial.println(topic);
   Serial.print("Message:");
+  messageBuffer = "";
   for(int i = 0; i < code; i++){
     Serial.print((char)data[i]);
     messageBuffer += (char)data[i];
   }
+  Serial.print("\n");
   topicSplit = splitString(topic, '/');
   messageSplit = splitString(messageBuffer, ',');
   if(topicSplit[0] == "Aegis" && topicSplit[1] == "dongleRoomChange") {
     if(messageSplit[0] == clientId) {
       room = messageSplit[1];
+    }
+  } else if(topicSplit[0] == "Aegis" && topicSplit[1] == "aegisDongleReceive") {
+    if(messageBuffer == "off") {
+      Serial.println("Turning OFF!");
+      message = "off";
+    } else {
+      Serial.println("Turning ON!");
+      message = "on";
     }
   }
 }
@@ -74,8 +86,9 @@ void setUpWifi(){
       delay(2000);
       }
   }
+
   client.publish(topic.c_str(), "Hello from dongle!");
-  client.subscribe("Aegis/aegisDongleReceive");
+  client.subscribe(topic1.c_str());
   client.subscribe("Aegis/dongleRoomChange");
 }
 
@@ -123,8 +136,7 @@ void loop()
   double Irms = cs.getIrms();  // Calculate Irms only
   String dhtdata = ts.getTemperature(); //Returns Temperature, Humidity
   sendMessage(topic, String(room.c_str()) + "," + dhtdata + "," + String(Irms) + ';'); //Sends Temperature,Humidity,Irms over bluetooth 
-  std::string message = receiveMessage();
-  Serial.println("recieved " + String(message.c_str()));
+  // Serial.println(message.c_str());
   if(message == "on") {
     digitalWrite(27, pinState=true);
   } else if (message == "off") {
