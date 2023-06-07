@@ -27,7 +27,7 @@ Dropdown Menu Credit: https://codepen.io/Kevin-Shin-the-builder/pen/xxQKMOJ
   
   /* Header styles */
   header {
-    background-color: #1c2447; /* Dark blue */
+    background-color: #00498D; /* Dark blue */
     color: #fff;
     display: flex;
     justify-content: space-between;
@@ -98,7 +98,7 @@ nav {
     left: 0;
     width: 100%;
     height: 80px;
-    background: #1c2447;
+    background: #00498D;
     padding: 16px;
     display: flex;
     justify-content: space-between;
