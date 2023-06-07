@@ -1,0 +1,6 @@
+framework module Pods_AEGISTests {
+  umbrella header "Pods-AEGISTests-umbrella.h"
+
+  export *
+  module * { export * }
+}

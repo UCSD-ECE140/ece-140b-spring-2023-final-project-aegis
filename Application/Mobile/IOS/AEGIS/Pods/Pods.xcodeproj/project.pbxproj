@@ -1,0 +1,1333 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		00654254E55F9442494F2093B6375B64 /* CocoaMQTT-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 49FCB56D569C63D2F3A61E1EA51F7F15 /* CocoaMQTT-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		009723EFF10B8CB53693974A02E56545 /* FrameSubAck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D841FAA8E433DD67CC8037FAE43FCBE /* FrameSubAck.swift */; };
+		092B1D04D64501BA7EE2830875347268 /* MGCDAsyncUdpSocket.h in Headers */ = {isa = PBXBuildFile; fileRef = F905A71731259E99D4ACEB435C2F0931 /* MGCDAsyncUdpSocket.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0EBEB199E82271CDA506C6C7801CE010 /* CocoaMQTT5.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA0CECE132E58656E8E7E46F4727A2D /* CocoaMQTT5.swift */; };
+		12E561C968C493A4306654826E39B9CF /* CocoaMQTT5Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841E672DEBC5997F267E28DC2D4257AA /* CocoaMQTT5Message.swift */; };
+		218D455F69E0B56721C357705EA9BEB5 /* CocoaMQTTSocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C45B67AB9B9A8EA8CA5D46BD0C5396 /* CocoaMQTTSocket.swift */; };
+		222F354844C0D1B2FAA963465C4C4B2D /* MqttDecodePubAck.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6FCE27442A3887AF20AA3A14B7D140D /* MqttDecodePubAck.swift */; };
+		25ADA4C85B21C94332DB940F85A54594 /* CocoaMQTT-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = C6BDB1FCEC4FC2EB648CB52B82815AF3 /* CocoaMQTT-dummy.m */; };
+		2972F002C0DF99255B64F56FDAB8095A /* FrameUnsubscribe.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8821620378775D0B7CFD1CD480158BD /* FrameUnsubscribe.swift */; };
+		2B8DBDD28E471C0714D8DAB90477DFB1 /* FramePubRel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0755F1E49A2DB29E000C8E4DAA6FDB4 /* FramePubRel.swift */; };
+		2D5AB8F5E20D72F3AD03BC8B939E642B /* Pods-AEGISTests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = CD7DCD83AD62D050A627C57139DC76B5 /* Pods-AEGISTests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		320BA57669BC58B6B6557AFADAC739EE /* MqttDecodePubRec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8930DBA20FF6B32D8BB50918142A2BD8 /* MqttDecodePubRec.swift */; };
+		39BE86E8C70346C255C443AF56E56B21 /* MqttDecodePubRel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 984EEC8EDB346B2239AF1A3FF870BC62 /* MqttDecodePubRel.swift */; };
+		3A04C81E6FB8BA6563D71CEE177FDD91 /* FramePublish.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85D2161F789E7DD9478FB8A957F47B0C /* FramePublish.swift */; };
+		3D77CCB387DB9B34FE8AFE3037E24DF7 /* CocoaMQTTTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B6F30EDD8E6021EE54FC30BA55674E8 /* CocoaMQTTTimer.swift */; };
+		3E8DD9B362FF01BDAA87C447C3EB6DB5 /* FramePingResp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C49D174D6C86CACBC99D330EB13DD5AD /* FramePingResp.swift */; };
+		43C11F869CDEE1EBC067AA9664256CBD /* CocoaMQTTLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2049212D7A059707E83269142F12D537 /* CocoaMQTTLogger.swift */; };
+		4AC425AF63BCB833261C57750690F205 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CB6704A70D55B80A3F7281F31BAE70C /* Foundation.framework */; };
+		60B85851FD5E94777483C92F442B8D8D /* Pods-AEGIS-AEGISUITests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = D805334BAEE0EAC9A29C2723E5B917BE /* Pods-AEGIS-AEGISUITests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		661E8D6A45CD99486DDF4734016900EF /* FramePubComp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D88BECB8388C6863DAD0B4C5A9E50D8E /* FramePubComp.swift */; };
+		66F6497DB0C4BF7727D3EF3ABE8E1F17 /* FramePingReq.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3CCA2E3E408452EF6BC93AD11796636 /* FramePingReq.swift */; };
+		6A9544345F79AB51429B77487F4D3722 /* MGCDAsyncUdpSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 5146DDE120A2D1ADE0048492A75A825E /* MGCDAsyncUdpSocket.m */; };
+		6E4FFBA8259001DFE516D1E51FD3AB24 /* FrameSubscribe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 642D8C85042C703E39C57810C9DAFC3C /* FrameSubscribe.swift */; };
+		6FBA586BFBEDC937AD367ABE22CB3A21 /* MqttSubscription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C82F5464E9DC5AE770DBA87109C3B67 /* MqttSubscription.swift */; };
+		6FEB9C893C39CC54B6CE7FC8A969BEFF /* MqttAuthProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69BD0EF46A3B1FAB094396B13CDE42B /* MqttAuthProperties.swift */; };
+		7508FFA35521F2263C8DFB84519746E9 /* Pods-AEGISTests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = C1C57FCFFA1D29EAA589E4D0598F6ADE /* Pods-AEGISTests-dummy.m */; };
+		7B12E173526F18E63C072EBF9A55DC6F /* MqttPublishProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C05D2572359163907EC5A7D76E9A26 /* MqttPublishProperties.swift */; };
+		7E42875A822FD94370D895858A5FA1C7 /* MqttDecodeUnsubAck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8930A61EB2E18369EBEB29955161A392 /* MqttDecodeUnsubAck.swift */; };
+		7ECDE6DED9F75459768AF1AC3E2A112D /* FramePubAck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 296D10CDC211AC61198D63154CDD4933 /* FramePubAck.swift */; };
+		7FCCA42B3E97F213037FB6FE7414B7AB /* CocoaMQTTTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF4888F699076306168F0E975BA331F /* CocoaMQTTTypes.swift */; };
+		8269FFF5638D3DC728AA616A3F750644 /* FramePubRec.swift in Sources */ = {isa = PBXBuildFile; fileRef = F436110DC6721D5AACF12E7E07278B15 /* FramePubRec.swift */; };
+		826CFB3EC9FA64D50CF2EBBA1AE674B7 /* CocoaMQTTReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B27200BF126C65D186E34F4BE78F1B8 /* CocoaMQTTReader.swift */; };
+		83EEBF8C034685403F8E5E6DB80135F3 /* CocoaMQTT.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2DB9875863600CF47906410A0BFE261 /* CocoaMQTT.swift */; };
+		8731A33E6471BBDC09182C320F64668C /* Frame.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B9741E696F35000052635603123C9A /* Frame.swift */; };
+		88E0EB005CD502E31861DE7C6295B492 /* MqttConnectProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AF701B08D05DDDC2DE84846D5022116 /* MqttConnectProperties.swift */; };
+		990C88F5D5EEEBA188D47A281B2EE767 /* MqttDecodeSubAck.swift in Sources */ = {isa = PBXBuildFile; fileRef = C87E1D07481332B991E3ADC517F4E1D9 /* MqttDecodeSubAck.swift */; };
+		9C1B515128DB8DC9D6151960B8DAB807 /* MqttDecodeConnAck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE25446055A4AFCEC0AACC20737D83B /* MqttDecodeConnAck.swift */; };
+		9CCB81014E5646095AFA08C19F7DE314 /* Pods-AEGIS-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 228BC8742CEB14698D9F237FF85EF1B6 /* Pods-AEGIS-dummy.m */; };
+		9CFB78ED37250B9D10D360194937DC80 /* MqttDecodePublish.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630F1DC10B9B5CC053EF816789D94E31 /* MqttDecodePublish.swift */; };
+		AA5A8DF181109A6187DAD5729751DF12 /* Pods-AEGIS-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = D0AB7213F3C5974038BE547459DD0E37 /* Pods-AEGIS-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		ADD10BF87C1816FD3B63829BD05843B4 /* MqttCocoaAsyncSocket-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D9B5C6197BBFCFF52C338CF6D2CE718 /* MqttCocoaAsyncSocket-dummy.m */; };
+		B16D68CB8C8FA7E6CF82C2E41C913CF2 /* CocoaMQTTMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E802D70BF0F88C67D14845336E45E384 /* CocoaMQTTMessage.swift */; };
+		B28225CC45BE49A845A800D5ADE33EC4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CB6704A70D55B80A3F7281F31BAE70C /* Foundation.framework */; };
+		B2C7C25A29B74BCB0066009106CCE8BE /* FrameConnect.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDF1B842289DEA618BCF531185AF09C1 /* FrameConnect.swift */; };
+		B76EFD397311C9CDACF1738B90BD12BE /* CocoaMQTTStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E59ED57828312AF26E8A730CB2504579 /* CocoaMQTTStorage.swift */; };
+		B81FD73C02E894E6C8BF9C5E42A030D2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CB6704A70D55B80A3F7281F31BAE70C /* Foundation.framework */; };
+		B9D1B4D9EFB0B12C502F537CB44BCAD4 /* MqttDecodePubComp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64BC36F20124C321A3D033D95671FE86 /* MqttDecodePubComp.swift */; };
+		BA7081956B4EEEFC84F21F775ED93673 /* CocoaMQTTDeliver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5856FADDD53CE4460E9047F27BBFA624 /* CocoaMQTTDeliver.swift */; };
+		CE7083949B644D1E56FFB08BE9B14100 /* FrameConnAck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 735AD43F3186EA695F4F5B65F8EFDA75 /* FrameConnAck.swift */; };
+		D04F3AD9FF887DEB4D65FB1F7260DD50 /* CocoaMQTTProperty.swift in Sources */ = {isa = PBXBuildFile; fileRef = C069CC6672500498414CE3F0D55087C6 /* CocoaMQTTProperty.swift */; };
+		D2C3F1FDF5A40A4CEE91AC798E55DD02 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CB6704A70D55B80A3F7281F31BAE70C /* Foundation.framework */; };
+		D36B8E8EF5B7E46B4FD59EF7089B77C3 /* MGCDAsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = FA6AA20AB795B7AAA6B836F7F3EA9237 /* MGCDAsyncSocket.m */; };
+		D829AA4913CF14728561DCD0FEDCE2D7 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7ABAB7562D0623DFC2D01E0A09448472 /* Security.framework */; };
+		DBDCF06B923CBC23AED598A152E588B8 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6BE90665B4A1053C5FF26D5289CBC83 /* CFNetwork.framework */; };
+		DC28646CF4E50A0BB534E1BDB4D083B5 /* CocoaMQTTReasonCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A48F87B4F7D6A379B49CC9288AFBB2 /* CocoaMQTTReasonCode.swift */; };
+		DCC7B8379DB52B1D155CB6903341DFD7 /* FrameDisconnect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BAEED1925140DB1D3CFD4FDA84AC0AF /* FrameDisconnect.swift */; };
+		E08C8B96541BBFAAB588287859B21066 /* Pods-AEGIS-AEGISUITests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = A70E31E1F01A481CD92B92C17BFC58B2 /* Pods-AEGIS-AEGISUITests-dummy.m */; };
+		E139CF037974F4728BCC544ECCD4120E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CB6704A70D55B80A3F7281F31BAE70C /* Foundation.framework */; };
+		E8D0DF004430595EE507E4AF6BA48784 /* FrameUnsubAck.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3998E0294993C08EC9ED429350B9760 /* FrameUnsubAck.swift */; };
+		E99D98B3AB1996A44E6A4ED744409419 /* FrameAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 488E9D6321CC3E2D6923096FA9FB13AC /* FrameAuth.swift */; };
+		EB9B07F7ACE0E6BB93D2258314E25DC4 /* MqttCocoaAsyncSocket-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 9BF831F6373BBBD5767997083EB5837F /* MqttCocoaAsyncSocket-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FF7E2BC5740F3782093E7B395A3DAD76 /* MGCDAsyncSocket.h in Headers */ = {isa = PBXBuildFile; fileRef = 5758F2635AA665A09C5335B3A35933E7 /* MGCDAsyncSocket.h */; settings = {ATTRIBUTES = (Public, ); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		0038CAAC57DF7681959B746AE4AACF79 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B017CC75E2704C686AA0A2203247D9C7;
+			remoteInfo = MqttCocoaAsyncSocket;
+		};
+		1E08BEBFC0723E9E3902C2FA3F54010E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4EB168A830EFA6136FA93357D1F1511A;
+			remoteInfo = CocoaMQTT;
+		};
+		2E973BEA651FB2C7F9714F2A84F016DB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4EB168A830EFA6136FA93357D1F1511A;
+			remoteInfo = CocoaMQTT;
+		};
+		42D453BA1E754CB8BDC75516122DE27C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B017CC75E2704C686AA0A2203247D9C7;
+			remoteInfo = MqttCocoaAsyncSocket;
+		};
+		8FAB07E1A6B9625715FD911F820C8A27 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 9FA7F4DA4332097A8A79E0973FEA2281;
+			remoteInfo = "Pods-AEGIS";
+		};
+		F74CFDA501FD292603ABAEE8AED8B0A1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B017CC75E2704C686AA0A2203247D9C7;
+			remoteInfo = MqttCocoaAsyncSocket;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		025813D05409F5BEBAA06B46FDF8FAE7 /* MqttCocoaAsyncSocket-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "MqttCocoaAsyncSocket-Info.plist"; sourceTree = "<group>"; };
+		08DE826BB58AC8456D39338C267DB337 /* MqttCocoaAsyncSocket */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = MqttCocoaAsyncSocket; path = MqttCocoaAsyncSocket.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		0B27200BF126C65D186E34F4BE78F1B8 /* CocoaMQTTReader.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CocoaMQTTReader.swift; path = Source/CocoaMQTTReader.swift; sourceTree = "<group>"; };
+		196F4A6BFFB9C49178E0C30502421F12 /* MqttCocoaAsyncSocket.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = MqttCocoaAsyncSocket.release.xcconfig; sourceTree = "<group>"; };
+		1BF15BE835694A4798B9F293A133D8DD /* MqttCocoaAsyncSocket.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = MqttCocoaAsyncSocket.debug.xcconfig; sourceTree = "<group>"; };
+		1F232AA8138D26F68C172445F189EFFF /* Pods-AEGIS-AEGISUITests */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-AEGIS-AEGISUITests"; path = Pods_AEGIS_AEGISUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2049212D7A059707E83269142F12D537 /* CocoaMQTTLogger.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CocoaMQTTLogger.swift; path = Source/CocoaMQTTLogger.swift; sourceTree = "<group>"; };
+		228BC8742CEB14698D9F237FF85EF1B6 /* Pods-AEGIS-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-AEGIS-dummy.m"; sourceTree = "<group>"; };
+		22C05D2572359163907EC5A7D76E9A26 /* MqttPublishProperties.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MqttPublishProperties.swift; path = Source/MqttPublishProperties.swift; sourceTree = "<group>"; };
+		296D10CDC211AC61198D63154CDD4933 /* FramePubAck.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FramePubAck.swift; path = Source/FramePubAck.swift; sourceTree = "<group>"; };
+		2BAEED1925140DB1D3CFD4FDA84AC0AF /* FrameDisconnect.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FrameDisconnect.swift; path = Source/FrameDisconnect.swift; sourceTree = "<group>"; };
+		2C82F5464E9DC5AE770DBA87109C3B67 /* MqttSubscription.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MqttSubscription.swift; path = Source/MqttSubscription.swift; sourceTree = "<group>"; };
+		3A6260684B47C7F7A42EE2C2ABE9BF35 /* Pods-AEGIS-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-AEGIS-frameworks.sh"; sourceTree = "<group>"; };
+		3D841FAA8E433DD67CC8037FAE43FCBE /* FrameSubAck.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FrameSubAck.swift; path = Source/FrameSubAck.swift; sourceTree = "<group>"; };
+		3EE25446055A4AFCEC0AACC20737D83B /* MqttDecodeConnAck.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MqttDecodeConnAck.swift; path = Source/MqttDecodeConnAck.swift; sourceTree = "<group>"; };
+		45D8E94623F23D969C40914319E8CBF6 /* Pods-AEGIS-AEGISUITests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-AEGIS-AEGISUITests.modulemap"; sourceTree = "<group>"; };
+		488E9D6321CC3E2D6923096FA9FB13AC /* FrameAuth.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FrameAuth.swift; path = Source/FrameAuth.swift; sourceTree = "<group>"; };
+		49C45B67AB9B9A8EA8CA5D46BD0C5396 /* CocoaMQTTSocket.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CocoaMQTTSocket.swift; path = Source/CocoaMQTTSocket.swift; sourceTree = "<group>"; };
+		49FCB56D569C63D2F3A61E1EA51F7F15 /* CocoaMQTT-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "CocoaMQTT-umbrella.h"; sourceTree = "<group>"; };
+		4AAEB85E966F31F4949AA15BCC3AC700 /* MqttCocoaAsyncSocket.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = MqttCocoaAsyncSocket.modulemap; sourceTree = "<group>"; };
+		4D6FFE31DCDEE9A9E74854C48E7F0B59 /* Pods-AEGISTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-AEGISTests.debug.xcconfig"; sourceTree = "<group>"; };
+		4FE66C760C0A4A4B8EEE3BEDDE6746B7 /* Pods-AEGIS-AEGISUITests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-AEGIS-AEGISUITests-Info.plist"; sourceTree = "<group>"; };
+		5067F3D6E0ED27732A80E499ECB20E2D /* Pods-AEGISTests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-AEGISTests-acknowledgements.plist"; sourceTree = "<group>"; };
+		511ED23A0C0374CFE440969378CD0339 /* Pods-AEGIS-AEGISUITests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-AEGIS-AEGISUITests-acknowledgements.markdown"; sourceTree = "<group>"; };
+		5146DDE120A2D1ADE0048492A75A825E /* MGCDAsyncUdpSocket.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MGCDAsyncUdpSocket.m; path = Source/GCD/MGCDAsyncUdpSocket.m; sourceTree = "<group>"; };
+		52F7D946747E24F3A2EFB7B7E388965E /* Pods-AEGIS */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-AEGIS"; path = Pods_AEGIS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5758F2635AA665A09C5335B3A35933E7 /* MGCDAsyncSocket.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MGCDAsyncSocket.h; path = Source/GCD/MGCDAsyncSocket.h; sourceTree = "<group>"; };
+		5856FADDD53CE4460E9047F27BBFA624 /* CocoaMQTTDeliver.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CocoaMQTTDeliver.swift; path = Source/CocoaMQTTDeliver.swift; sourceTree = "<group>"; };
+		630F1DC10B9B5CC053EF816789D94E31 /* MqttDecodePublish.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MqttDecodePublish.swift; path = Source/MqttDecodePublish.swift; sourceTree = "<group>"; };
+		642D8C85042C703E39C57810C9DAFC3C /* FrameSubscribe.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FrameSubscribe.swift; path = Source/FrameSubscribe.swift; sourceTree = "<group>"; };
+		64BC36F20124C321A3D033D95671FE86 /* MqttDecodePubComp.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MqttDecodePubComp.swift; path = Source/MqttDecodePubComp.swift; sourceTree = "<group>"; };
+		6B40587CB0B92C900C08DD9A98FE86EF /* Pods-AEGISTests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-AEGISTests-Info.plist"; sourceTree = "<group>"; };
+		70B8D8FD7245C1BDE628A93B99B67F7B /* Pods-AEGIS-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-AEGIS-acknowledgements.markdown"; sourceTree = "<group>"; };
+		735AD43F3186EA695F4F5B65F8EFDA75 /* FrameConnAck.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FrameConnAck.swift; path = Source/FrameConnAck.swift; sourceTree = "<group>"; };
+		76C5843C376CA05450CCEE1B413DAF2B /* Pods-AEGIS-AEGISUITests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-AEGIS-AEGISUITests-acknowledgements.plist"; sourceTree = "<group>"; };
+		799454B653A8F9CF1FD6B77358509496 /* CocoaMQTT.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = CocoaMQTT.debug.xcconfig; sourceTree = "<group>"; };
+		7ABAB7562D0623DFC2D01E0A09448472 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/Security.framework; sourceTree = DEVELOPER_DIR; };
+		7AF701B08D05DDDC2DE84846D5022116 /* MqttConnectProperties.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MqttConnectProperties.swift; path = Source/MqttConnectProperties.swift; sourceTree = "<group>"; };
+		7B6F30EDD8E6021EE54FC30BA55674E8 /* CocoaMQTTTimer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CocoaMQTTTimer.swift; path = Source/CocoaMQTTTimer.swift; sourceTree = "<group>"; };
+		7CB6704A70D55B80A3F7281F31BAE70C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		7D59F11AA96CF1453C0B17473F8F8999 /* Pods-AEGIS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-AEGIS.debug.xcconfig"; sourceTree = "<group>"; };
+		7EF1F90B7619D4226076C49C34338C06 /* Pods-AEGIS-AEGISUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-AEGIS-AEGISUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		841E672DEBC5997F267E28DC2D4257AA /* CocoaMQTT5Message.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CocoaMQTT5Message.swift; path = Source/CocoaMQTT5Message.swift; sourceTree = "<group>"; };
+		85D2161F789E7DD9478FB8A957F47B0C /* FramePublish.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FramePublish.swift; path = Source/FramePublish.swift; sourceTree = "<group>"; };
+		8930A61EB2E18369EBEB29955161A392 /* MqttDecodeUnsubAck.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MqttDecodeUnsubAck.swift; path = Source/MqttDecodeUnsubAck.swift; sourceTree = "<group>"; };
+		8930DBA20FF6B32D8BB50918142A2BD8 /* MqttDecodePubRec.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MqttDecodePubRec.swift; path = Source/MqttDecodePubRec.swift; sourceTree = "<group>"; };
+		984EEC8EDB346B2239AF1A3FF870BC62 /* MqttDecodePubRel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MqttDecodePubRel.swift; path = Source/MqttDecodePubRel.swift; sourceTree = "<group>"; };
+		9BF831F6373BBBD5767997083EB5837F /* MqttCocoaAsyncSocket-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MqttCocoaAsyncSocket-umbrella.h"; sourceTree = "<group>"; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9D9B5C6197BBFCFF52C338CF6D2CE718 /* MqttCocoaAsyncSocket-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "MqttCocoaAsyncSocket-dummy.m"; sourceTree = "<group>"; };
+		A3998E0294993C08EC9ED429350B9760 /* FrameUnsubAck.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FrameUnsubAck.swift; path = Source/FrameUnsubAck.swift; sourceTree = "<group>"; };
+		A3CCA2E3E408452EF6BC93AD11796636 /* FramePingReq.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FramePingReq.swift; path = Source/FramePingReq.swift; sourceTree = "<group>"; };
+		A6BE90665B4A1053C5FF26D5289CBC83 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/CFNetwork.framework; sourceTree = DEVELOPER_DIR; };
+		A70E31E1F01A481CD92B92C17BFC58B2 /* Pods-AEGIS-AEGISUITests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-AEGIS-AEGISUITests-dummy.m"; sourceTree = "<group>"; };
+		AD516FB6D3AF5067A9E3A6E72D8A4DC1 /* Pods-AEGIS-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-AEGIS-Info.plist"; sourceTree = "<group>"; };
+		B0778C098DB7CC98B95AC7559FD14C7B /* CocoaMQTT-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "CocoaMQTT-Info.plist"; sourceTree = "<group>"; };
+		B8821620378775D0B7CFD1CD480158BD /* FrameUnsubscribe.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FrameUnsubscribe.swift; path = Source/FrameUnsubscribe.swift; sourceTree = "<group>"; };
+		BBA3041B8F10771D79EA60658EB4333B /* CocoaMQTT-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "CocoaMQTT-prefix.pch"; sourceTree = "<group>"; };
+		BDF1B842289DEA618BCF531185AF09C1 /* FrameConnect.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FrameConnect.swift; path = Source/FrameConnect.swift; sourceTree = "<group>"; };
+		C069CC6672500498414CE3F0D55087C6 /* CocoaMQTTProperty.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CocoaMQTTProperty.swift; path = Source/CocoaMQTTProperty.swift; sourceTree = "<group>"; };
+		C0755F1E49A2DB29E000C8E4DAA6FDB4 /* FramePubRel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FramePubRel.swift; path = Source/FramePubRel.swift; sourceTree = "<group>"; };
+		C1507753BE7D9FABF1AA6B5179CC25C9 /* CocoaMQTT.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = CocoaMQTT.release.xcconfig; sourceTree = "<group>"; };
+		C1C57FCFFA1D29EAA589E4D0598F6ADE /* Pods-AEGISTests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-AEGISTests-dummy.m"; sourceTree = "<group>"; };
+		C49D174D6C86CACBC99D330EB13DD5AD /* FramePingResp.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FramePingResp.swift; path = Source/FramePingResp.swift; sourceTree = "<group>"; };
+		C4A7056311E57E2A39566F30A19DF666 /* Pods-AEGIS.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-AEGIS.modulemap"; sourceTree = "<group>"; };
+		C6BDB1FCEC4FC2EB648CB52B82815AF3 /* CocoaMQTT-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "CocoaMQTT-dummy.m"; sourceTree = "<group>"; };
+		C6FCE27442A3887AF20AA3A14B7D140D /* MqttDecodePubAck.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MqttDecodePubAck.swift; path = Source/MqttDecodePubAck.swift; sourceTree = "<group>"; };
+		C87E1D07481332B991E3ADC517F4E1D9 /* MqttDecodeSubAck.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MqttDecodeSubAck.swift; path = Source/MqttDecodeSubAck.swift; sourceTree = "<group>"; };
+		CAA0CECE132E58656E8E7E46F4727A2D /* CocoaMQTT5.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CocoaMQTT5.swift; path = Source/CocoaMQTT5.swift; sourceTree = "<group>"; };
+		CBF4888F699076306168F0E975BA331F /* CocoaMQTTTypes.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CocoaMQTTTypes.swift; path = Source/CocoaMQTTTypes.swift; sourceTree = "<group>"; };
+		CC35F939132A7E3BC4C70E60C66FC1EA /* Pods-AEGISTests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-AEGISTests.modulemap"; sourceTree = "<group>"; };
+		CC360FF7DCDBB79938C55BF014F32987 /* Pods-AEGISTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-AEGISTests.release.xcconfig"; sourceTree = "<group>"; };
+		CD7DCD83AD62D050A627C57139DC76B5 /* Pods-AEGISTests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-AEGISTests-umbrella.h"; sourceTree = "<group>"; };
+		D0AB7213F3C5974038BE547459DD0E37 /* Pods-AEGIS-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-AEGIS-umbrella.h"; sourceTree = "<group>"; };
+		D2DDFFA78E28FF7E25BD81AFA2A6D424 /* MqttCocoaAsyncSocket-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MqttCocoaAsyncSocket-prefix.pch"; sourceTree = "<group>"; };
+		D40C0768F0ACCB94589B4302C744B1A2 /* Pods-AEGISTests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-AEGISTests-acknowledgements.markdown"; sourceTree = "<group>"; };
+		D7B9741E696F35000052635603123C9A /* Frame.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Frame.swift; path = Source/Frame.swift; sourceTree = "<group>"; };
+		D805334BAEE0EAC9A29C2723E5B917BE /* Pods-AEGIS-AEGISUITests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-AEGIS-AEGISUITests-umbrella.h"; sourceTree = "<group>"; };
+		D88BECB8388C6863DAD0B4C5A9E50D8E /* FramePubComp.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FramePubComp.swift; path = Source/FramePubComp.swift; sourceTree = "<group>"; };
+		DA0059965A0F5E9DBDDAB82960D70706 /* Pods-AEGIS-AEGISUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-AEGIS-AEGISUITests.release.xcconfig"; sourceTree = "<group>"; };
+		DC0D23C0CA6D3053D5E69150794AD56C /* Pods-AEGIS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-AEGIS.release.xcconfig"; sourceTree = "<group>"; };
+		DEBB89C765D967FB4FAADCECA49B4188 /* Pods-AEGIS-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-AEGIS-acknowledgements.plist"; sourceTree = "<group>"; };
+		E59ED57828312AF26E8A730CB2504579 /* CocoaMQTTStorage.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CocoaMQTTStorage.swift; path = Source/CocoaMQTTStorage.swift; sourceTree = "<group>"; };
+		E6A4E1627379D6540B81A470C575D716 /* CocoaMQTT */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = CocoaMQTT; path = CocoaMQTT.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E802D70BF0F88C67D14845336E45E384 /* CocoaMQTTMessage.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CocoaMQTTMessage.swift; path = Source/CocoaMQTTMessage.swift; sourceTree = "<group>"; };
+		E9A48F87B4F7D6A379B49CC9288AFBB2 /* CocoaMQTTReasonCode.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CocoaMQTTReasonCode.swift; path = Source/CocoaMQTTReasonCode.swift; sourceTree = "<group>"; };
+		F2DB9875863600CF47906410A0BFE261 /* CocoaMQTT.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CocoaMQTT.swift; path = Source/CocoaMQTT.swift; sourceTree = "<group>"; };
+		F35A7DD8292078A6211A2B0F53464B98 /* Pods-AEGIS-AEGISUITests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-AEGIS-AEGISUITests-frameworks.sh"; sourceTree = "<group>"; };
+		F436110DC6721D5AACF12E7E07278B15 /* FramePubRec.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FramePubRec.swift; path = Source/FramePubRec.swift; sourceTree = "<group>"; };
+		F69BD0EF46A3B1FAB094396B13CDE42B /* MqttAuthProperties.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MqttAuthProperties.swift; path = Source/MqttAuthProperties.swift; sourceTree = "<group>"; };
+		F824954AC670327E898E81481ACE3259 /* CocoaMQTT.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = CocoaMQTT.modulemap; sourceTree = "<group>"; };
+		F905A71731259E99D4ACEB435C2F0931 /* MGCDAsyncUdpSocket.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MGCDAsyncUdpSocket.h; path = Source/GCD/MGCDAsyncUdpSocket.h; sourceTree = "<group>"; };
+		FA6AA20AB795B7AAA6B836F7F3EA9237 /* MGCDAsyncSocket.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MGCDAsyncSocket.m; path = Source/GCD/MGCDAsyncSocket.m; sourceTree = "<group>"; };
+		FA8E49D15F202A341AF62C172D5B10FA /* Pods-AEGISTests */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-AEGISTests"; path = Pods_AEGISTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		2261F62D8BBAE2E364D6FA92E7BC4240 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E139CF037974F4728BCC544ECCD4120E /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5A072166F8280B8F17B789DED22EBE53 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B81FD73C02E894E6C8BF9C5E42A030D2 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7A917B1FE03DEC3E323E740F95B8B494 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DBDCF06B923CBC23AED598A152E588B8 /* CFNetwork.framework in Frameworks */,
+				B28225CC45BE49A845A800D5ADE33EC4 /* Foundation.framework in Frameworks */,
+				D829AA4913CF14728561DCD0FEDCE2D7 /* Security.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		93D91EEBB5EDBFA9BB64A3354C02997E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4AC425AF63BCB833261C57750690F205 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E0CDD3FB80E2A6C64899EF77C31C9E20 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D2C3F1FDF5A40A4CEE91AC798E55DD02 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		03C5C200A0787E300053CFA8F53CA094 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D5B250C191F0E4C7AD947CD0C88A0F4B /* iOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		0EAB4E894C51D659BAE9576E7312D751 /* Pods-AEGISTests */ = {
+			isa = PBXGroup;
+			children = (
+				CC35F939132A7E3BC4C70E60C66FC1EA /* Pods-AEGISTests.modulemap */,
+				D40C0768F0ACCB94589B4302C744B1A2 /* Pods-AEGISTests-acknowledgements.markdown */,
+				5067F3D6E0ED27732A80E499ECB20E2D /* Pods-AEGISTests-acknowledgements.plist */,
+				C1C57FCFFA1D29EAA589E4D0598F6ADE /* Pods-AEGISTests-dummy.m */,
+				6B40587CB0B92C900C08DD9A98FE86EF /* Pods-AEGISTests-Info.plist */,
+				CD7DCD83AD62D050A627C57139DC76B5 /* Pods-AEGISTests-umbrella.h */,
+				4D6FFE31DCDEE9A9E74854C48E7F0B59 /* Pods-AEGISTests.debug.xcconfig */,
+				CC360FF7DCDBB79938C55BF014F32987 /* Pods-AEGISTests.release.xcconfig */,
+			);
+			name = "Pods-AEGISTests";
+			path = "Target Support Files/Pods-AEGISTests";
+			sourceTree = "<group>";
+		};
+		41F312B8FD3D9203FF5CBCD8F4FD41C9 /* MqttCocoaAsyncSocket */ = {
+			isa = PBXGroup;
+			children = (
+				5758F2635AA665A09C5335B3A35933E7 /* MGCDAsyncSocket.h */,
+				FA6AA20AB795B7AAA6B836F7F3EA9237 /* MGCDAsyncSocket.m */,
+				F905A71731259E99D4ACEB435C2F0931 /* MGCDAsyncUdpSocket.h */,
+				5146DDE120A2D1ADE0048492A75A825E /* MGCDAsyncUdpSocket.m */,
+				AD3D24E4015F6E0699A873643808301F /* Support Files */,
+			);
+			name = MqttCocoaAsyncSocket;
+			path = MqttCocoaAsyncSocket;
+			sourceTree = "<group>";
+		};
+		4BF635381C36EDCB4C419850BD47EFBF /* CocoaMQTT */ = {
+			isa = PBXGroup;
+			children = (
+				E90C7552EC53AEF337D8B5223957B061 /* Core */,
+				D5BECA46A5B4334D526B42F894A11F39 /* Support Files */,
+			);
+			name = CocoaMQTT;
+			path = CocoaMQTT;
+			sourceTree = "<group>";
+		};
+		93A0AFD7471EDC1355D5F2A7D5621BD7 /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				B68C38E2722C6A510B6B97B92B9098BB /* Pods-AEGIS */,
+				A82E43B451A199415C5CF40C9C090048 /* Pods-AEGIS-AEGISUITests */,
+				0EAB4E894C51D659BAE9576E7312D751 /* Pods-AEGISTests */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		A82E43B451A199415C5CF40C9C090048 /* Pods-AEGIS-AEGISUITests */ = {
+			isa = PBXGroup;
+			children = (
+				45D8E94623F23D969C40914319E8CBF6 /* Pods-AEGIS-AEGISUITests.modulemap */,
+				511ED23A0C0374CFE440969378CD0339 /* Pods-AEGIS-AEGISUITests-acknowledgements.markdown */,
+				76C5843C376CA05450CCEE1B413DAF2B /* Pods-AEGIS-AEGISUITests-acknowledgements.plist */,
+				A70E31E1F01A481CD92B92C17BFC58B2 /* Pods-AEGIS-AEGISUITests-dummy.m */,
+				F35A7DD8292078A6211A2B0F53464B98 /* Pods-AEGIS-AEGISUITests-frameworks.sh */,
+				4FE66C760C0A4A4B8EEE3BEDDE6746B7 /* Pods-AEGIS-AEGISUITests-Info.plist */,
+				D805334BAEE0EAC9A29C2723E5B917BE /* Pods-AEGIS-AEGISUITests-umbrella.h */,
+				7EF1F90B7619D4226076C49C34338C06 /* Pods-AEGIS-AEGISUITests.debug.xcconfig */,
+				DA0059965A0F5E9DBDDAB82960D70706 /* Pods-AEGIS-AEGISUITests.release.xcconfig */,
+			);
+			name = "Pods-AEGIS-AEGISUITests";
+			path = "Target Support Files/Pods-AEGIS-AEGISUITests";
+			sourceTree = "<group>";
+		};
+		AD3D24E4015F6E0699A873643808301F /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				4AAEB85E966F31F4949AA15BCC3AC700 /* MqttCocoaAsyncSocket.modulemap */,
+				9D9B5C6197BBFCFF52C338CF6D2CE718 /* MqttCocoaAsyncSocket-dummy.m */,
+				025813D05409F5BEBAA06B46FDF8FAE7 /* MqttCocoaAsyncSocket-Info.plist */,
+				D2DDFFA78E28FF7E25BD81AFA2A6D424 /* MqttCocoaAsyncSocket-prefix.pch */,
+				9BF831F6373BBBD5767997083EB5837F /* MqttCocoaAsyncSocket-umbrella.h */,
+				1BF15BE835694A4798B9F293A133D8DD /* MqttCocoaAsyncSocket.debug.xcconfig */,
+				196F4A6BFFB9C49178E0C30502421F12 /* MqttCocoaAsyncSocket.release.xcconfig */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/MqttCocoaAsyncSocket";
+			sourceTree = "<group>";
+		};
+		B68C38E2722C6A510B6B97B92B9098BB /* Pods-AEGIS */ = {
+			isa = PBXGroup;
+			children = (
+				C4A7056311E57E2A39566F30A19DF666 /* Pods-AEGIS.modulemap */,
+				70B8D8FD7245C1BDE628A93B99B67F7B /* Pods-AEGIS-acknowledgements.markdown */,
+				DEBB89C765D967FB4FAADCECA49B4188 /* Pods-AEGIS-acknowledgements.plist */,
+				228BC8742CEB14698D9F237FF85EF1B6 /* Pods-AEGIS-dummy.m */,
+				3A6260684B47C7F7A42EE2C2ABE9BF35 /* Pods-AEGIS-frameworks.sh */,
+				AD516FB6D3AF5067A9E3A6E72D8A4DC1 /* Pods-AEGIS-Info.plist */,
+				D0AB7213F3C5974038BE547459DD0E37 /* Pods-AEGIS-umbrella.h */,
+				7D59F11AA96CF1453C0B17473F8F8999 /* Pods-AEGIS.debug.xcconfig */,
+				DC0D23C0CA6D3053D5E69150794AD56C /* Pods-AEGIS.release.xcconfig */,
+			);
+			name = "Pods-AEGIS";
+			path = "Target Support Files/Pods-AEGIS";
+			sourceTree = "<group>";
+		};
+		BBF55C10895DD5C0EEBD15454B6A6EF6 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				E6A4E1627379D6540B81A470C575D716 /* CocoaMQTT */,
+				08DE826BB58AC8456D39338C267DB337 /* MqttCocoaAsyncSocket */,
+				52F7D946747E24F3A2EFB7B7E388965E /* Pods-AEGIS */,
+				1F232AA8138D26F68C172445F189EFFF /* Pods-AEGIS-AEGISUITests */,
+				FA8E49D15F202A341AF62C172D5B10FA /* Pods-AEGISTests */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		CF1408CF629C7361332E53B88F7BD30C = {
+			isa = PBXGroup;
+			children = (
+				9D940727FF8FB9C785EB98E56350EF41 /* Podfile */,
+				03C5C200A0787E300053CFA8F53CA094 /* Frameworks */,
+				E52C7379BCFBBD5F3C04250566FCA3BF /* Pods */,
+				BBF55C10895DD5C0EEBD15454B6A6EF6 /* Products */,
+				93A0AFD7471EDC1355D5F2A7D5621BD7 /* Targets Support Files */,
+			);
+			sourceTree = "<group>";
+		};
+		D5B250C191F0E4C7AD947CD0C88A0F4B /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				A6BE90665B4A1053C5FF26D5289CBC83 /* CFNetwork.framework */,
+				7CB6704A70D55B80A3F7281F31BAE70C /* Foundation.framework */,
+				7ABAB7562D0623DFC2D01E0A09448472 /* Security.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		D5BECA46A5B4334D526B42F894A11F39 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				F824954AC670327E898E81481ACE3259 /* CocoaMQTT.modulemap */,
+				C6BDB1FCEC4FC2EB648CB52B82815AF3 /* CocoaMQTT-dummy.m */,
+				B0778C098DB7CC98B95AC7559FD14C7B /* CocoaMQTT-Info.plist */,
+				BBA3041B8F10771D79EA60658EB4333B /* CocoaMQTT-prefix.pch */,
+				49FCB56D569C63D2F3A61E1EA51F7F15 /* CocoaMQTT-umbrella.h */,
+				799454B653A8F9CF1FD6B77358509496 /* CocoaMQTT.debug.xcconfig */,
+				C1507753BE7D9FABF1AA6B5179CC25C9 /* CocoaMQTT.release.xcconfig */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/CocoaMQTT";
+			sourceTree = "<group>";
+		};
+		E52C7379BCFBBD5F3C04250566FCA3BF /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				4BF635381C36EDCB4C419850BD47EFBF /* CocoaMQTT */,
+				41F312B8FD3D9203FF5CBCD8F4FD41C9 /* MqttCocoaAsyncSocket */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		E90C7552EC53AEF337D8B5223957B061 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				F2DB9875863600CF47906410A0BFE261 /* CocoaMQTT.swift */,
+				CAA0CECE132E58656E8E7E46F4727A2D /* CocoaMQTT5.swift */,
+				841E672DEBC5997F267E28DC2D4257AA /* CocoaMQTT5Message.swift */,
+				5856FADDD53CE4460E9047F27BBFA624 /* CocoaMQTTDeliver.swift */,
+				2049212D7A059707E83269142F12D537 /* CocoaMQTTLogger.swift */,
+				E802D70BF0F88C67D14845336E45E384 /* CocoaMQTTMessage.swift */,
+				C069CC6672500498414CE3F0D55087C6 /* CocoaMQTTProperty.swift */,
+				0B27200BF126C65D186E34F4BE78F1B8 /* CocoaMQTTReader.swift */,
+				E9A48F87B4F7D6A379B49CC9288AFBB2 /* CocoaMQTTReasonCode.swift */,
+				49C45B67AB9B9A8EA8CA5D46BD0C5396 /* CocoaMQTTSocket.swift */,
+				E59ED57828312AF26E8A730CB2504579 /* CocoaMQTTStorage.swift */,
+				7B6F30EDD8E6021EE54FC30BA55674E8 /* CocoaMQTTTimer.swift */,
+				CBF4888F699076306168F0E975BA331F /* CocoaMQTTTypes.swift */,
+				D7B9741E696F35000052635603123C9A /* Frame.swift */,
+				488E9D6321CC3E2D6923096FA9FB13AC /* FrameAuth.swift */,
+				735AD43F3186EA695F4F5B65F8EFDA75 /* FrameConnAck.swift */,
+				BDF1B842289DEA618BCF531185AF09C1 /* FrameConnect.swift */,
+				2BAEED1925140DB1D3CFD4FDA84AC0AF /* FrameDisconnect.swift */,
+				A3CCA2E3E408452EF6BC93AD11796636 /* FramePingReq.swift */,
+				C49D174D6C86CACBC99D330EB13DD5AD /* FramePingResp.swift */,
+				296D10CDC211AC61198D63154CDD4933 /* FramePubAck.swift */,
+				D88BECB8388C6863DAD0B4C5A9E50D8E /* FramePubComp.swift */,
+				85D2161F789E7DD9478FB8A957F47B0C /* FramePublish.swift */,
+				F436110DC6721D5AACF12E7E07278B15 /* FramePubRec.swift */,
+				C0755F1E49A2DB29E000C8E4DAA6FDB4 /* FramePubRel.swift */,
+				3D841FAA8E433DD67CC8037FAE43FCBE /* FrameSubAck.swift */,
+				642D8C85042C703E39C57810C9DAFC3C /* FrameSubscribe.swift */,
+				A3998E0294993C08EC9ED429350B9760 /* FrameUnsubAck.swift */,
+				B8821620378775D0B7CFD1CD480158BD /* FrameUnsubscribe.swift */,
+				F69BD0EF46A3B1FAB094396B13CDE42B /* MqttAuthProperties.swift */,
+				7AF701B08D05DDDC2DE84846D5022116 /* MqttConnectProperties.swift */,
+				3EE25446055A4AFCEC0AACC20737D83B /* MqttDecodeConnAck.swift */,
+				C6FCE27442A3887AF20AA3A14B7D140D /* MqttDecodePubAck.swift */,
+				64BC36F20124C321A3D033D95671FE86 /* MqttDecodePubComp.swift */,
+				630F1DC10B9B5CC053EF816789D94E31 /* MqttDecodePublish.swift */,
+				8930DBA20FF6B32D8BB50918142A2BD8 /* MqttDecodePubRec.swift */,
+				984EEC8EDB346B2239AF1A3FF870BC62 /* MqttDecodePubRel.swift */,
+				C87E1D07481332B991E3ADC517F4E1D9 /* MqttDecodeSubAck.swift */,
+				8930A61EB2E18369EBEB29955161A392 /* MqttDecodeUnsubAck.swift */,
+				22C05D2572359163907EC5A7D76E9A26 /* MqttPublishProperties.swift */,
+				2C82F5464E9DC5AE770DBA87109C3B67 /* MqttSubscription.swift */,
+			);
+			name = Core;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		12C283ABFF2A724600DC3B5FF6DDF005 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				00654254E55F9442494F2093B6375B64 /* CocoaMQTT-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		35D10720AB0E8B0F436473397B42EC42 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2D5AB8F5E20D72F3AD03BC8B939E642B /* Pods-AEGISTests-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		38F5121DD01E843A834003DCAB2EF631 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FF7E2BC5740F3782093E7B395A3DAD76 /* MGCDAsyncSocket.h in Headers */,
+				092B1D04D64501BA7EE2830875347268 /* MGCDAsyncUdpSocket.h in Headers */,
+				EB9B07F7ACE0E6BB93D2258314E25DC4 /* MqttCocoaAsyncSocket-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		44AC8CE27E04554187FA22220351F25A /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				60B85851FD5E94777483C92F442B8D8D /* Pods-AEGIS-AEGISUITests-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B1F1517D6D79F24CB06FE3A89D294746 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AA5A8DF181109A6187DAD5729751DF12 /* Pods-AEGIS-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		0D300B7EF160D6840E3955DCC1FB620B /* Pods-AEGISTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 758753E885A0A8D6431FEA619A32D51D /* Build configuration list for PBXNativeTarget "Pods-AEGISTests" */;
+			buildPhases = (
+				35D10720AB0E8B0F436473397B42EC42 /* Headers */,
+				3012E5DDF890960575B4459FCDA96952 /* Sources */,
+				5A072166F8280B8F17B789DED22EBE53 /* Frameworks */,
+				9FDA7326B8DB412A1650FFEE172331E0 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				116C4CFC7C8BBEE6D4BC0F5408A2DFCC /* PBXTargetDependency */,
+			);
+			name = "Pods-AEGISTests";
+			productName = Pods_AEGISTests;
+			productReference = FA8E49D15F202A341AF62C172D5B10FA /* Pods-AEGISTests */;
+			productType = "com.apple.product-type.framework";
+		};
+		14A54E0E82FF78F9850E219ADB3E1962 /* Pods-AEGIS-AEGISUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5E375A123804332911DA6B7F6B3D8B75 /* Build configuration list for PBXNativeTarget "Pods-AEGIS-AEGISUITests" */;
+			buildPhases = (
+				44AC8CE27E04554187FA22220351F25A /* Headers */,
+				38B35C9D4B24C7D5CFDDA91E68B3A9EC /* Sources */,
+				93D91EEBB5EDBFA9BB64A3354C02997E /* Frameworks */,
+				52C219499DCEFE78459CAF9F9CA86427 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				37AFF726CD88AA34CAE2503C8A46AA9D /* PBXTargetDependency */,
+				EDE509654EE2472261D3122BBE7F998E /* PBXTargetDependency */,
+			);
+			name = "Pods-AEGIS-AEGISUITests";
+			productName = Pods_AEGIS_AEGISUITests;
+			productReference = 1F232AA8138D26F68C172445F189EFFF /* Pods-AEGIS-AEGISUITests */;
+			productType = "com.apple.product-type.framework";
+		};
+		4EB168A830EFA6136FA93357D1F1511A /* CocoaMQTT */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3ABDDB4167E34C01CB195655EEA9379C /* Build configuration list for PBXNativeTarget "CocoaMQTT" */;
+			buildPhases = (
+				12C283ABFF2A724600DC3B5FF6DDF005 /* Headers */,
+				A73B9A1D7A255349A15944D378F616F1 /* Sources */,
+				E0CDD3FB80E2A6C64899EF77C31C9E20 /* Frameworks */,
+				81A35C84E95F0BFAA75173DF0E149C40 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				1B5D0BF33D0020FCA80E23AC146CCC39 /* PBXTargetDependency */,
+			);
+			name = CocoaMQTT;
+			productName = CocoaMQTT;
+			productReference = E6A4E1627379D6540B81A470C575D716 /* CocoaMQTT */;
+			productType = "com.apple.product-type.framework";
+		};
+		9FA7F4DA4332097A8A79E0973FEA2281 /* Pods-AEGIS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FEAD84AD1718966E603FEF84DFB81386 /* Build configuration list for PBXNativeTarget "Pods-AEGIS" */;
+			buildPhases = (
+				B1F1517D6D79F24CB06FE3A89D294746 /* Headers */,
+				028455A138618B4A37DF391D6616741C /* Sources */,
+				2261F62D8BBAE2E364D6FA92E7BC4240 /* Frameworks */,
+				A3306CF783560339F5BFA145CCA323CB /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				723E863E36A4B079509BBAA77A2FD85A /* PBXTargetDependency */,
+				ED16E58813BDBE0E9EF5CDFFFAD5D6CD /* PBXTargetDependency */,
+			);
+			name = "Pods-AEGIS";
+			productName = Pods_AEGIS;
+			productReference = 52F7D946747E24F3A2EFB7B7E388965E /* Pods-AEGIS */;
+			productType = "com.apple.product-type.framework";
+		};
+		B017CC75E2704C686AA0A2203247D9C7 /* MqttCocoaAsyncSocket */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BC7B0D94AB6A58E22FF6C9E4254766FF /* Build configuration list for PBXNativeTarget "MqttCocoaAsyncSocket" */;
+			buildPhases = (
+				38F5121DD01E843A834003DCAB2EF631 /* Headers */,
+				CDBCA5FF609BC2B59E53EA4CA7FEBAFF /* Sources */,
+				7A917B1FE03DEC3E323E740F95B8B494 /* Frameworks */,
+				39D89C547A2834445A32164788306886 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MqttCocoaAsyncSocket;
+			productName = MqttCocoaAsyncSocket;
+			productReference = 08DE826BB58AC8456D39338C267DB337 /* MqttCocoaAsyncSocket */;
+			productType = "com.apple.product-type.framework";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		BFDFE7DC352907FC980B868725387E98 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1300;
+				LastUpgradeCheck = 1300;
+			};
+			buildConfigurationList = 4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = CF1408CF629C7361332E53B88F7BD30C;
+			productRefGroup = BBF55C10895DD5C0EEBD15454B6A6EF6 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				4EB168A830EFA6136FA93357D1F1511A /* CocoaMQTT */,
+				B017CC75E2704C686AA0A2203247D9C7 /* MqttCocoaAsyncSocket */,
+				9FA7F4DA4332097A8A79E0973FEA2281 /* Pods-AEGIS */,
+				14A54E0E82FF78F9850E219ADB3E1962 /* Pods-AEGIS-AEGISUITests */,
+				0D300B7EF160D6840E3955DCC1FB620B /* Pods-AEGISTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		39D89C547A2834445A32164788306886 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		52C219499DCEFE78459CAF9F9CA86427 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		81A35C84E95F0BFAA75173DF0E149C40 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9FDA7326B8DB412A1650FFEE172331E0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A3306CF783560339F5BFA145CCA323CB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		028455A138618B4A37DF391D6616741C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9CCB81014E5646095AFA08C19F7DE314 /* Pods-AEGIS-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3012E5DDF890960575B4459FCDA96952 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7508FFA35521F2263C8DFB84519746E9 /* Pods-AEGISTests-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		38B35C9D4B24C7D5CFDDA91E68B3A9EC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E08C8B96541BBFAAB588287859B21066 /* Pods-AEGIS-AEGISUITests-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A73B9A1D7A255349A15944D378F616F1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				83EEBF8C034685403F8E5E6DB80135F3 /* CocoaMQTT.swift in Sources */,
+				25ADA4C85B21C94332DB940F85A54594 /* CocoaMQTT-dummy.m in Sources */,
+				0EBEB199E82271CDA506C6C7801CE010 /* CocoaMQTT5.swift in Sources */,
+				12E561C968C493A4306654826E39B9CF /* CocoaMQTT5Message.swift in Sources */,
+				BA7081956B4EEEFC84F21F775ED93673 /* CocoaMQTTDeliver.swift in Sources */,
+				43C11F869CDEE1EBC067AA9664256CBD /* CocoaMQTTLogger.swift in Sources */,
+				B16D68CB8C8FA7E6CF82C2E41C913CF2 /* CocoaMQTTMessage.swift in Sources */,
+				D04F3AD9FF887DEB4D65FB1F7260DD50 /* CocoaMQTTProperty.swift in Sources */,
+				826CFB3EC9FA64D50CF2EBBA1AE674B7 /* CocoaMQTTReader.swift in Sources */,
+				DC28646CF4E50A0BB534E1BDB4D083B5 /* CocoaMQTTReasonCode.swift in Sources */,
+				218D455F69E0B56721C357705EA9BEB5 /* CocoaMQTTSocket.swift in Sources */,
+				B76EFD397311C9CDACF1738B90BD12BE /* CocoaMQTTStorage.swift in Sources */,
+				3D77CCB387DB9B34FE8AFE3037E24DF7 /* CocoaMQTTTimer.swift in Sources */,
+				7FCCA42B3E97F213037FB6FE7414B7AB /* CocoaMQTTTypes.swift in Sources */,
+				8731A33E6471BBDC09182C320F64668C /* Frame.swift in Sources */,
+				E99D98B3AB1996A44E6A4ED744409419 /* FrameAuth.swift in Sources */,
+				CE7083949B644D1E56FFB08BE9B14100 /* FrameConnAck.swift in Sources */,
+				B2C7C25A29B74BCB0066009106CCE8BE /* FrameConnect.swift in Sources */,
+				DCC7B8379DB52B1D155CB6903341DFD7 /* FrameDisconnect.swift in Sources */,
+				66F6497DB0C4BF7727D3EF3ABE8E1F17 /* FramePingReq.swift in Sources */,
+				3E8DD9B362FF01BDAA87C447C3EB6DB5 /* FramePingResp.swift in Sources */,
+				7ECDE6DED9F75459768AF1AC3E2A112D /* FramePubAck.swift in Sources */,
+				661E8D6A45CD99486DDF4734016900EF /* FramePubComp.swift in Sources */,
+				3A04C81E6FB8BA6563D71CEE177FDD91 /* FramePublish.swift in Sources */,
+				8269FFF5638D3DC728AA616A3F750644 /* FramePubRec.swift in Sources */,
+				2B8DBDD28E471C0714D8DAB90477DFB1 /* FramePubRel.swift in Sources */,
+				009723EFF10B8CB53693974A02E56545 /* FrameSubAck.swift in Sources */,
+				6E4FFBA8259001DFE516D1E51FD3AB24 /* FrameSubscribe.swift in Sources */,
+				E8D0DF004430595EE507E4AF6BA48784 /* FrameUnsubAck.swift in Sources */,
+				2972F002C0DF99255B64F56FDAB8095A /* FrameUnsubscribe.swift in Sources */,
+				6FEB9C893C39CC54B6CE7FC8A969BEFF /* MqttAuthProperties.swift in Sources */,
+				88E0EB005CD502E31861DE7C6295B492 /* MqttConnectProperties.swift in Sources */,
+				9C1B515128DB8DC9D6151960B8DAB807 /* MqttDecodeConnAck.swift in Sources */,
+				222F354844C0D1B2FAA963465C4C4B2D /* MqttDecodePubAck.swift in Sources */,
+				B9D1B4D9EFB0B12C502F537CB44BCAD4 /* MqttDecodePubComp.swift in Sources */,
+				9CFB78ED37250B9D10D360194937DC80 /* MqttDecodePublish.swift in Sources */,
+				320BA57669BC58B6B6557AFADAC739EE /* MqttDecodePubRec.swift in Sources */,
+				39BE86E8C70346C255C443AF56E56B21 /* MqttDecodePubRel.swift in Sources */,
+				990C88F5D5EEEBA188D47A281B2EE767 /* MqttDecodeSubAck.swift in Sources */,
+				7E42875A822FD94370D895858A5FA1C7 /* MqttDecodeUnsubAck.swift in Sources */,
+				7B12E173526F18E63C072EBF9A55DC6F /* MqttPublishProperties.swift in Sources */,
+				6FBA586BFBEDC937AD367ABE22CB3A21 /* MqttSubscription.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CDBCA5FF609BC2B59E53EA4CA7FEBAFF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D36B8E8EF5B7E46B4FD59EF7089B77C3 /* MGCDAsyncSocket.m in Sources */,
+				6A9544345F79AB51429B77487F4D3722 /* MGCDAsyncUdpSocket.m in Sources */,
+				ADD10BF87C1816FD3B63829BD05843B4 /* MqttCocoaAsyncSocket-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		116C4CFC7C8BBEE6D4BC0F5408A2DFCC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "Pods-AEGIS";
+			target = 9FA7F4DA4332097A8A79E0973FEA2281 /* Pods-AEGIS */;
+			targetProxy = 8FAB07E1A6B9625715FD911F820C8A27 /* PBXContainerItemProxy */;
+		};
+		1B5D0BF33D0020FCA80E23AC146CCC39 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = MqttCocoaAsyncSocket;
+			target = B017CC75E2704C686AA0A2203247D9C7 /* MqttCocoaAsyncSocket */;
+			targetProxy = 42D453BA1E754CB8BDC75516122DE27C /* PBXContainerItemProxy */;
+		};
+		37AFF726CD88AA34CAE2503C8A46AA9D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = CocoaMQTT;
+			target = 4EB168A830EFA6136FA93357D1F1511A /* CocoaMQTT */;
+			targetProxy = 2E973BEA651FB2C7F9714F2A84F016DB /* PBXContainerItemProxy */;
+		};
+		723E863E36A4B079509BBAA77A2FD85A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = CocoaMQTT;
+			target = 4EB168A830EFA6136FA93357D1F1511A /* CocoaMQTT */;
+			targetProxy = 1E08BEBFC0723E9E3902C2FA3F54010E /* PBXContainerItemProxy */;
+		};
+		ED16E58813BDBE0E9EF5CDFFFAD5D6CD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = MqttCocoaAsyncSocket;
+			target = B017CC75E2704C686AA0A2203247D9C7 /* MqttCocoaAsyncSocket */;
+			targetProxy = 0038CAAC57DF7681959B746AE4AACF79 /* PBXContainerItemProxy */;
+		};
+		EDE509654EE2472261D3122BBE7F998E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = MqttCocoaAsyncSocket;
+			target = B017CC75E2704C686AA0A2203247D9C7 /* MqttCocoaAsyncSocket */;
+			targetProxy = F74CFDA501FD292603ABAEE8AED8B0A1 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		0913BDA782A88FAE0117804230CDEEBE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4D6FFE31DCDEE9A9E74854C48E7F0B59 /* Pods-AEGISTests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-AEGISTests/Pods-AEGISTests-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-AEGISTests/Pods-AEGISTests.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		0A650B0644BA78A740842D050DE2E264 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7EF1F90B7619D4226076C49C34338C06 /* Pods-AEGIS-AEGISUITests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-AEGIS-AEGISUITests/Pods-AEGIS-AEGISUITests-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-AEGIS-AEGISUITests/Pods-AEGIS-AEGISUITests.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		6463B9F9F7D0910917386C7C271A4F80 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C1507753BE7D9FABF1AA6B5179CC25C9 /* CocoaMQTT.release.xcconfig */;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/CocoaMQTT/CocoaMQTT-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/CocoaMQTT/CocoaMQTT-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/CocoaMQTT/CocoaMQTT.modulemap";
+				PRODUCT_MODULE_NAME = CocoaMQTT;
+				PRODUCT_NAME = CocoaMQTT;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		73C4BE8F348D22D8820472B09F4A49D9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = CC360FF7DCDBB79938C55BF014F32987 /* Pods-AEGISTests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-AEGISTests/Pods-AEGISTests-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-AEGISTests/Pods-AEGISTests.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		7C3FBC45C4966EFE20583918767EFBE2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_DEBUG=1",
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Debug;
+		};
+		9022792A87D43534DFBCF822E213BE6E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7D59F11AA96CF1453C0B17473F8F8999 /* Pods-AEGIS.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-AEGIS/Pods-AEGIS-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-AEGIS/Pods-AEGIS.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		9216D957E8D27965C985EE8194E689DA /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = DA0059965A0F5E9DBDDAB82960D70706 /* Pods-AEGIS-AEGISUITests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-AEGIS-AEGISUITests/Pods-AEGIS-AEGISUITests-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-AEGIS-AEGISUITests/Pods-AEGIS-AEGISUITests.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		9D31DA974FF69E82686451066E76FE3C /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = DC0D23C0CA6D3053D5E69150794AD56C /* Pods-AEGIS.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-AEGIS/Pods-AEGIS-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-AEGIS/Pods-AEGIS.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		DC5022CB1595403D4627D1F62F5B2645 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1BF15BE835694A4798B9F293A133D8DD /* MqttCocoaAsyncSocket.debug.xcconfig */;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/MqttCocoaAsyncSocket/MqttCocoaAsyncSocket-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/MqttCocoaAsyncSocket/MqttCocoaAsyncSocket-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/MqttCocoaAsyncSocket/MqttCocoaAsyncSocket.modulemap";
+				PRODUCT_MODULE_NAME = MqttCocoaAsyncSocket;
+				PRODUCT_NAME = MqttCocoaAsyncSocket;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		F2D377FA166929BC5B07B160DEA8A2F9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 799454B653A8F9CF1FD6B77358509496 /* CocoaMQTT.debug.xcconfig */;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/CocoaMQTT/CocoaMQTT-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/CocoaMQTT/CocoaMQTT-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/CocoaMQTT/CocoaMQTT.modulemap";
+				PRODUCT_MODULE_NAME = CocoaMQTT;
+				PRODUCT_NAME = CocoaMQTT;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		F93A1DD54747E9325EE50529A4DBAA33 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 196F4A6BFFB9C49178E0C30502421F12 /* MqttCocoaAsyncSocket.release.xcconfig */;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/MqttCocoaAsyncSocket/MqttCocoaAsyncSocket-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/MqttCocoaAsyncSocket/MqttCocoaAsyncSocket-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/MqttCocoaAsyncSocket/MqttCocoaAsyncSocket.modulemap";
+				PRODUCT_MODULE_NAME = MqttCocoaAsyncSocket;
+				PRODUCT_NAME = MqttCocoaAsyncSocket;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		FF0A36149038A192FFD678E1D4A40D3B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_RELEASE=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		3ABDDB4167E34C01CB195655EEA9379C /* Build configuration list for PBXNativeTarget "CocoaMQTT" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F2D377FA166929BC5B07B160DEA8A2F9 /* Debug */,
+				6463B9F9F7D0910917386C7C271A4F80 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7C3FBC45C4966EFE20583918767EFBE2 /* Debug */,
+				FF0A36149038A192FFD678E1D4A40D3B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5E375A123804332911DA6B7F6B3D8B75 /* Build configuration list for PBXNativeTarget "Pods-AEGIS-AEGISUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0A650B0644BA78A740842D050DE2E264 /* Debug */,
+				9216D957E8D27965C985EE8194E689DA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		758753E885A0A8D6431FEA619A32D51D /* Build configuration list for PBXNativeTarget "Pods-AEGISTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0913BDA782A88FAE0117804230CDEEBE /* Debug */,
+				73C4BE8F348D22D8820472B09F4A49D9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BC7B0D94AB6A58E22FF6C9E4254766FF /* Build configuration list for PBXNativeTarget "MqttCocoaAsyncSocket" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DC5022CB1595403D4627D1F62F5B2645 /* Debug */,
+				F93A1DD54747E9325EE50529A4DBAA33 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FEAD84AD1718966E603FEF84DFB81386 /* Build configuration list for PBXNativeTarget "Pods-AEGIS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9022792A87D43534DFBCF822E213BE6E /* Debug */,
+				9D31DA974FF69E82686451066E76FE3C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+}

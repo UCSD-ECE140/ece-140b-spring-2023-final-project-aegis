@@ -1,0 +1,735 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		3205BC9B9F23AFAF1EA21956 /* Pods_AEGIS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0CB3247C7557A17C01074B26 /* Pods_AEGIS.framework */; };
+		5CEF761E216091F26E55F2B5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5CEF7D7157A11AF4B0FB85BE /* Assets.xcassets */; };
+		5CEF765431A0982DA83A9EAE /* AEGISTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CEF78F3C580CDDAFEFC7186 /* AEGISTests.swift */; };
+		5CEF765F4703503DEAD45AE8 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5CEF71D68547EB4565BDE3FC /* Preview Assets.xcassets */; };
+		5CEF7A5DEE776F12247F2D4D /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CEF7B08EEA2748F1856BFC2 /* Persistence.swift */; };
+		5CEF7A6AC238E3A566994826 /* AEGIS.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5CEF71F5A9A38CD9158A5A9F /* AEGIS.xcdatamodeld */; };
+		5CEF7B3599447B2430FAEACB /* AEGISUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CEF77D6BF2CD56A728F748A /* AEGISUITests.swift */; };
+		5CEF7BFA93DE0BC8BCD79A59 /* AEGISApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CEF72641E1CFD231DDEC7F9 /* AEGISApp.swift */; };
+		5CEF7CF0C0F34ACBE5CB6EA0 /* AEGISUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CEF798AB9A3FEE5152663F6 /* AEGISUITestsLaunchTests.swift */; };
+		5CEF7D9C5554FA583F41919D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CEF70957098A28370E608CC /* ContentView.swift */; };
+		91BFA5E50FD0E52B30ABE190 /* Pods_AEGISTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 62B666762A6C1678FC3D6099 /* Pods_AEGISTests.framework */; };
+		CE2C0419D835DA7767C307B6 /* Pods_AEGIS_AEGISUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C855077B233F9B458D60364C /* Pods_AEGIS_AEGISUITests.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		5CEF701D9FD6369A08242C50 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5CEF7F922F6729C39A952379 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5CEF7C9168F585BC3FEA6DF6;
+			remoteInfo = AEGIS;
+		};
+		5CEF75B6A09909D3AFE02349 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5CEF7F922F6729C39A952379 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5CEF7C9168F585BC3FEA6DF6;
+			remoteInfo = AEGIS;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		0517C515E0FA840F5B012F53 /* Pods-AEGIS-AEGISUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AEGIS-AEGISUITests.release.xcconfig"; path = "Target Support Files/Pods-AEGIS-AEGISUITests/Pods-AEGIS-AEGISUITests.release.xcconfig"; sourceTree = "<group>"; };
+		0CB3247C7557A17C01074B26 /* Pods_AEGIS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AEGIS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		0D1EB22312A7F4E285A87100 /* Pods-AEGIS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AEGIS.release.xcconfig"; path = "Target Support Files/Pods-AEGIS/Pods-AEGIS.release.xcconfig"; sourceTree = "<group>"; };
+		0D4A0219C3B4633C96F562DB /* Pods-AEGIS-AEGISUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AEGIS-AEGISUITests.debug.xcconfig"; path = "Target Support Files/Pods-AEGIS-AEGISUITests/Pods-AEGIS-AEGISUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		5CEF70957098A28370E608CC /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		5CEF71D68547EB4565BDE3FC /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		5CEF72641E1CFD231DDEC7F9 /* AEGISApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AEGISApp.swift; sourceTree = "<group>"; };
+		5CEF7402E5D33B55F00304ED /* AEGISTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AEGISTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		5CEF77D6BF2CD56A728F748A /* AEGISUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AEGISUITests.swift; sourceTree = "<group>"; };
+		5CEF78F3C580CDDAFEFC7186 /* AEGISTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AEGISTests.swift; sourceTree = "<group>"; };
+		5CEF798AB9A3FEE5152663F6 /* AEGISUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AEGISUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		5CEF7AC49169A26E3C8F8ED0 /* AEGIS.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = AEGIS.xcdatamodel; sourceTree = "<group>"; };
+		5CEF7B08EEA2748F1856BFC2 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
+		5CEF7BC2583AD11FD8E81FFD /* AEGIS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AEGIS.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		5CEF7D3869E46A2CEF1BD45B /* AEGISUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AEGISUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		5CEF7D7157A11AF4B0FB85BE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		62B666762A6C1678FC3D6099 /* Pods_AEGISTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AEGISTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9583D136635F77E3A0FD9566 /* Pods-AEGISTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AEGISTests.release.xcconfig"; path = "Target Support Files/Pods-AEGISTests/Pods-AEGISTests.release.xcconfig"; sourceTree = "<group>"; };
+		C70F543BC90EC8BF76DD596A /* Pods-AEGISTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AEGISTests.debug.xcconfig"; path = "Target Support Files/Pods-AEGISTests/Pods-AEGISTests.debug.xcconfig"; sourceTree = "<group>"; };
+		C855077B233F9B458D60364C /* Pods_AEGIS_AEGISUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AEGIS_AEGISUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D0A16CE6B11B475FF0E2172C /* Pods-AEGIS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AEGIS.debug.xcconfig"; path = "Target Support Files/Pods-AEGIS/Pods-AEGIS.debug.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		5CEF713A8972C2ED24E86B52 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3205BC9B9F23AFAF1EA21956 /* Pods_AEGIS.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5CEF749944BE5EB7B5EE977C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CE2C0419D835DA7767C307B6 /* Pods_AEGIS_AEGISUITests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5CEF79A617DBAC95AD5F4C38 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				91BFA5E50FD0E52B30ABE190 /* Pods_AEGISTests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		0F3DAAAC0A687FDA7B22BFA9 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				D0A16CE6B11B475FF0E2172C /* Pods-AEGIS.debug.xcconfig */,
+				0D1EB22312A7F4E285A87100 /* Pods-AEGIS.release.xcconfig */,
+				0D4A0219C3B4633C96F562DB /* Pods-AEGIS-AEGISUITests.debug.xcconfig */,
+				0517C515E0FA840F5B012F53 /* Pods-AEGIS-AEGISUITests.release.xcconfig */,
+				C70F543BC90EC8BF76DD596A /* Pods-AEGISTests.debug.xcconfig */,
+				9583D136635F77E3A0FD9566 /* Pods-AEGISTests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		5CEF701A0E264861AD86DF96 /* AEGISTests */ = {
+			isa = PBXGroup;
+			children = (
+				5CEF78F3C580CDDAFEFC7186 /* AEGISTests.swift */,
+			);
+			path = AEGISTests;
+			sourceTree = "<group>";
+		};
+		5CEF736E680B8F8DC67803BC /* AEGISUITests */ = {
+			isa = PBXGroup;
+			children = (
+				5CEF77D6BF2CD56A728F748A /* AEGISUITests.swift */,
+				5CEF798AB9A3FEE5152663F6 /* AEGISUITestsLaunchTests.swift */,
+			);
+			path = AEGISUITests;
+			sourceTree = "<group>";
+		};
+		5CEF76D281FAA6A769263A05 /* AEGIS */ = {
+			isa = PBXGroup;
+			children = (
+				5CEF7D7157A11AF4B0FB85BE /* Assets.xcassets */,
+				5CEF77B74B87F3D46259B3A5 /* Preview Content */,
+				5CEF72641E1CFD231DDEC7F9 /* AEGISApp.swift */,
+				5CEF70957098A28370E608CC /* ContentView.swift */,
+				5CEF7B08EEA2748F1856BFC2 /* Persistence.swift */,
+				5CEF71F5A9A38CD9158A5A9F /* AEGIS.xcdatamodeld */,
+			);
+			path = AEGIS;
+			sourceTree = "<group>";
+		};
+		5CEF77B74B87F3D46259B3A5 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				5CEF71D68547EB4565BDE3FC /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		5CEF7A5894C38728B319EC41 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				5CEF7BC2583AD11FD8E81FFD /* AEGIS.app */,
+				5CEF7402E5D33B55F00304ED /* AEGISTests.xctest */,
+				5CEF7D3869E46A2CEF1BD45B /* AEGISUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		5CEF7EFD20F7F991464BF7DB = {
+			isa = PBXGroup;
+			children = (
+				5CEF7A5894C38728B319EC41 /* Products */,
+				5CEF76D281FAA6A769263A05 /* AEGIS */,
+				5CEF701A0E264861AD86DF96 /* AEGISTests */,
+				5CEF736E680B8F8DC67803BC /* AEGISUITests */,
+				0F3DAAAC0A687FDA7B22BFA9 /* Pods */,
+				D975A361D695F945B4C5C2A6 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		D975A361D695F945B4C5C2A6 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0CB3247C7557A17C01074B26 /* Pods_AEGIS.framework */,
+				C855077B233F9B458D60364C /* Pods_AEGIS_AEGISUITests.framework */,
+				62B666762A6C1678FC3D6099 /* Pods_AEGISTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		5CEF725B6500DC7690C4F2B9 /* AEGISTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5CEF73E190FDB6D53135EAF7 /* Build configuration list for PBXNativeTarget "AEGISTests" */;
+			buildPhases = (
+				FB508C281A1A6E93F823097C /* [CP] Check Pods Manifest.lock */,
+				5CEF7DEAA75A8AD3E503EEA7 /* Sources */,
+				5CEF79A617DBAC95AD5F4C38 /* Frameworks */,
+				5CEF7AEFFD9CA343EBCD75AF /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				5CEF7E250885AF39328FD716 /* PBXTargetDependency */,
+			);
+			name = AEGISTests;
+			productName = AEGISTests;
+			productReference = 5CEF7402E5D33B55F00304ED /* AEGISTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		5CEF7A36B05A0080A4C1C655 /* AEGISUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5CEF795E9F741FAD739DDCE3 /* Build configuration list for PBXNativeTarget "AEGISUITests" */;
+			buildPhases = (
+				B334DFC24B26383B6E9CC933 /* [CP] Check Pods Manifest.lock */,
+				5CEF7A13F91C7C631D0E2FA2 /* Sources */,
+				5CEF749944BE5EB7B5EE977C /* Frameworks */,
+				5CEF760FF83C1922A972F170 /* Resources */,
+				A7F1D7125BBA6880931907AF /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				5CEF79A4CE30FE359941DBE3 /* PBXTargetDependency */,
+			);
+			name = AEGISUITests;
+			productName = AEGISUITests;
+			productReference = 5CEF7D3869E46A2CEF1BD45B /* AEGISUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+		5CEF7C9168F585BC3FEA6DF6 /* AEGIS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5CEF7BDBF4B83968646BF8C9 /* Build configuration list for PBXNativeTarget "AEGIS" */;
+			buildPhases = (
+				10672377A8E2C222079BCEAC /* [CP] Check Pods Manifest.lock */,
+				5CEF757AEF1EDF10B78D6AD6 /* Sources */,
+				5CEF713A8972C2ED24E86B52 /* Frameworks */,
+				5CEF71BB2B62D2A3703DCCD7 /* Resources */,
+				5B6FFA1D9FD4B7D6C9D21BAE /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = AEGIS;
+			productName = AEGIS;
+			productReference = 5CEF7BC2583AD11FD8E81FFD /* AEGIS.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		5CEF7F922F6729C39A952379 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				TargetAttributes = {
+					5CEF7C9168F585BC3FEA6DF6 = {
+						DevelopmentTeam = QYG7WWS4VM;
+					};
+				};
+			};
+			buildConfigurationList = 5CEF7636CDEFEDB51F5188C6 /* Build configuration list for PBXProject "AEGIS" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				English,
+				en,
+			);
+			mainGroup = 5CEF7EFD20F7F991464BF7DB;
+			productRefGroup = 5CEF7A5894C38728B319EC41 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				5CEF7C9168F585BC3FEA6DF6 /* AEGIS */,
+				5CEF725B6500DC7690C4F2B9 /* AEGISTests */,
+				5CEF7A36B05A0080A4C1C655 /* AEGISUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		5CEF71BB2B62D2A3703DCCD7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5CEF761E216091F26E55F2B5 /* Assets.xcassets in Resources */,
+				5CEF765F4703503DEAD45AE8 /* Preview Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5CEF760FF83C1922A972F170 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5CEF7AEFFD9CA343EBCD75AF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		10672377A8E2C222079BCEAC /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-AEGIS-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5B6FFA1D9FD4B7D6C9D21BAE /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-AEGIS/Pods-AEGIS-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/CocoaMQTT/CocoaMQTT.framework",
+				"${BUILT_PRODUCTS_DIR}/MqttCocoaAsyncSocket/MqttCocoaAsyncSocket.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CocoaMQTT.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MqttCocoaAsyncSocket.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-AEGIS/Pods-AEGIS-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A7F1D7125BBA6880931907AF /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-AEGIS-AEGISUITests/Pods-AEGIS-AEGISUITests-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/CocoaMQTT/CocoaMQTT.framework",
+				"${BUILT_PRODUCTS_DIR}/MqttCocoaAsyncSocket/MqttCocoaAsyncSocket.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CocoaMQTT.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MqttCocoaAsyncSocket.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-AEGIS-AEGISUITests/Pods-AEGIS-AEGISUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B334DFC24B26383B6E9CC933 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-AEGIS-AEGISUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FB508C281A1A6E93F823097C /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-AEGISTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		5CEF757AEF1EDF10B78D6AD6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5CEF7BFA93DE0BC8BCD79A59 /* AEGISApp.swift in Sources */,
+				5CEF7D9C5554FA583F41919D /* ContentView.swift in Sources */,
+				5CEF7A5DEE776F12247F2D4D /* Persistence.swift in Sources */,
+				5CEF7A6AC238E3A566994826 /* AEGIS.xcdatamodeld in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5CEF7A13F91C7C631D0E2FA2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5CEF7B3599447B2430FAEACB /* AEGISUITests.swift in Sources */,
+				5CEF7CF0C0F34ACBE5CB6EA0 /* AEGISUITestsLaunchTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5CEF7DEAA75A8AD3E503EEA7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5CEF765431A0982DA83A9EAE /* AEGISTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		5CEF79A4CE30FE359941DBE3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5CEF7C9168F585BC3FEA6DF6 /* AEGIS */;
+			targetProxy = 5CEF75B6A09909D3AFE02349 /* PBXContainerItemProxy */;
+		};
+		5CEF7E250885AF39328FD716 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5CEF7C9168F585BC3FEA6DF6 /* AEGIS */;
+			targetProxy = 5CEF701D9FD6369A08242C50 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		5CEF725809FDAA52D9112C10 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C70F543BC90EC8BF76DD596A /* Pods-AEGISTests.debug.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/AEGIS.app/AEGIS";
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = UCSD.EDU.ECE140.AEGISTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+			};
+			name = Debug;
+		};
+		5CEF73B0F37022BF53466F5F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0D4A0219C3B4633C96F562DB /* Pods-AEGIS-AEGISUITests.debug.xcconfig */;
+			buildSettings = {
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = UCSD.EDU.ECE140.AEGISUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = AEGIS;
+			};
+			name = Debug;
+		};
+		5CEF78ADBC9E1078C543C7A6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		5CEF7A24C5E20F3A98D05D71 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D0A16CE6B11B475FF0E2172C /* Pods-AEGIS.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"AEGIS/Preview Content\"";
+				DEVELOPMENT_TEAM = QYG7WWS4VM;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = UCSD.EDU.ECE140.AEGIS;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		5CEF7A98B6968D85E4DD4FC3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0D1EB22312A7F4E285A87100 /* Pods-AEGIS.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"AEGIS/Preview Content\"";
+				DEVELOPMENT_TEAM = QYG7WWS4VM;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = UCSD.EDU.ECE140.AEGIS;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		5CEF7BB75F4C75913529F441 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0517C515E0FA840F5B012F53 /* Pods-AEGIS-AEGISUITests.release.xcconfig */;
+			buildSettings = {
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = UCSD.EDU.ECE140.AEGISUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = AEGIS;
+			};
+			name = Release;
+		};
+		5CEF7BFF273A70F64F05E9F4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9583D136635F77E3A0FD9566 /* Pods-AEGISTests.release.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/AEGIS.app/AEGIS";
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = UCSD.EDU.ECE140.AEGISTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+			};
+			name = Release;
+		};
+		5CEF7CAA21E9516A978D0D15 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		5CEF73E190FDB6D53135EAF7 /* Build configuration list for PBXNativeTarget "AEGISTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5CEF725809FDAA52D9112C10 /* Debug */,
+				5CEF7BFF273A70F64F05E9F4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5CEF7636CDEFEDB51F5188C6 /* Build configuration list for PBXProject "AEGIS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5CEF7CAA21E9516A978D0D15 /* Debug */,
+				5CEF78ADBC9E1078C543C7A6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5CEF795E9F741FAD739DDCE3 /* Build configuration list for PBXNativeTarget "AEGISUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5CEF73B0F37022BF53466F5F /* Debug */,
+				5CEF7BB75F4C75913529F441 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5CEF7BDBF4B83968646BF8C9 /* Build configuration list for PBXNativeTarget "AEGIS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5CEF7A24C5E20F3A98D05D71 /* Debug */,
+				5CEF7A98B6968D85E4DD4FC3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		5CEF71F5A9A38CD9158A5A9F /* AEGIS.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				5CEF7AC49169A26E3C8F8ED0 /* AEGIS.xcdatamodel */,
+			);
+			currentVersion = 5CEF7AC49169A26E3C8F8ED0 /* AEGIS.xcdatamodel */;
+			path = AEGIS.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 5CEF7F922F6729C39A952379 /* Project object */;
+}
