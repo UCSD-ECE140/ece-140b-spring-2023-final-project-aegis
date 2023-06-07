@@ -1,0 +1,15 @@
+/* Hide the scroll bar */
+body::-webkit-scrollbar {
+    width: 0em;
+}
+
+body::-webkit-scrollbar-track {
+    background-color: transparent;
+}
+
+body::-webkit-scrollbar-thumb {
+    background-color: transparent;
+}
+.bg-customBlue {
+    background-color: #00498D;
+}

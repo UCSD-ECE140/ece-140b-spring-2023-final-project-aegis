@@ -4,47 +4,73 @@
     <meta charset='utf-8'>
     <title>Aegis</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
-
-    <link rel='stylesheet' type='text/css' href='../css/login.css'>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="../css/extras.css" rel="stylesheet">
     <script src="../js/login.js" defer></script>
   </head>
-  <body>
-    <header>
-      <nav><a href = "/team">Our Team</a></nav>
-    </header>
-
-    <div class="container">
-      <article>
-        <h1>Welcome to Aegis</h1>
-        <p>Aegis is a smart home thermostat that adjusts your house's temperature based on several factors:</p>
-        <ul>
+  <body class="bg-gray-100 font-sans leading-normal tracking-normal">
+      <nav class="bg-customBlue p-2 mt-0 w-full">
+        <div class="container mx-auto flex flex-wrap items-center">
+            <div class="flex w-full md:w-1/2 justify-center md:justify-start text-white font-extrabold">
+                <a class="text-white no-underline hover:text-white hover:no-underline" href="#">
+                    <span class="text-2xl pl-2">Aegis</span>
+                </a>
+            </div>
+            <div class="flex w-full pt-2 content-center justify-between md:w-1/2 md:justify-end">
+                <ul class="list-reset flex justify-between flex-1 md:flex-none items-center">
+                    <li class="mr-3">
+                        <a class="inline-block py-2 px-4 text-white no-underline hover:text-gray-200 hover:text-underline py-2 px-4" href="/">Home</a>
+                    </li>
+                    <li class="mr-3">
+                        <a class="inline-block py-2 px-4 text-white no-underline hover:text-gray-200 hover:text-underline py-2 px-4" href="#features">Features</a>
+                    </li>
+                    <li class="mr-3">
+                        <a class="inline-block py-2 px-4 text-white no-underline hover:text-gray-200 hover:text-underline py-2 px-4" href="#pricing">Pricing</a>
+                    </li>
+                    <li class="mr-3">
+                        <a class="inline-block py-2 px-4 text-white no-underline hover:text-gray-200 hover:text-underline py-2 px-4" href="#contact">Contact</a>
+                    </li>
+                    <li class="mr-3">
+                        <a class="inline-block py-2 px-4 text-white no-underline hover:text-gray-200 hover:text-underline py-2 px-4" href="/login">Login</a>
+                    </li>
+                    <li class="mr-3">
+                        <a class="inline-block py-2 px-4 text-white no-underline hover:text-gray-200 hover:text-underline py-2 px-4" href="/register">Register</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container mx-auto grid grid-cols-3 gap-4 px-10 py-20 h-full bg-gray-100">
+      <article class="col-span-3 lg:col-span-2">
+        <h1 class="text-3xl mb-4">Welcome to Aegis</h1>
+        <p class="mb-4 text-justify">Aegis is a smart home thermostat that adjusts your house's temperature based on several factors:</p>
+        <ul class="list-disc list-inside mb-4 ml-5">
           <li>Electricity provider rates</li>
           <li>Outside temperature</li>
           <li>Solar panel production</li>
           <li>Your personal preferences</li>
         </ul>
-        <p>In addition, Aegis includes dongles that can be plugged into your appliances to monitor their energy consumption. <br>By gathering this information, Aegis optimizes your energy consumption and helps you save money.</p>
+        <p class="mb-4 text-justify">In addition, Aegis includes dongles that can be plugged into your appliances to monitor their energy consumption. <br>By gathering this information, Aegis optimizes your energy consumption and helps you save money.</p>
       </article>
-      <main>
-        <form class="login-form" name='login_form' action='/website/login' method='POST'>
-          <div class='form_row'>
-            <input type='text' name='username' placeholder='Username'>
-            <input type='password' name='password' placeholder='Password'>
-            <input type='submit' value='Login'>
-            <div id="result"></div>
+      <main class="col-span-3 lg:col-span-1 bg-white p-5 rounded shadow-lg">
+        <form name='login_form' action='/website/login' method='POST' class="flex flex-col">
+          <div class="mb-4">
+            <input type='text' name='username' placeholder='Username' class="border-none rounded p-2 text-base bg-gray-200 mb-2 w-full">
+            <input type='password' name='password' placeholder='Password' class="border-none rounded p-2 text-base bg-gray-200 mb-2 w-full">
+            <input type='submit' value='Login' class="border-none rounded p-2 text-base bg-blue-700 text-white cursor-pointer w-full hover:bg-blue-600">
+            <div id="result" class="text-sm text-gray-600"></div>
           </div>
         </form>
-        <div class="links">
-          <div class="register-link">
-            <a href="/register">Create Account</a>
+        <div class="flex justify-between items-start">
+          <div>
+            <a href="/register" class="text-blue-900 text-sm no-underline">Create Account</a>
           </div>
-          <div class="forgot-link">
-            <a href="/forgot-user">Forgot Username</a>
-            <a href="/forgot-pass">Forgot Password</a>
+          <div class="flex flex-col items-end mt-2">
+            <a href="/forgot-user" class="text-blue-900 text-sm no-underline mb-2">Forgot Username</a>
+            <a href="/forgot-pass" class="text-blue-900 text-sm no-underline">Forgot Password</a>
           </div>
         </div>
       </main>
     </div>
-
   </body>
 </html>

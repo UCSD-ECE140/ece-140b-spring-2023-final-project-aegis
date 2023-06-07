@@ -52,11 +52,6 @@ def get_home(request: Request) -> HTMLResponse:
     """
     return HTMLResponse(content=views.get_template("login.html").render(), status_code=200)
 
-
-@app.get('/team')
-def get_login(request:Request) -> HTMLResponse:
-    return HTMLResponse(content=views.get_template("team.html").render(), status_code=200)
-
 @app.get('/register')
 def get_login(request:Request) -> HTMLResponse:
     return HTMLResponse(content=views.get_template("register.html").render(), status_code=200)
@@ -95,6 +90,25 @@ def get_password(user: RetrieveInfo) -> str:
 
 
 @app.get('/profile')
+def get_profile(request: Request) -> HTMLResponse:
+    session = sessions.get_session(request)
+    if len(session) > 0 and session.get('logged_in'):
+        session_id = request.cookies.get("session_id")
+        if('@' in session['username']):
+            email = session.get('username')
+            account_id = Auth.get_id(email)
+        else:
+            username = session.get('username')
+            account_id = Auth.get_id(username)
+
+        data = Auth.select_users(account_id)
+        new_session = {'ID': data[0], 'email': data[1], 'first_name': data[2], 'last_name': data[3], 'username': data[4], 'password': Security.decrypt(data[5]), 'logged_in': session['logged_in']}
+        template_data = {'request': request, 'session': new_session, 'session_id': session_id}
+        return views.TemplateResponse('profile.html', template_data)
+
+    return RedirectResponse(url="/", status_code=302)
+
+@app.get('/eco_home')
 def get_profile(request: Request) -> HTMLResponse:
     session = sessions.get_session(request)
     if len(session) > 0 and session.get('logged_in'):

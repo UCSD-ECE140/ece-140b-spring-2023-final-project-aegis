@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Aegis Smart Home</title>
+    <!-- Include Tailwind CSS via CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <!-- Include Alpine.js via a CDN -->
+    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
+</head>
+<body class="bg-gray-100 font-sans leading-normal tracking-normal">
+<nav class="bg-gray-800 p-2 mt-0 w-full">
+    <div class="container mx-auto flex flex-wrap items-center">
+        <div class="flex w-full md:w-1/2 justify-center md:justify-start text-white font-extrabold">
+            <a class="text-white no-underline hover:text-white hover:no-underline" href="#">
+                <span class="text-2xl pl-2">Aegis Smart Home</span>
+            </a>
+        </div>
+        <div class="flex w-full pt-2 content-center justify-between md:w-1/2 md:justify-end">
+            <ul class="list-reset flex justify-between flex-1 md:flex-none items-center">
+                <li class="mr-3">
+                    <a class="inline-block py-2 px-4 text-white no-underline" href="#">Home</a>
+                </li>
+                <li class="mr-3">
+                    <a class="inline-block text-gray-600 no-underline hover:text-gray-200 hover:text-underline py-2 px-4" href="#features">Scheduling</a>
+                </li>
+                <li class="mr-3">
+                    <a class="inline-block text-gray-600 no-underline hover:text-gray-200 hover:text-underline py-2 px-4" href="/device_settings">Management</a>
+                </li>
+                <li class="mr-3">
+                    <a class="inline-block text-gray-600 no-underline hover:text-gray-200 hover:text-underline py-2 px-4" href="#">Eco Dashboard</a>
+                </li>
+                <li class="mr-3">
+                    <a class="inline-block text-gray-600 no-underline hover:text-gray-200 hover:text-underline py-2 px-4" href="/login">Login</a>
+                </li>
+                <li class="mr-3">
+                    <a class="inline-block text-gray-600 no-underline hover:text-gray-200 hover:text-underline py-2 px-4" href="/logout">Logout</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container mx-auto flex flex-wrap py-6">
+    <!-- Sections go here -->
+    <section class="my-12 px-4 text-center" id="eco-dashboard">
+        <!-- Content will be populated by JavaScript -->
+    </section>
+
+    <script>
+        async function fetchData() {
+            // Kevin you should connect this to the python route return with this format
+            return {
+                electricityConsumption: 1000,
+                co2Emissions: 500,
+                electricitySaved: 200,
+                co2Saved: 100,
+                co2SavingsWorth: 50,
+                offsetCost: 25
+            };
+        }
+
+        async function populateEcoDashboard() {
+            const data = await fetchData();
+
+            document.getElementById('eco-dashboard').innerHTML = `
+                <h2 class="font-bold text-3xl mb-5">Your Eco Dashboard</h2>
+                <p class="text-gray-700">Track and manage your energy consumption and CO2 emissions here.</p>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-6">
+                    <div class="bg-white shadow-md rounded-lg p-6 hover:shadow-lg transition-shadow duration-300 ease-in-out">
+                        <h4 class="font-bold text-xl mb-4">Electricity Consumption</h4>
+                        <p class="text-gray-700">Your current consumption: <span class="text-blue-600">${data.electricityConsumption} kWh</span></p>
+                    </div>
+                    <div class="bg-white shadow-md rounded-lg p-6 hover:shadow-lg transition-shadow duration-300 ease-in-out">
+                        <h4 class="font-bold text-xl mb-4">CO2 Emissions</h4>
+                        <p class="text-gray-700">Your current emissions: <span class="text-blue-600">${data.co2Emissions} kg</span></p>
+                    </div>
+                    <div class="bg-white shadow-md rounded-lg p-6 hover:shadow-lg transition-shadow duration-300 ease-in-out">
+                        <h4 class="font-bold text-xl mb-4">Electricity Saved</h4>
+                        <p class="text-gray-700">You've saved: <span class="text-blue-600">${data.electricitySaved} kWh</span></p>
+                    </div>
+                    <div class="bg-white shadow-md rounded-lg p-6 hover:shadow-lg transition-shadow duration-300 ease-in-out">
+                        <h4 class="font-bold text-xl mb-4">CO2 Saved</h4>
+                        <p class="text-gray-700">You've saved: <span class="text-blue-600">${data.co2Saved} kg</span></p>
+                    </div>
+                </div>
+                <div class="bg-white shadow-md rounded-lg p-6 mt-6 hover:shadow-lg transition-shadow duration-300 ease-in-out">
+                    <h4 class="font-bold text-xl mb-4">CO2 Marketplace Info</h4>
+                    <p class="text-gray-700">Your CO2 savings are worth: <span class="text-blue-600">$${data.co2SavingsWorth}</span></p>
+                    <p class="text-gray-700">You can offset your emissions for: <span class="text-blue-600">$${data.offsetCost}</span></p>
+                </div>
+            `;
+        }
+
+        populateEcoDashboard();
+    </script>
+
+</div>
+</body>
+</html>
