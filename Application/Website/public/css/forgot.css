@@ -11,6 +11,7 @@
   box-sizing: border-box;
 }
 
+<<<<<<< Updated upstream
 /* Body styles */
 body {
   font-family: Arial, sans-serif;
@@ -41,6 +42,8 @@ header {
   font-size: 1.2rem;
   padding: 10px;
 }
+=======
+>>>>>>> Stashed changes
 
 h1 {
   text-align: center;
@@ -90,6 +93,7 @@ main {
   cursor: pointer;
 }
 
+<<<<<<< Updated upstream
 /* Navigation styles */
 nav {
   display: flex;
@@ -106,6 +110,12 @@ nav a {
 
 nav a:hover {
   border-bottom-color: #1c2447; /* Dark blue */
+=======
+.form_row input[type="submit"]:hover {
+  background-color: #1D4ED8; /* Dark blue */
+  color: #fff;
+  cursor: pointer;
+>>>>>>> Stashed changes
 }
 
 /* Result styles */

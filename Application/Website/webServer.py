@@ -59,7 +59,6 @@ def post_user(user:User, request: Request, response: Response, UUID: str) -> dic
      Auth.add_device(device_id, Auth.get_id(user.username))
   return {'success': ID}
 
-
 ## Route for forgetting user
 @app.get('/forgot-user')
 def retrieve_user(request:Request) -> HTMLResponse:
@@ -77,7 +76,6 @@ def get_username(user: RetrieveInfo) -> str:
 def get_password(user: RetrieveInfo) -> str:
   return Auth.find_password(user.identifier)
 
-
 @app.get('/profile')
 def get_profile(request: Request) -> HTMLResponse:
     session = sessions.get_session(request)
@@ -94,7 +92,29 @@ def get_profile(request: Request) -> HTMLResponse:
         new_session = {'ID': data[0], 'email': data[1], 'first_name': data[2], 'last_name': data[3], 'username': data[4], 'password': Security.decrypt(data[5]), 'logged_in': session['logged_in']}
         template_data = {'request': request, 'session': new_session, 'session_id': session_id}
         return views.TemplateResponse('profile.html', template_data)
+<<<<<<< Updated upstream
   
+=======
+
+    return RedirectResponse(url="/", status_code=302)
+
+@app.get('/eco_dashboard')
+def get_profile(request: Request) -> HTMLResponse:
+    session = sessions.get_session(request)
+    if len(session) > 0 and session.get('logged_in'):
+        session_id = request.cookies.get("session_id")
+        if('@' in session['username']):
+            email = session.get('username')
+            account_id = Auth.get_id(email)
+        else:
+            username = session.get('username')
+            account_id = Auth.get_id(username)
+        data = Auth.calculate_data(account_id)
+        #new_session = {'ID': data[0], 'email': data[1], 'first_name': data[2], 'last_name': data[3], 'username': data[4], 'password': Security.decrypt(data[5]), 'logged_in': session['logged_in']}
+        template_data = {'request': request,  'session_id': session_id}
+        return views.TemplateResponse('eco_dashboard.html', template_data)
+
+>>>>>>> Stashed changes
     return RedirectResponse(url="/", status_code=302)
 
 @app.post('/website/login/{UUID}')
@@ -126,33 +146,53 @@ def put_user(user:User, user_id: str, request: Request) -> dict:
 
 @app.post('/logout')
 def post_logout(request:Request, response:Response) -> dict:
+<<<<<<< Updated upstream
   sessions.end_session(request, response)
   return {'message': 'Logout successful', 'session_id': 0}
 
 @app.get('/device_configuration')
+=======
+    sessions.end_session(request, response)
+    return {'message': 'Logout successful', 'session_id': 0}
+ 
+@app.get('/device_settings') ## NEEDS TO BE WORKEDO N
+>>>>>>> Stashed changes
 def get_configurations(request: Request) -> HTMLResponse:
     session = sessions.get_session(request)
     if len(session) > 0 and session.get('logged_in'):
         session_id = request.cookies.get("session_id")
-        if '@' in session['username']:
+        if('@' in session['username']):
             email = session.get('username')
             account_id = Auth.get_id(email)
         else:
             username = session.get('username')
             account_id = Auth.get_id(username)
+        data = Auth.calculate_data(account_id)
+        print(data)
         user_data = Auth.select_users(account_id)
-        new_session = {'first_name': user_data[2], 'last_name': user_data[3], 'username': user_data[4], 'logged_in': session['logged_in']}
-        template_data = {'request': request, 'session': new_session, 'session_id': session_id}
+        dongle_info = {'temp': data[2], 'hum': data[3], 'current': data[4], 'dongleID': data[5]}
+        user_info = {'first_name': user_data[2], 'last_name': user_data[3], 'username': user_data[4], 'logged_in': session['logged_in']}
+        template_data = {'request': request, 'user': user_info, 'data': dongle_info, 'session_id': session_id}
         configuration_data = Auth.get_configurations(account_id)
         if configuration_data is None or len(configuration_data) == 0:
-            template_data = {'request': request, 'data': [], 'session': new_session, 'session_id': session_id}
+            template_data = {'request': request, 'user': [], 'data': [], 'configurations': [], 'session_id': session_id}
         else:
+<<<<<<< Updated upstream
             template_data = {'request': request, 'data': configuration_data, 'session': new_session, 'session_id': session_id}
         return views.TemplateResponse('device_configuration.html', template_data)
   
     return RedirectResponse(url="/", status_code=302)
 
 @app.put('/website/device_configuration/{user_id}')
+=======
+            template_data = {'request': request, 'user': user_info, 'data': dongle_info, 'configurations': configuration_data, 'session_id': session_id}
+        return views.TemplateResponse('device_settings.html', template_data)
+
+    return RedirectResponse(url="/", status_code=302)
+
+
+@app.put('/website/device_settings/{user_id}')
+>>>>>>> Stashed changes
 def update_configurations(configurations: Configurations, user_id: str, request: Request) -> dict:
    session = sessions.get_session(request)
    if len(session) > 0 and session.get('logged_in'):
@@ -210,6 +250,7 @@ def get_display(dongleID: int) -> JSONResponse:
     print("Turning on dongle: "+str(dongleID))
     return JSONResponse(status_code=200, content = {"status":"success"})
 
+<<<<<<< Updated upstream
    
 ## GET ANALYTICS  
 ## Change to send data of analytics by first transforming it on server
@@ -228,6 +269,8 @@ def get_profile(request:Request) -> HTMLResponse:
     return RedirectResponse(url="/", status_code=302)
 
 
+=======
+>>>>>>> Stashed changes
 
 
 # If running the server directly from Python as a module

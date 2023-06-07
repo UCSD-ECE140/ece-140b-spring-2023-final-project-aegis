@@ -27,7 +27,7 @@ session_config = {
 # Create unique user.
 def create_user(first_name:str, last_name: str, email: str, username:str, password:str) -> int:
   password_encrypted = Security.encrypt(password)
-  db = mysql.connect(**cconfig)
+  db = mysql.connect(**config)
   cursor = db.cursor()
   query = "insert into customers (email, first_name, last_name, username, password) values (%s, %s, %s, %s, %s)"
   values = (email, first_name, last_name, username, password_encrypted)
@@ -216,7 +216,7 @@ def get_device(device_ID: str) -> bool:
 
 def create_user(first_name:str, last_name: str, email: str, username:str, password:str) -> int:
   password_encrypted = Security.encrypt(password)
-  db = mysql.connect(**cconfig)
+  db = mysql.connect(**config)
   cursor = db.cursor()
   query = "insert into customers (email, first_name, last_name, username, password) values (%s, %s, %s, %s, %s)"
   values = (email, first_name, last_name, username, password_encrypted)
@@ -255,3 +255,22 @@ def verify_permissions(device_id: str, dongleID: str) -> bool:
   result = cursor.fetchall()
   db.close()
   return True if cursor.rowcount == 1 else False
+  
+
+def calculate_data(account_id: str) -> list:
+  db = mysql.connect(**config)
+  cursor = db.cursor()
+  query = """
+    SELECT d.*
+    FROM datas d
+    INNER JOIN device_permissions dp ON d.senderID = dp.dongleID
+    INNER JOIN customers_devices cd ON dp.device_id = cd.device_id
+    WHERE cd.customerID = %s
+  """
+  cursor.execute(query, (account_id,))
+  datas = cursor.fetchall()
+  db.close()
+  cursor.close()
+  datas = datas[0]
+  return list(datas)
+     
