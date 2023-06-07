@@ -5,7 +5,7 @@ from pathlib import Path
 
 
 packages = ["fastapi", "uvicorn", "mysql-connector-python", "python-dotenv", "numpy", "serial",
- "requests", "pybluez"]
+ "requests"]
 
 venv_path = Path("Aegis")
 
