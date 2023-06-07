@@ -4,16 +4,46 @@
     <meta charset='utf-8'>
     <title>Aegis</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
-
-    <link rel='stylesheet' type='text/css' href='public/css/forgot.css'>
-    <script src="public/js/forgot_user.js" defer></script>
+      <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+      <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
+    <link rel='stylesheet' type='text/css' href='../css/forgot.css'>
+    <script src="../js/forgot_user.js" defer></script>
   </head>
   <body>
-    <header>
-        <nav id = "navigation">
-            <a href = "/">Home</a>
-        </nav>
-    </header>
+  <nav class="bg-gray-800 p-2 mt-0 w-full">
+      <div class="container mx-auto flex flex-wrap items-center">
+          <div class="flex w-full md:w-1/2 justify-center md:justify-start text-white font-extrabold">
+              <a class="text-white no-underline hover:text-white hover:no-underline" href="#">
+                  <span class="text-2xl pl-2">Aegis Smart Home</span>
+              </a>
+          </div>
+          <div class="flex w-full pt-2 content-center justify-between md:w-1/2 md:justify-end">
+              <ul class="list-reset flex justify-between flex-1 md:flex-none items-center">
+                  <li class="mr-3">
+                      <a class="inline-block py-2 px-4 text-white no-underline" href="#">Home</a>
+                  </li>
+                  <li class="mr-3">
+                      <a class="inline-block text-gray-600 no-underline hover:text-gray-200 hover:text-underline py-2 px-4" href="#features">Scheduling</a>
+                  </li>
+                  <li class="mr-3">
+                      <a class="inline-block text-gray-600 no-underline hover:text-gray-200 hover:text-underline py-2 px-4" href="/device">Management</a>
+                  </li>
+                  <li class="mr-3">
+                      <a class="inline-block text-gray-600 no-underline hover:text-gray-200 hover:text-underline py-2 px-4" href="/eco_home">Eco Dashboard</a>
+                  </li>
+                  <li class="mr-3">
+                      <a class="inline-block text-gray-600 no-underline hover:text-gray-200 hover:text-underline py-2 px-4" href="/logout">Logout</a>
+                  </li>
+                  <li class="mr-3">
+                      <a class="inline-block text-gray-600 no-underline hover:text-gray-200 hover:text-underline py-2 px-4" href="/profile">
+                          <div class="flex items-center">
+                              <span>{{ session['first_name'] }} {{ session['last_name'] }}</span>
+                              <img src="https://media.istockphoto.com/id/689364180/vector/smiling-cartoon-face-positive-people-emotion-icon.jpg?s=612x612&w=0&k=20&c=2olrbVI2dkVyR0XKaMs4cSDrzpA4zH4FrCfZ_rKwVjU=" class="w-8 h-8" alt="some user image"></div></a>
+                  </li>
+              </ul>
+          </div>
+      </div>
+  </nav>
     <h1>Retrieve Username</h1>
 
     <main>
