@@ -85,10 +85,17 @@ main {
 }
 
 .form_row input[type="submit"] {
-  background-color: #4D6A85; /* Dark blue */
+  background-color: #3B82F6; /* Dark blue */
   color: #fff;
   cursor: pointer;
 }
+
+.form_row input[type="submit"]:hover {
+  background-color: #1D4ED8; /* Dark blue */
+  color: #fff;
+  cursor: pointer;
+}
+
 
 /* Navigation styles */
 nav {
