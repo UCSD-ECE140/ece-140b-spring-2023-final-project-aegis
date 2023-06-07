@@ -80,7 +80,7 @@ document.addEventListener("DOMContentLoaded", () => {
       // Perform the sign-out action or any other desired functionality
       server_request('/logout', {}, 'POST', function(response) {
         if (response.session_id === 0) {
-          location.replace('/login');
+          location.replace('/');
         }
       });
     });

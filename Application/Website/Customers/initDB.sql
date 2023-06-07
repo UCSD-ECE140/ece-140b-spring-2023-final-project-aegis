@@ -50,18 +50,3 @@ CREATE TABLE datas (
     senderID varchar(255),
     FOREIGN KEY (senderID) REFERENCES device_permissions(dongleID)
 );
-<<<<<<< Updated upstream
-=======
-
--- Create the 'schedule' table
--- hear the action is the action that needs to be run and the topic is the topic to run it for
-CREATE TABLE schedule (
-                          ID int primary key AUTO_INCREMENT,
-                          device_id varchar(255),
-                          time timestamp not null,
-                          topic varchar(255) not null,
-                          run_action varchar(255) not null,
-                          FOREIGN KEY (device_id) REFERENCES customers_devices(device_id)
-);
-
->>>>>>> Stashed changes

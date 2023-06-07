@@ -90,7 +90,6 @@ main {
   cursor: pointer;
 }
 
-<<<<<<< Updated upstream
 /* Navigation styles */
 nav {
   display: flex;
@@ -108,15 +107,6 @@ nav a {
 nav a:hover {
   border-bottom-color: #1c2447; /* Dark blue */
 }
-=======
-.form_row input[type="submit"]:hover {
-  background-color: #1D4ED8; /* Dark blue */
-  color: #fff;
-  cursor: pointer;
-}
-
-
->>>>>>> Stashed changes
 
 /* Result styles */
 #result {

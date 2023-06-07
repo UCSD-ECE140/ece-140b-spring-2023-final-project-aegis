@@ -4,52 +4,22 @@
     <meta charset="utf-8">
     <title>Aegis</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
     <link rel="stylesheet" type="text/css" href="public/css/profile.css">
     <script src="public/js/profile.js" defer></script>
   </head>
   <body>
-    <header class="bg-gray-200">
-      <nav class="flex items-center justify-between p-4">
+    <header>
+      <nav>
         <div></div>
-        <div class="profile relative flex justify-end items-center mt-4 gap-2 cursor-pointer text-right text-white">
-          <div class="user">
-            <h3>{{ session['first_name'] }} {{ session['last_name'] }}</h3>
-            <p>{{ session['username'] }}</p>
-          </div>
-          <div class="img-box w-12 h-12 rounded-full overflow-hidden">
-            <img src="https://media.istockphoto.com/id/689364180/vector/smiling-cartoon-face-positive-people-emotion-icon.jpg?s=612x612&w=0&k=20&c=2olrbVI2dkVyR0XKaMs4cSDrzpA4zH4FrCfZ_rKwVjU=" alt="some user image">
-          </div>
-          <div class="menu absolute top-full right-4 w-48 min-h-20 bg-white shadow-lg opacity-0 transform translate-y-[-10px] invisible transition duration-300">
-            <ul class="relative z-10 bg-white">
-              <li>
-                <a href="/eco_dashboard" class="flex items-center px-4 py-3 hover:bg-gray-200">
-                  <i class="ph-bold ph-envelope-simple text-lg"></i>
-                  <span class="ml-2">Eco Dashboard</span>
-                </a>
-              </li>
-              <li>
-                <a href="/profile" class="flex items-center px-4 py-3 hover:bg-gray-200">
-                  <i class="ph-bold ph-user text-lg"></i>
-                  <span class="ml-2">Profile</span>
-                </a>
-              </li>
-              <li>
-                <a href="/device_settings" class="flex items-center px-4 py-3 hover:bg-gray-200">
-                  <i class="ph-bold ph-gear-six text-lg"></i>
-                  <span class="ml-2">Device Settings</span>
-                </a>
-              </li>
-              <li>
-                <a href="" id="sign-out-link" class="flex items-center px-4 py-3 hover:bg-gray-200">
-                  <i class="ph-bold ph-sign-out text-lg"></i>
-                  <span class="ml-2">Sign Out</span>
-                </a>
-              </li>
-            </ul>
-          </div>
+        <div class="profile">
+            <div class="user">
+                <h3>{{ session['first_name'] }} {{ session['last_name'] }}</h3>
+                <p>{{ session['username'] }}</p>
+            </div>
+            <div class="img-box">
+                <img src="https://media.istockphoto.com/id/689364180/vector/smiling-cartoon-face-positive-people-emotion-icon.jpg?s=612x612&w=0&k=20&c=2olrbVI2dkVyR0XKaMs4cSDrzpA4zH4FrCfZ_rKwVjU=" alt="some user image">
+            </div>
         </div>
-<<<<<<< Updated upstream
         <div class="menu">
             <ul>
                 <li><a href="/profile"><i class="ph-bold ph-user"></i>&nbsp;Profile</a></li>
@@ -60,46 +30,42 @@
             </ul>   
         </div>
     </nav>
-=======
-      </nav>
->>>>>>> Stashed changes
     </header>
-    
-    <h1 class="text-center text-4xl mt-8">Profile</h1>
+    <h1>Profile</h1>
 
-    <main class="container mx-auto" data-mode="viewing">
-      <div class="edit_view hidden">
+    <main class="container" data-mode="viewing">
+      <div class="edit_view">
         <form name="edit_user" action="" method="PUT" data-id="">
-          <h2 class="text-2xl font-bold mb-4">Edit User</h2>
+          <h2>Edit User</h2>
           <div class="form_row">
             <label for="email">Email:</label>
-            <input type="text" name="email" id="email" placeholder="Email" pattern="\S+@(\S+)\.\S+" title="example@domain.com" class="bg-gray-100 px-4 py-2 rounded-md">
+            <input type="text" name="email" id="email" placeholder="Email" pattern="\S+@(\S+)\.\S+" title="example@domain.com">
           </div>
           <div class="form_row">
             <label for="first_name">First Name:</label>
-            <input type="text" name="first_name" id="first_name" placeholder="First Name" autofocus class="bg-gray-100 px-4 py-2 rounded-md">
+            <input type="text" name="first_name" id="first_name" placeholder="First Name" autofocus>
           </div>
           <div class="form_row">
             <label for="last_name">Last Name:</label>
-            <input type="text" name="last_name" id="last_name" placeholder="Last Name" class="bg-gray-100 px-4 py-2 rounded-md">
+            <input type="text" name="last_name" id="last_name" placeholder="Last Name">
           </div>
           <div class="form_row">
             <label for="username">Username:</label>
-            <input type="text" name="username" id="username" placeholder="Username" class="bg-gray-100 px-4 py-2 rounded-md">
+            <input type="text" name="username" id="username" placeholder="Username">
           </div>
           <div class="form_row">
             <label for="password">Password:</label>
-            <input type="password" name="password" id="password" placeholder="Password" class="bg-gray-100 px-4 py-2 rounded-md">
+            <input type="password" name="password" id="password" placeholder="Password">
           </div>
           <div class="button_group">
-            <button class="cancel_button bg-blue-700 text-white px-4 py-2 rounded-md">Cancel</button>
-            <button class="save_button bg-blue-700 text-white px-4 py-2 rounded-md">Save</button>
+            <button class="cancel_button">Cancel</button>
+            <button class="save_button">Save</button>
           </div>
         </form>
       </div>
-      <div class="table_view hidden">
+      <div class="table_view">
         <div class="grid_table">
-          <div class="header grid grid-rows-7">
+          <div class="header">
             <span>Email</span>
             <span>First Name</span>
             <span>Last Name</span>
@@ -109,18 +75,18 @@
             <span></span>
           </div>
           
-          <div class="column grid grid-rows-7" data-id="{{session['ID']}}">
-            <span class="hidden">{{ session['ID'] }}</span>
-            <span id="email" value="{{ session['email'] }}">{{ session['email'] }}</span>
-            <span id="first_name">{{ session['first_name'] }}</span>
-            <span id="last_name">{{ session['last_name'] }}</span>
-            <span id="username">{{ session['username'] }}</span>
-            <span class="censored" id="password">{{ session['password'] }}</span>
+          <div class="column" data-id="{{session['ID']}}">
+            <span style="display: none;">{{ session['ID'] }}</span>
+            <span id = "email" value = "{{ session['email'] }}">{{ session['email'] }}</span>
+            <span id = "first_name">{{ session['first_name'] }}</span>
+            <span id = "last_name">{{ session['last_name'] }}</span>
+            <span id = "username">{{ session['username'] }}</span>
+            <span class="censored" id = "password">{{ session['password'] }}</span>
 
           </div>
           <div></div>
           <div></div>
-          <button class="edit_button bg-blue-700 text-white px-4 py-2 rounded-md" title="Edit User">Edit</button>
+          <button class="edit_button" title="Edit User">Edit</button>
         </div>
       </div>
     </main>
