@@ -30,32 +30,30 @@
             </div>
         </nav>
     </header>
-    <h1>Your data</h1>
+    <h1>Device Settings</h1>
 
     <main class="container" data-mode="viewing">
       <div class="table_view">
         <div class="grid_table">
+
           <div class="header">
             <span>Location</span>
-            <span>Total Kilowatts consumed</span>
-            <span>Estimated Costs</span>
-            <span>Total Kilowatts saved</span>
-            <span>Estimated savings</span>
-            <span>Carbon Footprint</span>
+            <span>Temperature Threshold</span>
+            <span>Last Name</span>
+            <span>Username</span>
+            <span>Password</span>
             <span></span>
             <span></span>
           </div>
-
-          
-          <div class="column" data-id="{{session['ID']}}">
-            <span style="display: none;">{{ session['ID'] }}</span>
-            <span id = "email" value = "{{ session['email'] }}">{{ session['email'] }}</span>
-            <span id = "first_name">{{ session['first_name'] }}</span>
-            <span id = "last_name">{{ session['last_name'] }}</span>
-            <span id = "username">{{ session['username'] }}</span>
-            <span class="censored" id = "password">{{ session['password'] }}</span>
+          <div class="column" data-id="{{data['device']}}">
+            <span style="display: none;">{{ data['name'] }}</span>
+          </div>
+          <div></div>
+          <div></div>
+          <button class="edit_button" title="Edit User">Edit</button>
+          <div></div>
+        </div>
       </div>
-
     </main>
   </body>
 </html>

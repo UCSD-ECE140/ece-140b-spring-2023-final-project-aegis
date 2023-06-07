@@ -22,7 +22,7 @@ body {
 
 /* Header styles */
 header {
-  background-color: #1c2447; /* Dark blue */
+  background-color: #00498D; /* Dark blue */
   color: #fff;
   display: flex;
   justify-content: space-between;
@@ -85,7 +85,7 @@ main {
 }
 
 .form_row input[type="submit"] {
-  background-color: #1c2447; /* Dark blue */
+  background-color: #4D6A85; /* Dark blue */
   color: #fff;
   cursor: pointer;
 }

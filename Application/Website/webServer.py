@@ -132,7 +132,7 @@ def post_logout(request:Request, response:Response) -> dict:
   sessions.end_session(request, response)
   return {'message': 'Logout successful', 'session_id': 0}
 
-@app.get('/device_configuration')
+@app.get('/device_settings')
 def get_configurations(request: Request) -> HTMLResponse:
     session = sessions.get_session(request)
     if len(session) > 0 and session.get('logged_in'):
@@ -151,11 +151,11 @@ def get_configurations(request: Request) -> HTMLResponse:
             template_data = {'request': request, 'data': [], 'session': new_session, 'session_id': session_id}
         else:
             template_data = {'request': request, 'data': configuration_data, 'session': new_session, 'session_id': session_id}
-        return views.TemplateResponse('device_configuration.html', template_data)
+        return views.TemplateResponse('device_settings.html', template_data)
   
     return RedirectResponse(url="/", status_code=302)
 
-@app.put('/website/device_configuration/{user_id}')
+@app.put('/website/device_settings/{user_id}')
 def update_configurations(configurations: Configurations, user_id: str, request: Request) -> dict:
    session = sessions.get_session(request)
    if len(session) > 0 and session.get('logged_in'):
@@ -227,11 +227,17 @@ def get_profile(request:Request) -> HTMLResponse:
     else:
        username = session.get('username')
        account_id = Auth.get_id(username)
+    user_data = Auth.select_users(account_id)
+    new_session = {'first_name': user_data[2], 'last_name': user_data[3], 'username': user_data[4], 'logged_in': session['logged_in']}
+    template_data = {'request': request, 'session': new_session, 'session_id': session_id}
+    configuration_data = Auth.get_configurations(account_id)
+    if configuration_data is None or len(configuration_data) == 0:
+          template_data = {'request': request, 'data': [], 'session': new_session, 'session_id': session_id}
+    else:
+          template_data = {'request': request, 'data': configuration_data, 'session': new_session, 'session_id': session_id}
+    return views.TemplateResponse('analytics.html', template_data)
  else:
     return RedirectResponse(url="/", status_code=302)
-
-
-
 
 # If running the server directly from Python as a module
 if __name__ == "__main__":

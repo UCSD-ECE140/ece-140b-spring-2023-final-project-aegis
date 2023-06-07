@@ -35,6 +35,7 @@ CREATE TABLE customers_devices (
 CREATE TABLE device_permissions (
     name varchar(255) null,
     temperature_threshold int null,
+    state boolean null,
     dongleID varchar(255) unique null,
     device_id varchar(255) unique,
     FOREIGN KEY (device_id) REFERENCES customers_devices(device_id)

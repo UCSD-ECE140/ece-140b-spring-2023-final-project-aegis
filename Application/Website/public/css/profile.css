@@ -15,15 +15,15 @@ body {
   font-family: sans-serif;
   font-size: 16px;
   line-height: 1.4;
-  background-color: #f7f7f7;
-  color: #333;
+  background-color: fff;
+  color: black;
   height: 100%;
   width: 100%;
 }
 
 /* Header styles */
 header {
-  background-color: #1c2447; /* Dark blue */
+  background-color: #00498D; /* Dark blue */
   color: #fff;
   display: flex;
   justify-content: space-between;
@@ -39,10 +39,10 @@ h1 {
 
 /* Main styles */
 main {
-  max-width: 50%;
+  max-width: 75%;
   margin: 0 auto;
   padding: 2rem;
-  background-color: #fff;
+  background-color: #FFF;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
@@ -55,7 +55,6 @@ main {
 .form_row {
   display: flex;
   flex-direction: column;
-  margin-bottom: 1rem;
 }
 
 .form_row input[type="text"],
@@ -63,14 +62,12 @@ main {
 .form_row input[type="submit"] {
   border: none;
   border-radius: 0.25rem;
-  padding: 0.5rem;
   font-size: 1rem;
 }
 
 .form_row input[type="text"],
 .form_row input[type="password"] {
   background-color: #f7f7f7;
-  margin-bottom: 0.5rem;
 }
 
 .form_row input[type="submit"] {
@@ -85,7 +82,7 @@ nav {
   left: 0;
   width: 100%;
   height: 80px;
-  background: #1c2447;
+  background: #00498D;
   padding: 16px;
   display: flex;
   justify-content: space-between;
@@ -306,7 +303,7 @@ div {
 }
 
 button {
-  background-color: #1c2447; /* Dark blue */
+  background-color: #4D6A85; /* Dark blue */
   color: #fff;
   border: none;
   padding: 10px;
