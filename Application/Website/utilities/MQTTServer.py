@@ -3,6 +3,13 @@ from dotenv import load_dotenv                    # Used to read the credentials
 import paho.mqtt.client as mqtt
 load_dotenv('credentials.env')                 # Read in the environment variables for MySQL
 
+datas_config = {
+  "host": os.environ['MYSQL_HOST'],
+  "user": os.environ['MYSQL_USER'],
+  "password": os.environ['MYSQL_PASSWORD'],
+  "database": os.environ['MYSQL_DATABASE']
+}
+
 MQTT_config = {
   "server": os.environ['MQTT_SERVER'],
   "username": os.environ['MQTT_USERNAME'],
@@ -20,8 +27,8 @@ class MQTTServer:
         self.client.on_message = self.on_message
 
     def start(self):
-        self.client.connect_async(MQTT_config['domain'], int(MQTT_config['port']))
-        self.client.loop_start()
+        self.client.connect(MQTT_config['domain'], int(MQTT_config['port']))
+        self.client.loop_forever()
 
     def stop(self):
         self.client.loop_stop()
@@ -32,8 +39,13 @@ class MQTTServer:
 
     def on_message(self, client, userdata, msg):
         split = msg.topic.split("/")
-        if split[0] == "MQTT_config['topic']":
-            print(split[1] + " " + msg.payload.decode())
+        if split[0] == "Aegis":
+            if split[1] == "aegisDongleSend":
+                print(split[1] + " " + msg.payload.decode())
+           
 
-
-mqtt_server = MQTTServer()
+# If running the server directly from Python as a module
+if __name__ == "__main__":
+    print(MQTT_config)
+    mqtt_server = MQTTServer()  
+    mqtt_server.start()

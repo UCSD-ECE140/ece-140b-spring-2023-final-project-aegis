@@ -9,9 +9,27 @@
   </head>
   <body>
     <header>
-      <nav id="navigation">
-        <button class="logout_button">Logout</button>
-      </nav>
+      <nav>
+        <div></div>
+        <div class="profile">
+            <div class="user">
+                <h3>{{ session['first_name'] }} {{ session['last_name'] }}</h3>
+                <p>{{ session['username'] }}</p>
+            </div>
+            <div class="img-box">
+                <img src="https://media.istockphoto.com/id/689364180/vector/smiling-cartoon-face-positive-people-emotion-icon.jpg?s=612x612&w=0&k=20&c=2olrbVI2dkVyR0XKaMs4cSDrzpA4zH4FrCfZ_rKwVjU=" alt="some user image">
+            </div>
+        </div>
+        <div class="menu">
+            <ul>
+                <li><a href="/profile"><i class="ph-bold ph-user"></i>&nbsp;Profile</a></li>
+                <li><a href="#"><i class="ph-bold ph-envelope-simple"></i>&nbsp;Inbox</a></li>
+                <li><a href="/device_configuration"><i class="ph-bold ph-gear-six"></i>&nbsp;Settings</a></li>
+                <li><a href="/team"><i class="ph-bold ph-question"></i>&nbsp;Our Team</a></li>
+                <li><a href="" id="sign-out-link"><i class="ph-bold ph-sign-out"></i>&nbsp;Sign Out</a></li>
+            </ul>   
+        </div>
+    </nav>
     </header>
     <h1>Profile</h1>
 
@@ -56,16 +74,18 @@
             <span></span>
             <span></span>
           </div>
-
+          
           <div class="column" data-id="{{session['ID']}}">
             <span style="display: none;">{{ session['ID'] }}</span>
-            <span>{{ session['email'] }}</span>
-            <span>{{ session['first_name'] }}</span>
-            <span>{{ session['last_name'] }}</span>
-            <span>{{ session['username'] }}</span>
-            <span class="censored">{{ session['password'] }}</span>
+            <span id = "email" value = "{{ session['email'] }}">{{ session['email'] }}</span>
+            <span id = "first_name">{{ session['first_name'] }}</span>
+            <span id = "last_name">{{ session['last_name'] }}</span>
+            <span id = "username">{{ session['username'] }}</span>
+            <span class="censored" id = "password">{{ session['password'] }}</span>
 
           </div>
+          <div></div>
+          <div></div>
           <button class="edit_button" title="Edit User">Edit</button>
         </div>
       </div>

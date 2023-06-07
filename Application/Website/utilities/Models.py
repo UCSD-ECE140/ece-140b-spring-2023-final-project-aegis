@@ -23,3 +23,9 @@ class VisitorLogin(BaseModel):
 class RetrieveInfo(BaseModel):
   identifier: str
 
+class Configurations(BaseModel):
+  name: str
+  temperature_threshold: str
+  dongleID: str
+
+
