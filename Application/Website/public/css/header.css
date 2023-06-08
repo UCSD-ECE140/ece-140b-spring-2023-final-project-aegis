@@ -1,0 +1,141 @@
+
+nav {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 80px;
+    background: #00498D;
+    padding: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  /* Menu toggle */
+  .menu-toggle {
+    position: relative;
+    width: 40px;
+    height: 40px;
+    cursor: not-allowed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .menu-toggle::before {
+    content: '';
+    position: absolute;
+    width: 24px;
+    height: 4px;
+    background: #000;
+    box-shadow: 0 8px 0 #000,
+                0 -8px 0 #000;
+  }
+  
+  /* Profile menu */
+  .profile {
+    position: relative;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-top: 1rem;
+    gap: 0.5rem;
+    cursor: pointer;
+    text-align: end;
+    color: white;
+  }
+  
+  .profile h3 {
+    text-align: end;
+    line-height: 1;
+    margin-bottom: 4px;
+    font-weight: 600;
+  }
+  
+  .profile p {
+    line-height: 1;
+    font-size: 14px;
+    opacity: .6;
+  }
+  
+  .profile .img-box {
+    position: relative;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    overflow: hidden;
+  }
+  
+  .profile .img-box img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  /* Menu (the right one) */
+  .menu {
+    position: absolute;
+    top: calc(100% + 24px);
+    right: 16px;
+    width: 200px;
+    min-height: 100px;
+    background: #fff;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, .2);
+    opacity: 0;
+    transform: translateY(-10px);
+    visibility: hidden;
+    transition: 300ms;
+  }
+  
+  .menu::before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    right: 14px;
+    width: 20px;
+    height: 20px;
+    background: #1c2447;
+    transform: rotate(45deg);
+    z-index: -1;
+  }
+  
+  .menu.active {
+    opacity: 1;
+    transform: translateY(0);
+    visibility: visible;
+  }
+  
+  /* Menu links */
+  .menu ul {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    z-index: 10;
+    background: #fff;
+  }
+  
+  .menu ul li {
+    list-style: none;
+  }
+  
+  .menu ul li:hover {
+    background: #eee;
+  }
+  
+  .menu ul li a {
+    text-decoration: none;
+    color: #000;
+    display: flex;
+    align-items: center;
+    padding: 15px 20px;
+    gap: 6px;
+  }
+  
+  .menu ul li a i {
+    font-size: 1.2em;
+  }
+  
