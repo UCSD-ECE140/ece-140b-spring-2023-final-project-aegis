@@ -57,14 +57,9 @@ std::vector<std::string> splitString(std::string str, char splitter){
 }
 
 void callback(char* topic, uint8_t* data, unsigned int code){
-  Serial.print("Message arrived in topic: ");
-  Serial.println(topic);
-  Serial.print("Message:");
   for(int i = 0; i < code; i++){
-    Serial.print((char)data[i]);
     messageBuffer += (char)data[i];
   }
-
   split = splitString(messageBuffer, ',');
 
   topicString = topic;
@@ -76,61 +71,63 @@ void callback(char* topic, uint8_t* data, unsigned int code){
     if(topicSplit[1] == "aegisTempSet") {
       roomForTemp = split[0];
       currentSet = std::stof(split[1]);
-      Serial.println("aegisTempSet received");
-      Serial.println(currentSet);
+      // Serial.println("aegisTempSet received");
+      // Serial.print(roomForTemp.c_str());
+      // Serial.println(currentSet);
     } else if(topicSplit[1] == "aegisDongleSend") {
-      Serial.println("aegisDongleSend received");
+      // Serial.println("aegisDongleSend received");
       sender = split[0];
-      Serial.println(sender.c_str());
-      Serial.println(roomForTemp.c_str());
+      // Serial.println(sender.c_str());
+      // Serial.println(roomForTemp.c_str());
       if(sender == roomForTemp) {
         currentTemp = (std::stof(split[1]) * 9/5) + 32;
-        Serial.println(currentTemp);
-        Serial.println("aegisDongleSend received, correct room");
+        // Serial.println(currentTemp);
+        // Serial.println("aegisDongleSend received, correct room");
       }
     } else if(topicSplit[1] == "aegisThermostatControl") {
-      Serial.println("aegisThermostatControl received");
-      Serial.println(messageBuffer.c_str());
+      // Serial.println("aegisThermostatControl received");
+      // Serial.println(messageBuffer.c_str());
       if(messageBuffer == "on") {
-        Serial.println("aegisThermostatControl on");
+        // Serial.println("aegisThermostatControl on");
         tempControl = true;
       } else if(messageBuffer == "off") {
-        Serial.println("aegisThermostatControl off");
+        // Serial.println("aegisThermostatControl off");
         tempControl = false;
       }
     }
   }
   messageBuffer = "";
-  Serial.print("\n");
 }
 
 void setUpWifi(){
-  Serial.println("Setting up wifi");
+  // Serial.println("Setting up wifi");
   WiFi.begin("AndroidAP_1584","qqqqqqq1");
   while (WiFi.status() != WL_CONNECTED) {
       delay(500);
-      Serial.println("Connecting to WiFi..");
+      // Serial.println("Connecting to WiFi..");
   }
-  Serial.println("Connected to the WiFi network");
+  // Serial.println("Connected to the WiFi network");
   client.setServer("aegishome.ninja", 8003);
   client.setCallback(callback);
   while (!client.connected()) {
       
-      Serial.println("Connecting to MQTT...");
+      // Serial.println("Connecting to MQTT...");
       if (client.connect(clientId.c_str()), "aegisAdmin", "iLoveAegis!") {
-      Serial.println("connected");  
+      // Serial.println("connected");  
       } else {
-      Serial.print("failed with state ");
-      Serial.print(client.state());
+      // Serial.print("failed with state ");
+      // Serial.print(client.state());
       delay(2000);
       }
   }
   client.publish("Aegis/aegisDongleInit", "Hello from your Aegis Thermostat!");
-  client.subscribe("Aegis/#");
+  client.subscribe("Aegis/aegisDongleSend/#");
+  client.subscribe("Aegis/aegisTempSet");
+  client.subscribe("Aegis/aegisThermostatControl");
 }
 
 void sendMessage(String topic, String message) {
-    Serial.println("Sending message: " + message + " to topic: " + topic);
+    // Serial.println("Sending message: " + message + " to topic: " + topic);
     client.publish(topic.c_str(), message.c_str());
 }
 
@@ -164,7 +161,7 @@ void loop()
         digitalWrite(26, pinState=true);
         digitalWrite(25, pinState=true);
         sendMessage("Aegis/aegisThermostatInfo", "Turning the AC ON!");
-        Serial.println("Turning the AC ON!");
+        // Serial.println("Turning the AC ON!");
         ac = true;
         heat = false;
       }
@@ -174,8 +171,8 @@ void loop()
         digitalWrite(27, pinState=true);
         digitalWrite(26, pinState=false);
         digitalWrite(25, pinState=true);
-        sendMessage("Aegis/aegisThermostatInfo", "Turning the   HEAT ON!");
-        Serial.println("Turning the HEAT ON!");
+        sendMessage("Aegis/aegisThermostatInfo", "Turning the HEAT ON!");
+        // Serial.println("Turning the HEAT ON!");
         ac = false;
         heat = true;
       }
@@ -186,7 +183,7 @@ void loop()
         digitalWrite(26, pinState=false);
         digitalWrite(25, pinState=false);
         sendMessage("Aegis/aegisThermostatInfo", "Turning everything OFF");
-        Serial.println("Turning everything OFF");
+        // Serial.println("Turning everything OFF");
         wasOff = true;
       }
     }
@@ -196,10 +193,9 @@ void loop()
       digitalWrite(26, pinState=false);
       digitalWrite(25, pinState=false);
       sendMessage("Aegis/aegisThermostatInfo", "Turning everything OFF");
-      Serial.println("Turning everything OFF");
+      // Serial.println("Turning everything OFF");
       wasOff = true;
     }
   }
-  delay(1000);
   client.loop();
 }
