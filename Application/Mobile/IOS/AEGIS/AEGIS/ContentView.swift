@@ -69,22 +69,21 @@ struct ContentView: View {
                         
                         HStack(spacing: 20) {
                             Button(action: {
-                                self.mqtt.publish("Aegis/aegisDongleReceive/\(mqttDelegate.activeID)", withString: "increase_temp")
                                 // Increase the temperature in your app:
                                 if let currentTemp = Int(mqttDelegate.activeSetTemp) {
                                     mqttDelegate.activeSetTemp = String(currentTemp + 1)
                                 }
+                                self.mqtt.publish("Aegis/aegisTempSet", withString: "\(mqttDelgate.activename),\(mqttDelegate.activeSetTemp)")
                             }) {
                                 Text("Increase Temp")
                             }
                             .buttonStyle(.bordered)
-                            
                             Button(action: {
-                                self.mqtt.publish("Aegis/aegisDongleReceive/\(mqttDelegate.activeID)", withString: "decrease_temp")
                                 // Decrease the temperature in your app:
                                 if let currentTemp = Int(mqttDelegate.activeSetTemp) {
                                     mqttDelegate.activeSetTemp = String(currentTemp - 1)
                                 }
+                                self.mqtt.publish("Aegis/aegisTempSet", withString: "\(mqttDelgate.activename),\(mqttDelegate.activeSetTemp)")
                             }) {
                                 Text("Decrease Temp")
                             }
