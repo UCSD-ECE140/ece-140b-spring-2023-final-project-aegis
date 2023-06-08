@@ -163,21 +163,19 @@ class MQTTDelegate: NSObject, ObservableObject, CocoaMQTTDelegate {
                 room.temperature = String(readings[1])
                 room.humidity = String(readings[2])
                 room.current = String(readings[3])
-                withAnimation {
-                    if let index = rooms.firstIndex(where: { $0.name == room.name }) {
-                        let newRoom = Room()
-                        if let unwrapped = deviceId{
-                            newRoom.dongleAddress = unwrapped
-                        }
-                        newRoom.name = room.name
-                        newRoom.temperature = room.temperature
-                        newRoom.humidity = room.humidity
-                        newRoom.current = room.current
-                        rooms[index] = newRoom  // Replacing the old Room object with a new one
+                if let index = rooms.firstIndex(where: { $0.name == room.name }) {
+                    let newRoom = Room()
+                    if let unwrapped = deviceId{
+                        newRoom.dongleAddress = unwrapped
                     }
-                    else{
-                        rooms.append(room)
-                    }
+                    newRoom.name = room.name
+                    newRoom.temperature = room.temperature
+                    newRoom.humidity = room.humidity
+                    newRoom.current = room.current
+                    rooms[index] = newRoom  // Replacing the old Room object with a new one
+                }
+                else{
+                    rooms.append(room)
                 }
                 
             }
