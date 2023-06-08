@@ -1,0 +1,22 @@
+{
+  "name": "react_native_mqtt",
+  "version": "1.3.1",
+  "description": "Drop in mqtt client for react native.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Introvertuous/react_native_mqtt"
+  },
+  "dependencies": {
+    "react-native-storage": "^0.1.2"
+  },
+  "main": "src/index.js",
+  "scripts": {
+    "travis-deploy-once": "travis-deploy-once",
+    "semantic-release": "semantic-release"
+  },
+  "devDependencies": {
+    "prettier": "^1.14.2",
+    "semantic-release": "^15.9.15",
+    "travis-deploy-once": "^5.0.7"
+  }
+}
