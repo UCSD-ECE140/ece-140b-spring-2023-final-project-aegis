@@ -163,6 +163,7 @@ def authenticate_user(identifier:str, password:str) -> bool:
 @app.put('/website/customer/{user_id}')
 def put_user(user:User, user_id: str, request: Request) -> dict:
     session = sessions.get_session(request)
+    print(user_id, user.first_name, user.last_name, user.email, user.username)
     session['username'] = user.username
     return {'success': Auth.update_user(user_id, user.first_name, user.last_name, user.email, user.username, Security.encrypt(user.password))}
 
@@ -239,6 +240,9 @@ def get_user(user_id:int) -> dict:
         return {'id':user[0], 'email':user[1], 'username':user[2]}
     return {}
 
+@app.delete('/devices/{dongle_id}')
+def delete_device(dongle_id: int) -> bool:
+    return Auth.delete_device(dongle_id)
 
 # DELETE /product/{user_id}
 @app.delete('/customer/{user_id}')
@@ -247,6 +251,36 @@ def delete_user(user_id:int) -> dict:
 
 ## Forgetting Username / Password
 ## ADD IN COMMENTS
+
+@app.get('/schedule')
+def get_schedule(request: Request) -> HTMLResponse:
+    session = sessions.get_session(request)
+    if len(session) > 0 and session.get('logged_in'):
+        session_id = request.cookies.get("session_id")
+        if '@' in session['username']:
+            email = session.get('username')
+            account_id = Auth.get_id(email)
+        else:
+            username = session.get('username')
+            account_id = Auth.get_id(username)
+        user_data = Auth.select_users(account_id)
+        data_sets = Auth.calculate_data(account_id)
+        configuration_data_sets = Auth.get_configurations(account_id)
+        user_info = {'first_name': user_data[2], 'last_name': user_data[3], 'username': user_data[4], 'logged_in': session['logged_in']}
+        
+        data_info_list = []
+        for data in data_sets:
+            data_info = {'temperature': data[2], 'hum': data[3], 'current': data[4], 'dongleID': data[5]}
+            data_info_list.append(data_info)
+
+        configuration_info_list = []
+        for configuration_data in configuration_data_sets:
+            configuration_info = {'name': configuration_data[0], 'temp_thresh': configuration_data[1], 'shielded': configuration_data[2], 'dongleID': configuration_data[3]}
+            configuration_info_list.append(configuration_info)
+        combined_data = list(zip(data_info_list, configuration_info_list))
+
+        template_data = {'request': request, 'user': user_info, 'combined_data': combined_data, 'session_id': session_id}
+        return views.TemplateResponse('schedule.html', template_data)
 
 
 @app.get('/shutoff/{dongleID}')

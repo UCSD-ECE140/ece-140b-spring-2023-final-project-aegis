@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Schedule</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@2.x.x/dist/alpine.min.js" defer></script>
+    <link rel="stylesheet" type="text/css" href="../css/extras.css">
+    <script src="../js/schedule_manager.js" defer></script>
+  </head>
+  <body class="bg-white text-black h-screen w-screen font-sans">
+    <header>
+      <nav class="bg-blue-800 text-white p-5 flex justify-between items-center">
+        <div></div>
+        <div class="profile relative flex justify-end items-center mt-1 cursor-pointer text-right">
+          <div class="user">
+              <h3 class="mb-1 font-semibold">{{ user['first_name'] }} {{ user['last_name'] }}</h3>
+              <p class="text-sm opacity-60">{{ user['username'] }}</p>
+          </div>
+          <div class="img-box ml-2">
+              <img class="w-12 h-12 object-cover rounded-full" src="https://media.istockphoto.com/id/689364180/vector/smiling-cartoon-face-positive-people-emotion-icon.jpg?s=612x612&w=0&k=20&c=2olrbVI2dkVyR0XKaMs4cSDrzpA4zH4FrCfZ_rKwVjU=" alt="some user image">
+          </div>
+          <div class="menu bg-white shadow-lg w-48 py-2 absolute top-full right-0 mt-2 hidden text-black">
+              <ul>
+                  <li><a class="flex items-center px-4 py-2 hover:bg-gray-100" href="/eco_home"><i class="ph-bold ph-envelope-simple mr-2"></i>Eco Dashboard</a></li>
+                  <li><a class="flex items-center px-4 py-2 hover:bg-gray-100" href="/schedule"><i class="ph-bold ph-schedule mr-2"></i>Schedule</a></li>
+                  <li><a class="flex items-center px-4 py-2 hover:bg-gray-100" href="/profile"><i class="ph-bold ph-user mr-2"></i>Profile</a></li>
+                  <li><a class="flex items-center px-4 py-2 hover:bg-gray-100" href="/device_settings"><i class="ph-bold ph-gear-six mr-2"></i>Device Settings</a></li>
+                  <li><a class="flex items-center px-4 py-2 hover:bg-gray-100" href="" id="sign-out-link"><i class="ph-bold ph-sign-out mr-2"></i>Sign Out</a></li>
+              </ul>   
+          </div>
+        </div>
+      </nav>
+    </header>
+    <main class="container mx-auto p-6">
+      <h1 class="text-center text-3xl font-bold my-6">Schedule</h1>
+      {% for schedule, configuration in combined_data %}
+        <div class="bg-white shadow-md rounded-lg p-6 mb-6 hover:shadow-lg transition-shadow duration-300 ease-in-out">
+          <div class="grid grid-cols-2 gap-4">
+            <div>
+              <h3 class="font-bold text-2xl text-blue-900">{{ configuration['name'] }}</h3>
+              <p><span class="font-bold">Max Temp: </span>{{ configuration['temp_thresh'] }}</p>
+              <p><span class="font-bold">Shielded: </span>{{ configuration['shielded'] }}</p>
+              <p><span class="font-bold">Dongle: </span>{{ configuration['dongleID'] }}</p>
+            </div>
+            <div>
+              <h3 class="font-bold text-2xl text-blue-600">Schedule</h3>
+              <p><span class="font-bold">Start Time: </span>{{ schedule['start_time'] }}</p>
+              <p><span class="font-bold">End Time: </span>{{ schedule['end_time'] }}</p>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </main>
+  </body>
+</html>

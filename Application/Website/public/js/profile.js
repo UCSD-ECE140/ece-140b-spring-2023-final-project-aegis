@@ -41,7 +41,7 @@ document.addEventListener("DOMContentLoaded", () => {
       edit_form.querySelector('input[name=last_name]').value = data.querySelector("#last_name").innerText;
       edit_form.querySelector('input[name=username]').value = data.querySelector("#username").innerText;
       edit_form.querySelector('input[name=password]').value = data.querySelector("#password").innerText;
-      edit_form.dataset.id = column.getAttribute('data-id');
+      edit_form.dataset.id = data.children[0].innerHTML;
     }
 
     // Close edit form
