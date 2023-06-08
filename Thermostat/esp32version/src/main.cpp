@@ -30,8 +30,8 @@ String clientId = WiFi.macAddress();
 std::string data;
 bool disconnected = false;
 bool processed = false;
-int currentSet = 0;
-int currentTemp = 0;
+float currentSet = 0.0;
+float currentTemp = 0.0;
 bool tempControl = false;
 std::vector<std::string> senderSplit;
 std::vector<std::string> topicSplit;
@@ -75,15 +75,17 @@ void callback(char* topic, uint8_t* data, unsigned int code){
   if(topicSplit[0] == "Aegis") {
     if(topicSplit[1] == "aegisTempSet") {
       roomForTemp = split[0];
-      currentSet = std::stoi(split[1]);
+      currentSet = std::stof(split[1]);
       Serial.println("aegisTempSet received");
+      Serial.println(currentSet);
     } else if(topicSplit[1] == "aegisDongleSend") {
       Serial.println("aegisDongleSend received");
       sender = split[0];
       Serial.println(sender.c_str());
       Serial.println(roomForTemp.c_str());
       if(sender == roomForTemp) {
-        currentTemp = std::stoi(split[1]);
+        currentTemp = (std::stof(split[1]) * 9/5) + 32;
+        Serial.println(currentTemp);
         Serial.println("aegisDongleSend received, correct room");
       }
     } else if(topicSplit[1] == "aegisThermostatControl") {
@@ -140,8 +142,8 @@ void setup()
   ts.initTemp();
   //set up digital pin 27 which is used by the relay
   pinMode(27, OUTPUT); //Heating
-  pinMode(28, OUTPUT); //Cooling
-  pinMode(29, OUTPUT); //Fan
+  pinMode(26, OUTPUT); //Cooling
+  pinMode(25, OUTPUT); //Fan
   //set it to low
   digitalWrite(27, pinState=false);
   digitalWrite(26, pinState=false);
@@ -172,7 +174,7 @@ void loop()
         digitalWrite(27, pinState=true);
         digitalWrite(26, pinState=false);
         digitalWrite(25, pinState=true);
-        sendMessage("Aegis/aegisThermostatInfo", "Turning the HEAT ON!");
+        sendMessage("Aegis/aegisThermostatInfo", "Turning the   HEAT ON!");
         Serial.println("Turning the HEAT ON!");
         ac = false;
         heat = true;
