@@ -56,9 +56,9 @@
               
               <div>
                 <h3 class="font-bold text-2xl text-blue-500">Current Data</h3>
-                <p class="text-blue-500 rounded p-2"><span class="font-bold">Temperature: </span>{{ data['temperature'] }}</p>
-                <p class="text-blue-500 rounded p-2"><span class="font-bold">Humidity: </span>{{ data['hum'] }}</p>
-                <p class="text-blue-500 rounded p-2"><span class="font-bold">Current: </span>{{ data['current'] }}</p>
+                <p class="text-blue-500 rounded p-2"><span class="font-bold">Temperature: </span><span class="temperatureValue">{{ data['temperature'] }}</span></p>
+                <p class="text-blue-500 rounded p-2"><span class="font-bold">Humidity: </span><span class="humidityValue">{{ data['hum'] }}</span></p>
+                <p class="text-blue-500 rounded p-2"><span class="font-bold">Current: </span><span class="currentValue">{{ data['current'] }}</span></p>
               </div>
             </div>
           </div>

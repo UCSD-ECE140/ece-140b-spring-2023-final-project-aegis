@@ -7,7 +7,24 @@ document.addEventListener('DOMContentLoaded', function () {
     menu.classList.toggle('hidden');
   });
 });
+window.onload = function(){
+  setInterval(() => {
+      document.querySelectorAll('.temperatureValue').forEach(element => {
+          const temperature = parseFloat(element.innerText);
+          element.innerText = (temperature + (Math.random() - 0.5)).toFixed(1);
+      });
 
+      document.querySelectorAll('.humidityValue').forEach(element => {
+          const humidity = parseFloat(element.innerText);
+          element.innerText = (humidity + (Math.random() - 0.5)).toFixed(1);
+      });
+
+      document.querySelectorAll('.currentValue').forEach(element => {
+          const current = parseFloat(element.innerText);
+          element.innerText = (current + (Math.random() - 0.5)).toFixed(1);
+      });
+  }, 1000);
+}
 function server_request(url, data = {}, verb, callback) {
   return fetch(url, {
     credentials: 'same-origin',
