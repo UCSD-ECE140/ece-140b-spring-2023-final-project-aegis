@@ -29,7 +29,7 @@ class MQTTServer:
 
     def start(self):
         self.client.connect(MQTT_config['domain'], int(MQTT_config['port']))
-        self.client.loop_forever()
+        self.client.loop_start()
 
     def stop(self):
         self.client.loop_stop()
