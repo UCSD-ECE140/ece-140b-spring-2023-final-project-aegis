@@ -4,90 +4,106 @@
     <meta charset="utf-8">
     <title>Aegis</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="public/css/profile.css">
-    <script src="public/js/profile.js" defer></script>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
+    <script src="../js/profile.js" defer></script>
   </head>
   <body>
-    <header>
-      <nav>
-        <div></div>
-        <div class="profile">
-            <div class="user">
-                <h3>{{ session['first_name'] }} {{ session['last_name'] }}</h3>
-                <p>{{ session['username'] }}</p>
-            </div>
-            <div class="img-box">
-                <img src="https://media.istockphoto.com/id/689364180/vector/smiling-cartoon-face-positive-people-emotion-icon.jpg?s=612x612&w=0&k=20&c=2olrbVI2dkVyR0XKaMs4cSDrzpA4zH4FrCfZ_rKwVjU=" alt="some user image">
-            </div>
-        </div>
-        <div class="menu">
-            <ul>
-                <li><a href="/analytics"><i class="ph-bold ph-envelope-simple"></i>&nbsp;Analytics</a></li>
-                <li><a href="/profile"><i class="ph-bold ph-user"></i>&nbsp;Profile</a></li>
-                <li><a href="/device_settings"><i class="ph-bold ph-gear-six"></i>&nbsp;Device Settings</a></li>
-                <li><a href="" id="sign-out-link"><i class="ph-bold ph-sign-out"></i>&nbsp;Sign Out</a></li>
-            </ul>   
-        </div>
-    </nav>
-    </header>
-    <h1>Profile</h1>
-
-    <main class="container" data-mode="viewing">
-      <div class="edit_view">
-        <form name="edit_user" action="" method="PUT" data-id="">
-          <h2>Edit User</h2>
-          <div class="form_row">
-            <label for="email">Email:</label>
-            <input type="text" name="email" id="email" placeholder="Email" pattern="\S+@(\S+)\.\S+" title="example@domain.com">
-          </div>
-          <div class="form_row">
-            <label for="first_name">First Name:</label>
-            <input type="text" name="first_name" id="first_name" placeholder="First Name" autofocus>
-          </div>
-          <div class="form_row">
-            <label for="last_name">Last Name:</label>
-            <input type="text" name="last_name" id="last_name" placeholder="Last Name">
-          </div>
-          <div class="form_row">
-            <label for="username">Username:</label>
-            <input type="text" name="username" id="username" placeholder="Username">
-          </div>
-          <div class="form_row">
-            <label for="password">Password:</label>
-            <input type="password" name="password" id="password" placeholder="Password">
-          </div>
-          <div class="button_group">
-            <button class="cancel_button">Cancel</button>
-            <button class="save_button">Save</button>
-          </div>
-        </form>
+  <nav class="bg-gray-800 p-2 mt-0 w-full">
+    <div class="container mx-auto flex flex-wrap items-center">
+      <div class="flex w-full md:w-1/2 justify-center md:justify-start text-white font-extrabold">
+        <a class="text-white no-underline hover:text-white hover:no-underline" href="#">
+          <span class="text-2xl pl-2">Aegis Smart Home</span>
+        </a>
       </div>
-      <div class="table_view">
-        <div class="grid_table">
-          <div class="header">
-            <span>Email</span>
-            <span>First Name</span>
-            <span>Last Name</span>
-            <span>Username</span>
-            <span>Password</span>
-            <span></span>
-            <span></span>
-          </div>
-          
-          <div class="column" data-id="{{session['ID']}}">
-            <span style="display: none;">{{ session['ID'] }}</span>
-            <span id = "email" value = "{{ session['email'] }}">{{ session['email'] }}</span>
-            <span id = "first_name">{{ session['first_name'] }}</span>
-            <span id = "last_name">{{ session['last_name'] }}</span>
-            <span id = "username">{{ session['username'] }}</span>
-            <span class="censored" id = "password">{{ session['password'] }}</span>
+      <div class="flex w-full pt-2 content-center justify-between md:w-1/2 md:justify-end">
+        <ul class="list-reset flex justify-between flex-1 md:flex-none items-center">
+          <li class="mr-3">
+            <a class="inline-block py-2 px-4 text-white no-underline" href="#">Home</a>
+          </li>
+          <li class="mr-3">
+            <a class="inline-block text-gray-600 no-underline hover:text-gray-200 hover:text-underline py-2 px-4" href="#features">Scheduling</a>
+          </li>
+          <li class="mr-3">
+            <a class="inline-block text-gray-600 no-underline hover:text-gray-200 hover:text-underline py-2 px-4" href="/device">Management</a>
+          </li>
+          <li class="mr-3">
+            <a class="inline-block text-gray-600 no-underline hover:text-gray-200 hover:text-underline py-2 px-4" href="/eco_home">Eco Dashboard</a>
+          </li>
+          <li class="mr-3">
+            <a class="inline-block text-gray-600 no-underline hover:text-gray-200 hover:text-underline py-2 px-4" href="/logout">Logout</a>
+          </li>
+          <li class="mr-3">
+            <a class="inline-block text-gray-600 no-underline hover:text-gray-200 hover:text-underline py-2 px-4" href="/profile">
+              <div class="flex items-center">
+                <span>{{ session['first_name'] }} {{ session['last_name'] }}</span>
+                <img src="https://media.istockphoto.com/id/689364180/vector/smiling-cartoon-face-positive-people-emotion-icon.jpg?s=612x612&w=0&k=20&c=2olrbVI2dkVyR0XKaMs4cSDrzpA4zH4FrCfZ_rKwVjU=" class="w-8 h-8" alt="some user image"></div></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <h1 class="text-3xl font-bold mb-4">Profile</h1>
 
-          </div>
-          <div></div>
-          <div></div>
-          <button class="edit_button" title="Edit User">Edit</button>
+  <main class="container mx-auto flex gap-6" data-mode="viewing">
+    <div class="w-1/2">
+      <form name="edit_user" action="" method="PUT" data-id="" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+        <h2 class="block text-gray-700 text-sm font-bold mb-2">Edit User</h2>
+        <div class="mb-4">
+          <label class="block text-gray-700 text-sm font-bold mb-2" for="email">Email:</label>
+          <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="text" name="email" id="email" placeholder="Email" pattern="\S+@(\S+)\.\S+" title="example@domain.com">
+        </div>
+        <div class="mb-4">
+          <label class="block text-gray-700 text-sm font-bold mb-2" for="first_name">First Name:</label>
+          <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="text" name="first_name" id="first_name" placeholder="First Name" autofocus>
+        </div>
+        <div class="mb-4">
+          <label class="block text-gray-700 text-sm font-bold mb-2" for="last_name">Last Name:</label>
+          <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="text" name="last_name" id="last_name" placeholder="Last Name">
+        </div>
+        <div class="mb-4">
+          <label class="block text-gray-700 text-sm font-bold mb-2" for="username">Username:</label>
+          <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="text" name="username" id="username" placeholder="Username">
+        </div>
+        <div class="mb-4">
+          <label class="block text-gray-700 text-sm font-bold mb-2" for="password">Password:</label>
+          <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="password" name="password" id="password" placeholder="Password">
+        </div>
+        <div class="flex items-center justify-between">
+          <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button">Cancel</button>
+          <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button">Save</button>
+        </div>
+      </form>
+    </div>
+
+    <div class="w-1/2 bg-white shadow-md rounded px-8 pt-6 pb-8">
+      <h2 class="block text-gray-700 text-sm font-bold mb-2">User Information</h2>
+      <div class="flex flex-col gap-4 mt-4">
+        <div class="flex gap-4 text-lg font-bold">
+          <span>Email</span>
+          <span>First Name</span>
+          <span>Last Name</span>
+          <span>Username</span>
+          <span>Password</span>
+        </div>
+
+        <div class="flex gap-4 text-gray-600">
+          <span class="hidden">{{ session['ID'] }}</span>
+          <span id="emailView">{{ session['email'] }}</span>
+          <span id="first_nameView">{{ session['first_name'] }}</span>
+          <span id="last_nameView">{{ session['last_name'] }}</span>
+          <span id="usernameView">{{ session['username'] }}</span>
+          <span id="passwordView">{{ session['password'] }}</span>
         </div>
       </div>
-    </main>
+
+      <button class="px-4 py-2 text-white bg-blue-500 rounded hover:bg-blue-700 mt-4" title="Edit User">Edit</button>
+    </div>
+  </main>
+
   </body>
+
+
+
+
 </html>
