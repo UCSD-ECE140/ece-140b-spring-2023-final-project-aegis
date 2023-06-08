@@ -8,6 +8,8 @@ from utilities.sessions import Sessions
 from utilities.Models import User, VisitorLogin, RetrieveInfo, Configurations
 from utilities.Security import Security
 from utilities.MQTTServer import MQTTServer
+import random
+from datetime import time
 import threading
 import Customers.Auth as Auth
 import uvicorn      # Used for running the app directly through Python
@@ -31,6 +33,10 @@ async def startup_event():
 async def shutdown_event():
     mqtt_server.stop()
     mqtt_thread.join()
+
+def random_time():
+    random_time = time(hour=random.randint(0, 23), minute=random.randint(0, 59), second=random.randint(0, 59))
+    return random_time.strftime("%I:%M %p")
 
 ## Route for Website Register
 ## Can manually put in product ID through website
@@ -275,10 +281,23 @@ def get_schedule(request: Request) -> HTMLResponse:
         for configuration_data in configuration_data_sets:
             configuration_info = {'name': configuration_data[0], 'temp_thresh': configuration_data[1], 'shielded': configuration_data[2], 'dongleID': configuration_data[3]}
             configuration_info_list.append(configuration_info)
-        combined_data = list(zip(data_info_list, configuration_info_list))
+
+        # Generate schedule data for each combined data
+        schedule_list = []
+        for _ in data_info_list:
+            start_time = random_time()
+            end_time = random_time()
+            # Ensure that end_time is after start_time
+            while end_time <= start_time:
+                end_time = random_time()
+            schedule_info = {'start_time': start_time, 'end_time': end_time}
+            schedule_list.append(schedule_info)
+
+        combined_data = list(zip(schedule_list, configuration_info_list))
 
         template_data = {'request': request, 'user': user_info, 'combined_data': combined_data, 'session_id': session_id}
         return views.TemplateResponse('schedule.html', template_data)
+
 
 
 @app.get('/shutoff/{dongleID}')
