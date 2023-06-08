@@ -6,13 +6,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@2.x.x/dist/alpine.min.js" defer></script>
+    <link rel="icon" href="../imgs/aegis.png" >
     <link rel="stylesheet" type="text/css" href="../css/extras.css">
     <script src="../js/schedule_manager.js" defer></script>
   </head>
   <body class="bg-white text-black h-screen w-screen font-sans">
     <header>
-      <nav class="bg-blue-800 text-white p-5 flex justify-between items-center">
-        <div></div>
+      <nav class="bg-customBlue text-white p-5 flex justify-between items-center">
+        <div class="flex items-center text-white font-extrabold">
+          <img class="h-8 w-8 mr-2" src="../imgs/aegis.png" alt="Favicon"/>
+          <a class="text-white no-underline hover:text-white hover:no-underline" href="#">
+              <span class="text-2xl pl-2">Aegis</span>
+          </a>
+      </div>
         <div class="profile relative flex justify-end items-center mt-1 cursor-pointer text-right">
           <div class="user">
               <h3 class="mb-1 font-semibold">{{ user['first_name'] }} {{ user['last_name'] }}</h3>

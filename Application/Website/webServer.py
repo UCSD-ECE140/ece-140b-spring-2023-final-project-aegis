@@ -130,7 +130,6 @@ def get_profile(request: Request) -> HTMLResponse:
             data_info_list.append(data_info)
 
         configuration_info_list = []
-        print(configuration_data_sets)
         for configuration_data in configuration_data_sets:
             configuration_info = {'name': configuration_data[0], 'temp_thresh': configuration_data[1], 'shielded': configuration_data[2], 'dongleID': configuration_data[3]}
             configuration_info_list.append(configuration_info)
@@ -163,7 +162,6 @@ def authenticate_user(identifier:str, password:str) -> bool:
 @app.put('/website/customer/{user_id}')
 def put_user(user:User, user_id: str, request: Request) -> dict:
     session = sessions.get_session(request)
-    print(user_id, user.first_name, user.last_name, user.email, user.username)
     session['username'] = user.username
     return {'success': Auth.update_user(user_id, user.first_name, user.last_name, user.email, user.username, Security.encrypt(user.password))}
 

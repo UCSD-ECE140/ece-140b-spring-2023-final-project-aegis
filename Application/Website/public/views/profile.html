@@ -4,33 +4,42 @@
     <meta charset="utf-8">
     <title>Aegis</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="public/css/profile.css">
+    <!-- Tailwind CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.0.4/dist/tailwind.min.css" rel="stylesheet">
+    <link href="../css/extras.css" rel="stylesheet">
+    <link href="../css/profile.css" rel="stylesheet">
+    <link rel="icon" href="../imgs/aegis.png" >
     <script src="public/js/profile.js" defer></script>
   </head>
-  <body>
+  <body class="bg-gray-100 font-sans leading-normal tracking-normal">
     <header>
-      <nav>
-        <div></div>
-        <div class="profile">
-            <div class="user">
-                <h3>{{ session['first_name'] }} {{ session['last_name'] }}</h3>
-                <p>{{ session['username'] }}</p>
+      <nav class="bg-customBlue p-2 mt-0 w-full">
+        <div class="flex items-center text-white font-extrabold">
+            <img class="h-8 w-8 mr-2" src="../imgs/aegis.png" alt="Favicon"/>
+            <a class="text-white no-underline hover:text-white hover:no-underline" href="#">
+                <span class="text-2xl pl-2">Aegis</span>
+            </a>
+        </div>
+        <div class="profile flex justify-center items-center">
+            <div class="user text-white mr-4">
+                <h3 class="font-bold text-xl">{{ session['first_name'] }} {{ session['last_name'] }}</h3>
+                <p class="font-medium">{{ session['username'] }}</p>
             </div>
             <div class="img-box">
-                <img src="https://media.istockphoto.com/id/689364180/vector/smiling-cartoon-face-positive-people-emotion-icon.jpg?s=612x612&w=0&k=20&c=2olrbVI2dkVyR0XKaMs4cSDrzpA4zH4FrCfZ_rKwVjU=" alt="some user image">
+                <img class="w-10 h-10 rounded-full" src="https://media.istockphoto.com/id/689364180/vector/smiling-cartoon-face-positive-people-emotion-icon.jpg?s=612x612&w=0&k=20&c=2olrbVI2dkVyR0XKaMs4cSDrzpA4zH4FrCfZ_rKwVjU=" alt="some user image">
             </div>
         </div>
-        <div class="menu">
-            <ul>
-                <li><a href="/eco_home"><i class="ph-bold ph-envelope-simple"></i>&nbsp;Eco Dashboard</a></li>
-                <li><a class="flex items-center px-4 py-2 hover:bg-gray-100" href="/schedule"><i class="ph-bold ph-schedule mr-2"></i>Schedule</a></li>
-                <li><a href="/profile"><i class="ph-bold ph-user"></i>&nbsp;Profile</a></li>
-                <li><a href="/device_settings"><i class="ph-bold ph-gear-six"></i>&nbsp;Device Settings</a></li>
-                <li><a href="" id="sign-out-link"><i class="ph-bold ph-sign-out"></i>&nbsp;Sign Out</a></li>
+      <div class="menu mt-1" >
+            <ul class="list-reset flex justify-between flex-1 md:flex-none text-white">
+              <li><a class="flex items-center px-4 py-2 hover:bg-gray-100" href="/eco_home"><i class="ph-bold ph-envelope-simple mr-2"></i>Eco Dashboard</a></li>
+              <li><a class="flex items-center px-4 py-2 hover:bg-gray-100" href="/schedule"><i class="ph-bold ph-schedule mr-2"></i>Schedule</a></li>
+              <li><a class="flex items-center px-4 py-2 hover:bg-gray-100" href="/profile"><i class="ph-bold ph-user mr-2"></i>Profile</a></li>
+              <li><a class="flex items-center px-4 py-2 hover:bg-gray-100" href="/device_settings"><i class="ph-bold ph-gear-six mr-2"></i>Device Settings</a></li>
+              <li><a class="flex items-center px-4 py-2 hover:bg-gray-100" href="" id="sign-out-link"><i class="ph-bold ph-sign-out mr-2"></i>Sign Out</a></li>
             </ul>   
         </div>
     </nav>
-    </header>
+    </header>  
     <h1>Profile</h1>
 
     <main class="container" data-mode="viewing">
