@@ -1,4 +1,5 @@
-import os                                         # Used for interacting with the system environment
+import os                   
+import random                    # Used for interacting with the system environment
 from dotenv import load_dotenv                    # Used to read the credentials
 import paho.mqtt.client as mqtt
 load_dotenv('credentials.env')                 # Read in the environment variables for MySQL
@@ -36,6 +37,18 @@ class MQTTServer:
     def on_connect(self, client, userdata, flags, rc):
         print("Connected with result code " + str(rc))
         client.subscribe(MQTT_config['topic'] + "/#")
+        mqtt_server.client.publish("Aegis/aegisDongleSend/78:23:38:2F:12:09", "bedroom,25.3,68.0,1.3;")
+        mqtt_server.client.publish("Aegis/aegisDongleSend/BC:23:68:DF:B2:09", "living room,26.7,68.0,0.9;")
+        mqtt_server.client.publish("Aegis/aegisDongleSend/FE:23:18:5F:1A:09", "kitchen,27.8,68.0,3.4;")
+        mqtt_server.client.publish("Aegis/aegisDongleSend/45:23:C2:8F:15:09", "family room,23.4,68.0,0.5;")
+        mqtt_server.client.publish("Aegis/aegisDongleSend/23:23:C4:FF:12:09", "gaming den,29.3,68.0,15.2;")
+        mqtt_server.client.publish("Aegis/ecoData", str(random.randint(1000,1250)))
+        mqtt_server.client.publish("Aegis/ecoData", str(random.randint(1000,1250)))
+        mqtt_server.client.publish("Aegis/ecoData", str(random.randint(1000,1250)))
+        mqtt_server.client.publish("Aegis/ecoData", str(random.randint(1000,1250)))
+        mqtt_server.client.publish("Aegis/ecoData", str(random.randint(1000,1250)))
+        mqtt_server.client.publish("Aegis/ecoData", str(random.randint(1000,1250)))
+
 
     def on_message(self, client, userdata, msg):
         split = msg.topic.split("/")
@@ -46,6 +59,5 @@ class MQTTServer:
 
 # If running the server directly from Python as a module
 if __name__ == "__main__":
-    print(MQTT_config)
     mqtt_server = MQTTServer()  
     mqtt_server.start()

@@ -69,22 +69,21 @@ struct ContentView: View {
                         
                         HStack(spacing: 20) {
                             Button(action: {
-                                self.mqtt.publish("Aegis/aegisDongleReceive/\(mqttDelegate.activeID)", withString: "increase_temp")
                                 // Increase the temperature in your app:
                                 if let currentTemp = Int(mqttDelegate.activeSetTemp) {
                                     mqttDelegate.activeSetTemp = String(currentTemp + 1)
                                 }
+                                self.mqtt.publish("Aegis/aegisTempSet", withString: "\(mqttDelgate.activename),\(mqttDelegate.activeSetTemp)")
                             }) {
                                 Text("Increase Temp")
                             }
                             .buttonStyle(.bordered)
-                            
                             Button(action: {
-                                self.mqtt.publish("Aegis/aegisDongleReceive/\(mqttDelegate.activeID)", withString: "decrease_temp")
                                 // Decrease the temperature in your app:
                                 if let currentTemp = Int(mqttDelegate.activeSetTemp) {
                                     mqttDelegate.activeSetTemp = String(currentTemp - 1)
                                 }
+                                self.mqtt.publish("Aegis/aegisTempSet", withString: "\(mqttDelgate.activename),\(mqttDelegate.activeSetTemp)")
                             }) {
                                 Text("Decrease Temp")
                             }
@@ -138,6 +137,7 @@ class MQTTDelegate: NSObject, ObservableObject, CocoaMQTTDelegate {
     func mqtt(_ mqtt: CocoaMQTT, didConnectAck ack: CocoaMQTTConnAck) {
         message = "Connected"
         mqtt.subscribe("Aegis/aegisDongleSend/#")
+        mqtt.subscribe("Aegis/aegisTempSet")
     }
     
     func mqtt(_ mqtt: CocoaMQTT, didPublishMessage message: CocoaMQTTMessage, id: UInt16) {
@@ -153,6 +153,10 @@ class MQTTDelegate: NSObject, ObservableObject, CocoaMQTTDelegate {
             return
         }
         let topic = message.topic.components(separatedBy: "/").last
+        if topic == "aegisTempSet" {
+            mqttDelegate.activeSetTemp = message.string
+            return
+        } 
         let data = payload.split(separator: ";")
         let deviceId = topic
         if let lastData = data.last {
