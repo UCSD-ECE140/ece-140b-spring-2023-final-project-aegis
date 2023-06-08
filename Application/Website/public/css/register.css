@@ -22,7 +22,7 @@ body {
 
 /* Header styles */
 header {
-  background-color: #1c2447; /* Dark blue */
+  background-color: #00498d; /* Dark blue */
   color: #fff;
   display: flex;
   justify-content: space-between;
@@ -85,7 +85,7 @@ main {
 }
 
 .form_row input[type="submit"] {
-  background-color: #1c2447; /* Dark blue */
+  background-color: #00498d; /* Dark blue */
   color: #fff;
   cursor: pointer;
 }
@@ -98,7 +98,7 @@ nav {
 }
 
 nav a {
-  color: #1c2447; /* Dark blue */
+  color: #00498d; /* Dark blue */
   font-size: 0.8rem;
   text-decoration: none;
   border-bottom: 1px solid transparent;

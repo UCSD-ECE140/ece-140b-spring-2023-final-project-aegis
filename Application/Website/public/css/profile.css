@@ -23,7 +23,7 @@ Dropdown Menu Credit: https://codepen.io/Kevin-Shin-the-builder/pen/xxQKMOJ
   
   /* Header styles */
   header {
-    background-color: #00498D; /* Dark blue */
+    background-color: #00498d; /* Dark blue */
     color: #fff;
     display: flex;
     justify-content: space-between;
@@ -71,7 +71,7 @@ Dropdown Menu Credit: https://codepen.io/Kevin-Shin-the-builder/pen/xxQKMOJ
   }
   
   .form_row input[type="submit"] {
-    background-color: #1c2447; /* Dark blue */
+    background-color: #00498d; /* Dark blue */
     color: #fff;
     cursor: pointer;
   }
@@ -175,7 +175,7 @@ Dropdown Menu Credit: https://codepen.io/Kevin-Shin-the-builder/pen/xxQKMOJ
     right: 14px;
     width: 20px;
     height: 20px;
-    background: #1c2447;
+    background: #00498d;
     transform: rotate(45deg);
     z-index: -1;
   }
@@ -287,14 +287,14 @@ Dropdown Menu Credit: https://codepen.io/Kevin-Shin-the-builder/pen/xxQKMOJ
     padding: 0.5rem;
     color: white;
     cursor: pointer;
-    background-color: #1c2447; /* Dark blue */
+    background-color: #00498d; /* Dark blue */
   }
   
   .form_row .cancel_button {
     padding: 0.5rem;
     color: white;
     cursor: pointer;
-    background-color: #1c2447; /* Dark blue */
+    background-color: #00498d; /* Dark blue */
   }
   
   .edit:hover,
@@ -303,7 +303,7 @@ Dropdown Menu Credit: https://codepen.io/Kevin-Shin-the-builder/pen/xxQKMOJ
   }
   
   button {
-    background-color: #4D6A85; /* Dark blue */
+    background-color: #00498d; /* Dark blue */
     color: #fff;
     border: none;
     padding: 10px;
