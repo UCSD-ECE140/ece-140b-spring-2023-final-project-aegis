@@ -47,28 +47,21 @@
   </nav>
     <h1>Device Settings</h1>
 
-    <main class="container" data-mode="viewing">
-      <div class="table_view">
-        <div class="grid_table">
+    <h1 class="text-center text-2xl font-bold my-6">Current Settings</h1>
 
-          <div class="header">
-            <span>Location</span>
-            <span>Temperature Threshold</span>
-            <span>Last Name</span>
-            <span>Username</span>
-            <span>Password</span>
-            <span></span>
-            <span></span>
-          </div>
-          <div class="column" data-id="{{data['device']}}">
-            <span style="display: none;">{{ data['name'] }}</span>
-          </div>
-          <div></div>
-          <div></div>
-          <button class="edit_button" title="Edit User">Edit</button>
-          <div></div>
+    <main class="container mx-auto p-6">
+      {% for data, configuration in combined_data %}
+        <div class="bg-white shadow-md rounded-lg p-6 mb-6 hover:shadow-lg transition-shadow duration-300 ease-in-out" data-id="{{configuration['dongleID']}}">
+          <h3 class="font-bold text-xl mb-4">{{ configuration['name'] }}</h3>
+          <p><span class="font-bold">Maximum Temperature: </span>{{ configuration['temp_thresh'] }}</p>
+          <p><span class="font-bold">Shielded: </span>{{ configuration['shielded'] }}</p>
+          <p><span class="font-bold">Dongle: </span>{{ configuration['dongleID'] }}</p>
         </div>
-      </div>
+      {% endfor %}
     </main>
+
+    <script>
+
+    </script>
   </body>
 </html>
