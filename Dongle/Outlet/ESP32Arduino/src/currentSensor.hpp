@@ -11,7 +11,7 @@ class currentSensor{
          * @param pin default is 33
          * @param calibration default is 0.5 at 66 ohm burden resistor
          */
-        currentSensor(int pin=33, double calibration=0.5){
+        currentSensor(int pin=33, double calibration=0.7){
             this->pin = pin;
             this->calibration = calibration;
         }
