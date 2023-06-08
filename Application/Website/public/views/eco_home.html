@@ -6,39 +6,32 @@
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <!-- Include Alpine.js via a CDN -->
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
+    <script src="public/js/device_settings.js" defer></script>
 </head>
 <body class="bg-gray-100 font-sans leading-normal tracking-normal">
-<nav class="bg-gray-800 p-2 mt-0 w-full">
-    <div class="container mx-auto flex flex-wrap items-center">
-        <div class="flex w-full md:w-1/2 justify-center md:justify-start text-white font-extrabold">
-            <a class="text-white no-underline hover:text-white hover:no-underline" href="#">
-                <span class="text-2xl pl-2">Aegis Smart Home</span>
-            </a>
-        </div>
-        <div class="flex w-full pt-2 content-center justify-between md:w-1/2 md:justify-end">
-            <ul class="list-reset flex justify-between flex-1 md:flex-none items-center">
-                <li class="mr-3">
-                    <a class="inline-block py-2 px-4 text-white no-underline" href="#">Home</a>
-                </li>
-                <li class="mr-3">
-                    <a class="inline-block text-gray-600 no-underline hover:text-gray-200 hover:text-underline py-2 px-4" href="#features">Scheduling</a>
-                </li>
-                <li class="mr-3">
-                    <a class="inline-block text-gray-600 no-underline hover:text-gray-200 hover:text-underline py-2 px-4" href="/device_settings">Management</a>
-                </li>
-                <li class="mr-3">
-                    <a class="inline-block text-gray-600 no-underline hover:text-gray-200 hover:text-underline py-2 px-4" href="#">Eco Dashboard</a>
-                </li>
-                <li class="mr-3">
-                    <a class="inline-block text-gray-600 no-underline hover:text-gray-200 hover:text-underline py-2 px-4" href="/login">Login</a>
-                </li>
-                <li class="mr-3">
-                    <a class="inline-block text-gray-600 no-underline hover:text-gray-200 hover:text-underline py-2 px-4" href="/logout">Logout</a>
-                </li>
-            </ul>
-        </div>
-    </div>
-</nav>
+    <body class="bg-white text-black h-screen w-screen font-sans">
+        <header>
+          <nav class="bg-blue-800 text-white p-5 flex justify-between items-center">
+            <div></div>
+            <div class="profile relative flex justify-end items-center mt-1 cursor-pointer text-right">
+              <div class="user">
+                  <h3 class="mb-1 font-semibold">{{ user['first_name'] }} {{ user['last_name'] }}</h3>
+                  <p class="text-sm opacity-60">{{ user['username'] }}</p>
+              </div>
+              <div class="img-box ml-2">
+                  <img class="w-12 h-12 object-cover rounded-full" src="https://media.istockphoto.com/id/689364180/vector/smiling-cartoon-face-positive-people-emotion-icon.jpg?s=612x612&w=0&k=20&c=2olrbVI2dkVyR0XKaMs4cSDrzpA4zH4FrCfZ_rKwVjU=" alt="some user image">
+              </div>
+              <div class="menu bg-white shadow-lg w-48 py-2 absolute top-full right-0 mt-2 hidden text-black">
+                  <ul>
+                      <li><a class="flex items-center px-4 py-2 hover:bg-gray-100" href="/eco_home"><i class="ph-bold ph-envelope-simple mr-2"></i>Eco Dashboard</a></li>
+                      <li><a class="flex items-center px-4 py-2 hover:bg-gray-100" href="/profile"><i class="ph-bold ph-user mr-2"></i>Profile</a></li>
+                      <li><a class="flex items-center px-4 py-2 hover:bg-gray-100" href="/device_settings"><i class="ph-bold ph-gear-six mr-2"></i>Device Settings</a></li>
+                      <li><a class="flex items-center px-4 py-2 hover:bg-gray-100" href="" id="sign-out-link"><i class="ph-bold ph-sign-out mr-2"></i>Sign Out</a></li>
+                  </ul>   
+              </div>
+            </div>
+          </nav>
+        </header>
 
 <div class="container mx-auto flex flex-wrap py-6">
     <!-- Sections go here -->

@@ -113,19 +113,31 @@ def get_profile(request: Request) -> HTMLResponse:
     session = sessions.get_session(request)
     if len(session) > 0 and session.get('logged_in'):
         session_id = request.cookies.get("session_id")
-        if('@' in session['username']):
+        if '@' in session['username']:
             email = session.get('username')
             account_id = Auth.get_id(email)
         else:
             username = session.get('username')
             account_id = Auth.get_id(username)
+        user_data = Auth.select_users(account_id)
+        data_sets = Auth.calculate_data(account_id)
+        configuration_data_sets = Auth.get_configurations(account_id)
+        user_info = {'first_name': user_data[2], 'last_name': user_data[3], 'username': user_data[4], 'logged_in': session['logged_in']}
+        
+        data_info_list = []
+        for data in data_sets:
+            data_info = {'temperature': data[2], 'hum': data[3], 'current': data[4], 'dongleID': data[5]}
+            data_info_list.append(data_info)
 
-        data = Auth.select_users(account_id)
-        new_session = {'ID': data[0], 'email': data[1], 'first_name': data[2], 'last_name': data[3], 'username': data[4], 'password': Security.decrypt(data[5]), 'logged_in': session['logged_in']}
-        template_data = {'request': request, 'session': new_session, 'session_id': session_id}
-        return views.TemplateResponse('profile.html', template_data)
+        configuration_info_list = []
+        print(configuration_data_sets)
+        for configuration_data in configuration_data_sets:
+            configuration_info = {'name': configuration_data[0], 'temp_thresh': configuration_data[1], 'shielded': configuration_data[2], 'dongleID': configuration_data[3]}
+            configuration_info_list.append(configuration_info)
+        combined_data = list(zip(data_info_list, configuration_info_list))
 
-    return RedirectResponse(url="/", status_code=302)
+        template_data = {'request': request, 'user': user_info, 'combined_data': combined_data, 'session_id': session_id}
+        return views.TemplateResponse('eco_home.html', template_data)
 
 @app.post('/website/login/{UUID}')
 def post_login(visitor: VisitorLogin, request: Request, response: Response, UUID: str) -> dict:
@@ -171,16 +183,23 @@ def get_configurations(request: Request) -> HTMLResponse:
             username = session.get('username')
             account_id = Auth.get_id(username)
         user_data = Auth.select_users(account_id)
-        new_session = {'first_name': user_data[2], 'last_name': user_data[3], 'username': user_data[4], 'logged_in': session['logged_in']}
-        template_data = {'request': request, 'session': new_session, 'session_id': session_id}
-        configuration_data = Auth.get_configurations(account_id)
-        if configuration_data is None or len(configuration_data) == 0:
-            template_data = {'request': request, 'data': [], 'session': new_session, 'session_id': session_id}
-        else:
-            template_data = {'request': request, 'data': configuration_data, 'session': new_session, 'session_id': session_id}
-        return views.TemplateResponse('device_settings.html', template_data)
+        data_sets = Auth.calculate_data(account_id)
+        configuration_data_sets = Auth.get_configurations(account_id)
+        user_info = {'first_name': user_data[2], 'last_name': user_data[3], 'username': user_data[4], 'logged_in': session['logged_in']}
+        
+        data_info_list = []
+        for data in data_sets:
+            data_info = {'temperature': data[2], 'hum': data[3], 'current': data[4], 'dongleID': data[5]}
+            data_info_list.append(data_info)
 
-    return RedirectResponse(url="/", status_code=302)
+        configuration_info_list = []
+        for configuration_data in configuration_data_sets:
+            configuration_info = {'name': configuration_data[0], 'temp_thresh': configuration_data[1], 'shielded': bool(configuration_data[2]), 'dongleID': configuration_data[3]}
+            configuration_info_list.append(configuration_info)
+        combined_data = list(zip(data_info_list, configuration_info_list))
+
+        template_data = {'request': request, 'user': user_info, 'combined_data': combined_data, 'session_id': session_id}
+        return views.TemplateResponse('device_settings.html', template_data)
 
 @app.put('/website/device_settings/{user_id}')
 def update_configurations(configurations: Configurations, user_id: str, request: Request) -> dict:
