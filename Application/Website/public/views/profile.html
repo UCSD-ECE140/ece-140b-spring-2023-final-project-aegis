@@ -43,38 +43,38 @@
     <h1>Profile</h1>
 
     <main class="container" data-mode="viewing">
-      <div class="edit_view">
+      <div class="edit_view ">
         <form name="edit_user" action="" method="PUT" data-id="{{session['ID']}}">
-          <h2>Edit User</h2>
+          <h2 class="text-3xl">Edit User</h2>
           <div class="form_row">
-            <label for="email">Email:</label>
+            <label for="email" class="text-2xl">Email:</label>
             <input type="text" name="email" id="email" placeholder="Email" pattern="\S+@(\S+)\.\S+" title="example@domain.com">
           </div>
           <div class="form_row">
-            <label for="first_name">First Name:</label>
+            <label for="first_name" class="text-2xl">First Name:</label>
             <input type="text" name="first_name" id="first_name" placeholder="First Name" autofocus>
           </div>
           <div class="form_row">
-            <label for="last_name">Last Name:</label>
+            <label for="last_name" class="text-2xl">Last Name:</label>
             <input type="text" name="last_name" id="last_name" placeholder="Last Name">
           </div>
           <div class="form_row">
-            <label for="username">Username:</label>
+            <label for="username" class="text-2xl">Username:</label>
             <input type="text" name="username" id="username" placeholder="Username">
           </div>
           <div class="form_row">
-            <label for="password">Password:</label>
+            <label for="password" class="text-2xl">Password:</label>
             <input type="password" name="password" id="password" placeholder="Password">
           </div>
           <div class="button_group">
-            <button class="cancel_button">Cancel</button>
-            <button class="save_button">Save</button>
+            <button class="cancel_button" class="text-2xl">Cancel</button>
+            <button class="save_button" class="text-2xl">Save</button>
           </div>
         </form>
       </div>
       <div class="table_view">
         <div class="grid_table">
-          <div class="header">
+          <div class="header text-2xl" >
             <span>Email</span>
             <span>First Name</span>
             <span>Last Name</span>
@@ -86,16 +86,16 @@
           
           <div class="column" data-id="{{session['ID']}}">
             <span style="display: none;">{{ session['ID'] }}</span>
-            <span id = "email" value = "{{ session['email'] }}">{{ session['email'] }}</span>
-            <span id = "first_name">{{ session['first_name'] }}</span>
-            <span id = "last_name">{{ session['last_name'] }}</span>
-            <span id = "username">{{ session['username'] }}</span>
-            <span class="censored" id = "password">{{ session['password'] }}</span>
+            <span id = "email" class="text-2xl" value = "{{ session['email'] }}">{{ session['email'] }}</span>
+            <span id = "first_name" class="text-2xl">{{ session['first_name'] }}</span>
+            <span id = "last_name" class="text-2xl">{{ session['last_name'] }}</span>
+            <span id = "username" class="text-2xl">{{ session['username'] }}</span>
+            <span class="censored" id = "password" class="text-2xl">{{ session['password'] }}</span>
 
           </div>
           <div></div>
           <div></div>
-          <button class="edit_button" title="Edit User">Edit</button>
+          <button class="edit_button" title="Edit User" >Edit</button>
         </div>
       </div>
     </main>

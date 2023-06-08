@@ -39,24 +39,22 @@
         </div>
       </nav>
     </header>
-    <main class="container mx-auto p-6">
+    <main class="container mx-auto p-1">
       <h1 class="text-center text-3xl font-bold my-6">Schedule</h1>
       {% for schedule, configuration in combined_data %}
-        <div class="bg-white shadow-md rounded-lg p-6 mb-6 hover:shadow-lg transition-shadow duration-300 ease-in-out">
+        <div class="bg-white shadow-md rounded-lg p-9 mb-1 hover:shadow-lg transition-shadow duration-300 ease-in-out">
           <div class="grid grid-cols-2 gap-4">
-            <div>
+            <div class="text-xl">
               <h3 class="font-bold text-2xl text-blue-900">{{ configuration['name'] }}</h3>
-              <p><span class="font-bold">Max Temp: </span>{{ configuration['temp_thresh'] }}</p>
-              <p><span class="font-bold">Shielded: </span>{{ configuration['shielded'] }}</p>
-              <p><span class="font-bold">Dongle: </span>{{ configuration['dongleID'] }}</p>
-            </div>
-            <div>
-              <h3 class="font-bold text-2xl text-blue-600">Schedule</h3>
               <p><span class="font-bold">Start Time: </span>{{ schedule['start_time'] }}</p>
               <p><span class="font-bold">End Time: </span>{{ schedule['end_time'] }}</p>
+              <button class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-3 rounded-full w-24 mr-2" x-on:click="showEditForm = true; selectedDongleID = '{{ configuration['dongleID'] }}'">Edit</button>
+              <button class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-3 rounded-full w-24">Delete</button>
             </div>
           </div>
         </div>
+
+      
       {% endfor %}
     </main>
   </body>
