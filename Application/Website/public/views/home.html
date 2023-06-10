@@ -7,11 +7,13 @@
     <!-- Include Alpine.js via a CDN -->
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
     <link href="../css/extras.css" rel="stylesheet">
+    <link rel="icon" href="../imgs/aegis.png" >
 </head> 
 <body class="bg-gray-100 font-sans leading-normal tracking-normal">
 <nav class="bg-customBlue p-2 mt-0 w-full">
     <div class="container mx-auto flex flex-wrap items-center">
-        <div class="flex w-full md:w-1/2 justify-center md:justify-start text-white font-extrabold">
+        <div class="flex w-full md:w-1/2 justify-center md:justify-start text-white font-extrabold items-center">
+            <img class="h-8 w-8 mr-2" src="../imgs/aegis.png" alt="Favicon"/>
             <a class="text-white no-underline hover:text-white hover:no-underline" href="#">
                 <span class="text-2xl pl-2">Aegis</span>
             </a>
@@ -32,9 +34,6 @@
                 </li>
                 <li class="mr-3">
                     <a class="inline-block py-2 px-4 text-white no-underline hover:text-gray-200 hover:text-underline py-2 px-4" href="/login">Login</a>
-                </li>
-                <li class="mr-3">
-                    <a class="inline-block py-2 px-4 text-white no-underline hover:text-gray-200 hover:text-underline py-2 px-4" href="/register">Register</a>
                 </li>
             </ul>
         </div>
@@ -112,10 +111,10 @@
                          x-data="{ open: false }"
                          @mouseover="open = true"
                          @mouseout="open = false">
-                        <img src="../imgs/team-member-placeholder.png" alt="Kevin Shin" class="w-32 h-32 rounded-full mx-auto">
+                        <img src="../imgs/team-member-4.jpg" alt="Kevin Shin" class="w-32 h-32 rounded-full mx-auto">
                         <h4 class="mt-4 font-bold text-xl">Kevin Shin</h4>
                         <p class="text-gray-600">CIO</p>
-                        <a href="#" class="text-blue-500 hover:text-blue-700">LinkedIn</a>
+                        <a href="https://www.linkedin.com/in/kevin-shin-373183188/" class="text-blue-500 hover:text-blue-700">LinkedIn</a>
                         <div x-show="open" class="mt-2 bg-gray-200 p-2 rounded">
                             <p class="text-gray-700">Kevin, as our CIO, ensures our technology infrastructure supports our growth and mission.</p>
                         </div>
