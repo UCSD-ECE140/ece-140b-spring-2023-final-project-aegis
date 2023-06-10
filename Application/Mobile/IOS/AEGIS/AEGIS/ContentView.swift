@@ -154,7 +154,7 @@ class MQTTDelegate: NSObject, ObservableObject, CocoaMQTTDelegate {
         }
         let topic = message.topic.components(separatedBy: "/").last
         if topic == "aegisTempSet" {
-            mqttDelegate.activeSetTemp = message.string
+            mqttDelegate.activeSetTemp = message.string.components(separatedBy: ",").last
             return
         } 
         let data = payload.split(separator: ";")
